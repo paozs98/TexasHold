@@ -10,59 +10,40 @@ namespace TexasHoldEmServer
 {
     class Server
     {
-        public static void StartServer()
+        public Server()
         {
-            // Get Host IP Address that is used to establish a connection  
-            // In this case, we get one IP address of localhost that is IP : 127.0.0.1  
-            // If a host has multiple addresses, you will get a list of addresses  
-            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHost.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11111);
-
-
             try
             {
+                TcpListener myList = new TcpListener(IPAddress.Any, 8010);
+                myList.Start();
 
-                // Create a Socket that will use Tcp protocol      
-                Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                // A Socket must be associated with an endpoint using the Bind method  
-                listener.Bind(localEndPoint);
-                // Specify how many requests a Socket can listen before it gives Server busy response.  
-                // We will listen 10 requests at a time  
-                listener.Listen(10);
-
+                Console.WriteLine("Server running at port 8001...");
                 Console.WriteLine("Waiting for a connection...");
-                Socket handler = listener.Accept();
 
-                // Incoming data from the client.    
-                string data = null;
-                byte[] bytes = null;
+                Socket s = myList.AcceptSocket();
+                Console.WriteLine("Connection accepted from " + s.RemoteEndPoint);
 
-                while (true)
-                {
-                    bytes = new byte[1024];
-                    int bytesRec = handler.Receive(bytes);
-                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                    if (data.IndexOf("<EOF>") > -1)
-                    {
-                        break;
-                    }
-                }
+                byte[] b = new byte[100];
+                int k = s.Receive(b);
+                Console.WriteLine("Recieved...");
+                for (int i = 0; i < k; i++)
+                    Console.Write(Convert.ToChar(b[i]));
 
-                Console.WriteLine("Text received : {0}", data);
+                ASCIIEncoding asen = new ASCIIEncoding();
+                s.Send(asen.GetBytes("The string was recieved by the server."));
+                Console.WriteLine("\nSent Acknowledgement");
+                /* clean up */
+                s.Close();
+                Console.Read();
+                myList.Stop();
 
-                byte[] msg = Encoding.ASCII.GetBytes(data);
-                handler.Send(msg);
-                handler.Shutdown(SocketShutdown.Both);
-                handler.Close();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine("Error: " + e.StackTrace);
+                Console.Read();
             }
-
-            Console.WriteLine("\n Press any key to continue...");
-            Console.ReadKey();
         }
     }
+        
 }

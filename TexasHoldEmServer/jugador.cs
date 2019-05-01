@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -10,66 +11,45 @@ namespace TexasHoldEmServer
 {
     class Jugador
     {
-        public static void StartClient()
+        public Jugador()
         {
-            byte[] bytes = new byte[1024];
-
             try
             {
-                // Connect to a Remote server  
-                // Get Host IP Address that is used to establish a connection  
-                // In this case, we get one IP address of localhost that is IP : 127.0.0.1  
-                // If a host has multiple addresses, you will get a list of addresses  
-                IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipAddress = ipHost.AddressList[0];
-                IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11111);
+                string ip = "192.168.12.12"; //Direccion ip del server
+                
+                IPAddress ipAd = IPAddress.Parse(ip);
 
-                // Create a TCP/IP  socket.    
-                Socket sender = new Socket(ipAddress.AddressFamily,
-                    SocketType.Stream, ProtocolType.Tcp);
+                TcpClient tcpclnt = new TcpClient();
+                Console.WriteLine("Connecting...");
 
-                // Connect the socket to the remote endpoint. Catch any errors.    
-                try
-                {
-                    // Connect to Remote EndPoint  
-                    sender.Connect(localEndPoint);
+                tcpclnt.Connect(ip, 8010);
 
-                    Console.WriteLine("Socket connected to {0}",
-                        sender.RemoteEndPoint.ToString());
+                Console.WriteLine("Connected");
+                Console.Write("Enter the string to be transmitted : ");
 
-                    // Encode the data string into a byte array.    
-                    byte[] msg = Encoding.ASCII.GetBytes("This is a test<EOF>");
+                String str = Console.ReadLine();
+                Stream stm = tcpclnt.GetStream();
 
-                    // Send the data through the socket.    
-                    int bytesSent = sender.Send(msg);
+                ASCIIEncoding asen = new ASCIIEncoding();
+                byte[] ba = asen.GetBytes(str);
+                Console.WriteLine("Transmitting...");
 
-                    // Receive the response from the remote device.    
-                    int bytesRec = sender.Receive(bytes);
-                    Console.WriteLine("Echoed test = {0}",
-                        Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                stm.Write(ba, 0, ba.Length);
 
-                    // Release the socket.    
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
+                byte[] bb = new byte[100];
+                int k = stm.Read(bb, 0, 100);
 
-                }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
-                }
+                for (int i = 0; i < k; i++)
+                    Console.Write(Convert.ToChar(bb[i]));
 
+                Console.Read();
+                tcpclnt.Close();
             }
+
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine("Error: " + e.StackTrace);
+                Console.Read();
             }
         }
     }

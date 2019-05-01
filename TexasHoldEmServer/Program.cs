@@ -10,9 +10,9 @@ namespace TexasHoldEmServer
     {
         static void Main(string[] args)
         {
-            //Jugador.StartClient();
-            Server.StartServer();
-            
+            //Jugador jugador = new Jugador();
+            Server server = new Server();
+            Console.ReadKey();
         }
     }
 }
