@@ -182,6 +182,21 @@ namespace TexasHoldEmServer
             return true;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Mano mano &&
+                   EqualityComparer<List<Carta>>.Default.Equals(miMano, mano.miMano) &&
+                   EqualityComparer<List<int>>.Default.Equals(valorMano, mano.valorMano);
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -849782822;
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<Carta>>.Default.GetHashCode(miMano);
+            hashCode = hashCode * -1521134295 + EqualityComparer<List<int>>.Default.GetHashCode(valorMano);
+            return hashCode;
+        }
+
         public static bool operator ==(Mano a, Mano b)
         {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count() == 0)
