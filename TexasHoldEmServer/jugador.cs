@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace TexasHoldEmServer
 {
@@ -16,7 +13,7 @@ namespace TexasHoldEmServer
             try
             {
                 string ip = "192.168.12.12"; //Direccion ip del server
-                
+
                 IPAddress ipAd = IPAddress.Parse(ip);
 
                 TcpClient tcpclnt = new TcpClient();
