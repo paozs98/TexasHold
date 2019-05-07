@@ -17,6 +17,12 @@ namespace TexasHoldEmServer
             valorMano = new List<int>();
         }
 
+        public Mano(List<Carta> miMano, List<int> valorMano)
+        {
+            this.miMano = miMano;
+            this.valorMano = valorMano;
+        }
+
         public Carta this[int index]
         {
             get
@@ -187,14 +193,6 @@ namespace TexasHoldEmServer
             return obj is Mano mano &&
                    EqualityComparer<List<Carta>>.Default.Equals(miMano, mano.miMano) &&
                    EqualityComparer<List<int>>.Default.Equals(valorMano, mano.valorMano);
-        }
-
-        public override int GetHashCode()
-        {
-            var hashCode = -849782822;
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<Carta>>.Default.GetHashCode(miMano);
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<int>>.Default.GetHashCode(valorMano);
-            return hashCode;
         }
 
         public static bool operator ==(Mano a, Mano b)
