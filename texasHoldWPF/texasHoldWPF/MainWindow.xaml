@@ -1,0 +1,35 @@
+﻿<Window x:Class="texasHoldWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:texasHoldWPF"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="650"
+       
+        Topmost="False" WindowState="Normal"
+        Icon="./Recursos/games_cardgame_pocker_872.ico">
+    <Window.Resources>
+        <sys:String x:Key="strTitulo">Bienvenido</sys:String>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style>
+    </Window.Resources>
+    <Window.Background >
+        <ImageBrush ImageSource="./Recursos/Background2.jpg"/>
+    </Window.Background>
+
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="{StaticResource strTitulo}" FontSize="25" HorizontalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center"  TextWrapping="NoWrap"
+                   Text="Texas Hold" FontSize="30"/>
+        <Button x:Name="btnIngresar" Height="40" Width="90"
+                HorizontalAlignment="Center" Content="Ingresar"
+                Click="BtnIngresar_Click"/>
+
+    </StackPanel>
+</Window>

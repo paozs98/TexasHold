@@ -1,0 +1,17 @@
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\bin\Debug\texasHoldWPF.exe.config
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\bin\Debug\texasHoldWPF.exe
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\bin\Debug\texasHoldWPF.pdb
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.csprojAssemblyReference.cache
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\MainWindow.g.cs
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\App.g.cs
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF_MarkupCompile.cache
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF_MarkupCompile.lref
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\MainWindow.baml
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.g.resources
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.Properties.Resources.resources
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.csproj.GenerateResource.cache
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.csproj.CoreCompileInputs.cache
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.exe
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.pdb
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\Loing.g.cs
+C:\Users\djena\OneDrive\Escritorio\texasHoldWPF\texasHoldWPF\obj\Debug\Loing.baml
