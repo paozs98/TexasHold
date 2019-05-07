@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Baraja.cs" />
     <Compile Include="Carta.cs" />
+    <Compile Include="ListaJugadores.cs" />
     <Compile Include="Mano.cs" />
+    <Compile Include="Mesa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Jugador.cs" />
