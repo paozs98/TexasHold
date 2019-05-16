@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TexasHoldEmServer
-{
-    class Mesa
-    {
+namespace TexasHoldemServer {
+    class Mesa {
+
+
         private ListaJugadores jugadores = new ListaJugadores();
         private Baraja baraja;
         private Mano manoDeLaMesa = new Mano();
@@ -18,8 +18,7 @@ namespace TexasHoldEmServer
         private int dealerPosition;
         private int posActual;
 
-        public Mesa(ListaJugadores jugadores, Baraja baraja, Mano manoDeLaMesa, int contadorDeRound, Pot potPrincipal, int contadorTurnos, int dealerPosition, int posActual)
-        {
+        public Mesa(ListaJugadores jugadores, Baraja baraja, Mano manoDeLaMesa, int contadorDeRound, Pot potPrincipal, int contadorTurnos, int dealerPosition, int posActual) {
             this.jugadores = jugadores;
             this.baraja = baraja;
             this.manoDeLaMesa = manoDeLaMesa;
@@ -93,5 +92,7 @@ namespace TexasHoldEmServer
         public ListaJugadores GetJugadores() {
             return jugadores;
         }
+
+
     }
 }

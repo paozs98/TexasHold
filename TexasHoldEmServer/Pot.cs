@@ -4,15 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TexasHoldEmServer
-{ /// <summary>
-/// clase que se encarga de llevar un registro de la apuestas del juego
-/// ejemplo la ciegaPequena para entrar 
-/// ciegaGrande
-/// el total que se lleva el ganador 
-/// </summary>
-    class Pot
-    {
+namespace TexasHoldemServer {
+    class Pot {
         private ListaJugadores jugadoresEnApuesta = new ListaJugadores();
         private int sumaEnElPot;
         private int apuestaMin;
@@ -90,5 +83,5 @@ namespace TexasHoldEmServer
             return jugadoresEnApuesta;
         }
 
-    }//cierre de la clase Pot
-}//cierre del namespace 
+    }
+}

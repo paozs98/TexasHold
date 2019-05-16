@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TexasHoldEmServer")]
+[assembly: AssemblyTitle("TexasHoldemServer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TexasHoldEmServer")]
+[assembly: AssemblyProduct("TexasHoldemServer")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("95452b53-e5db-4889-bde3-d12aa79d2206")]
+[assembly: Guid("c2e9c9ea-4315-42ab-8bc4-e4b2d7797430")]
 
 // Version information for an assembly consists of the following four values:
 //
