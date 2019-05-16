@@ -1,0 +1,8 @@
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\bin\Debug\pruebadll.exe.config
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\bin\Debug\pruebadll.exe
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\bin\Debug\pruebadll.pdb
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\bin\Debug\ProyectoSO.dll
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\obj\Debug\pruebadll.csprojResolveAssemblyReference.cache
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\obj\Debug\pruebadll.csproj.CoreCompileInputs.cache
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\obj\Debug\pruebadll.exe
+C:\Users\nayib\Desktop\Prueba\pruebadll\pruebadll\obj\Debug\pruebadll.pdb

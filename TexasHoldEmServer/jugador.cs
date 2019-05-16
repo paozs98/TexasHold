@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace TexasHoldEmServer
-{
-    class Jugador
-    {
+namespace TexasHoldemServer {
+    class Jugador {
+
         protected Mano myHand = new Mano();
         protected string nombre;
         protected int dineroInicial;
@@ -16,11 +18,10 @@ namespace TexasHoldEmServer
         protected bool mostrarCartas;
 
 
-        public void SetNombre(string n)
-        {
+        public void SetNombre(string n) {
             nombre = n;
         }
-        public void setMostrarCartas(bool mo) {
+        public void SetMostrarCartas(bool mo) {
             mostrarCartas = mo;
         }
         public void SetDineroActual(int actual) {
@@ -68,13 +69,8 @@ namespace TexasHoldEmServer
             mostrarCartas = true;
         }
 
-        
-        
-
-        public Jugador()
-        {
-            try
-            {
+        public Jugador() {
+            try {
                 string ip = "192.168.12.12"; //Direccion ip del server
 
                 IPAddress ipAd = IPAddress.Parse(ip);
@@ -104,13 +100,11 @@ namespace TexasHoldEmServer
 
                 Console.Read();
                 tcpclnt.Close();
-            }
-
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Console.WriteLine("Error: " + e.StackTrace);
                 Console.Read();
             }
         }
-    }//cierre de la clase jugador 
-}//cierre del namespace 
+
+    }
+}

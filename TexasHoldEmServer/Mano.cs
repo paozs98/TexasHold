@@ -4,82 +4,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TexasHoldEmServer
-{// la clase para cada mano o Juego de Cada Player
-    internal class Mano
-    {
+namespace TexasHoldemServer {
+    internal class Mano {
         private List<Carta> miMano;
         private List<int> valorMano;
 
-        public Mano()
-        {
+        public Mano() {
             miMano = new List<Carta>();
             valorMano = new List<int>();
         }
 
-        public Mano(List<Carta> miMano, List<int> valorMano)
-        {
+        public Mano(List<Carta> miMano, List<int> valorMano) {
             this.miMano = miMano;
             this.valorMano = valorMano;
         }
 
-        public Carta this[int index]
-        {
-            get
-            {
+        public Carta this[int index] {
+            get {
                 return miMano[index];
             }
-            set
-            {
+            set {
                 miMano[index] = value;
             }
         }
 
-        public void Limpiar()
-        {
+        public void Limpiar() {
             miMano.Clear();
             valorMano.Clear();
         }
 
-        public void Agregar_Carta(Carta carta)
-        {
+        public void Agregar_Carta(Carta carta) {
             miMano.Add(carta);
         }
 
-        public void Quitar_Carta(int index)
-        {
+        public void Quitar_Carta(int index) {
             miMano.RemoveAt(index);
         }
 
-        public void Remove(Carta carta)
-        {
+        public void Remove(Carta carta) {
             miMano.Remove(carta);
         }
 
-        public List<int> GetValorMano()
-        {
+        public List<int> GetValorMano() {
             return this.valorMano;
         }
 
-        public void SetValorMano(int value)
-        {
+        public void SetValorMano(int value) {
             valorMano.Add(value);
         }
 
-        public int Total()
-        {
+        public int Total() {
             return miMano.Count;
         }
 
-        public Carta GetCarta(int index)
-        {
+        public Carta GetCarta(int index) {
             if (index >= miMano.Count)
                 throw new ArgumentOutOfRangeException();
             return miMano[index];
         }
 
-        List<Carta> QuickSortValor(List<Carta> miscartas)
-        {
+        List<Carta> QuickSortValor(List<Carta> miscartas) {
             Carta pivot;
             Random ran = new Random();
 
@@ -92,11 +76,9 @@ namespace TexasHoldEmServer
             var menor = new List<Carta>();
             var mayor = new List<Carta>();
 
-            foreach (Carta i in miscartas)
-            {
+            foreach (Carta i in miscartas) {
                 if (i > pivot) { mayor.Add(i); }
-                else if (i <= pivot)
-                {
+                else if (i <= pivot) {
                     menor.Add(i);
                 }
             }
@@ -108,8 +90,7 @@ namespace TexasHoldEmServer
             return lista;
         }
 
-        List<Carta> QuickSortFamila(List<Carta> misCartas)
-        {
+        List<Carta> QuickSortFamila(List<Carta> misCartas) {
 
             Carta pivot;
 
@@ -122,11 +103,10 @@ namespace TexasHoldEmServer
             misCartas.Remove(pivot);
             var menor = new List<Carta>();
             var mayor = new List<Carta>();
-            for (int i = 0; i < misCartas.Count(); i++)
-            {
-                if (misCartas[i].GetFamilia() > pivot.GetFamilia())
+            for (int i = 0; i < misCartas.Count(); i++) {
+                if (misCartas[i].GetPalo() > pivot.GetPalo())
                     mayor.Add(misCartas[i]);
-                else if (misCartas[i].GetFamilia() <= pivot.GetFamilia())
+                else if (misCartas[i].GetPalo() <= pivot.GetPalo())
                     menor.Add(misCartas[i]);
             }
             var list = new List<Carta>();
@@ -136,23 +116,19 @@ namespace TexasHoldEmServer
             return list;
         }
 
-        public void OrdenarPorValor()
-        {
+        public void OrdenarPorValor() {
             miMano = QuickSortValor(miMano);
         }
 
-        public void OrdenarPorFamilia()
-        {
+        public void OrdenarPorFamilia() {
             miMano = QuickSortFamila(miMano);
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             if (this.valorMano.Count() == 0)
                 return "No se a encontrado mano de Poker";
 
-            switch (this.valorMano[0])
-            {
+            switch (this.valorMano[0]) {
                 case 1:
                     return Carta.ValorToString(valorMano[1]) + "Carta Alta";
                 case 2:
@@ -176,101 +152,79 @@ namespace TexasHoldEmServer
             }
         }
 
-        public bool IsEqual(Mano a)
-        {
-            for (int i = 0; i < a.Total(); i++)
-            {
-                if (a[i] != miMano[i] || a[i].GetFamilia() != miMano[i].GetFamilia())
-                {
+        public bool IsEqual(Mano a) {
+            for (int i = 0; i < a.Total(); i++) {
+                if (a[i] != miMano[i] || a[i].GetPalo() != miMano[i].GetPalo()) {
                     return false;
                 }
             }
             return true;
         }
 
-        public override bool Equals(object obj)
-        {
+        public override bool Equals(object obj) {
             return obj is Mano mano &&
                    EqualityComparer<List<Carta>>.Default.Equals(miMano, mano.miMano) &&
                    EqualityComparer<List<int>>.Default.Equals(valorMano, mano.valorMano);
         }
 
-        public static bool operator ==(Mano a, Mano b)
-        {
+        public static bool operator ==(Mano a, Mano b) {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count() == 0)
                 throw new NullReferenceException();
-            for (int i = 0; i < a.GetValorMano().Count(); i++)
-            {
-                if (a.GetValorMano()[i] != b.GetValorMano()[i])
-                {
+            for (int i = 0; i < a.GetValorMano().Count(); i++) {
+                if (a.GetValorMano()[i] != b.GetValorMano()[i]) {
                     return false;
                 }
             }
             return true;
         }
 
-        public static bool operator !=(Mano a, Mano b)
-        {
+        public static bool operator !=(Mano a, Mano b) {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count() == 0)
                 throw new NullReferenceException();
-            for (int i = 0; i < a.GetValorMano().Count(); i++)
-            {
-                if (a.GetValorMano()[i] != b.GetValorMano()[i])
-                {
+            for (int i = 0; i < a.GetValorMano().Count(); i++) {
+                if (a.GetValorMano()[i] != b.GetValorMano()[i]) {
                     return true;
                 }
             }
             return false;
         }
 
-        public static bool operator <(Mano a, Mano b)
-        {
+        public static bool operator <(Mano a, Mano b) {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count == 0)
                 throw new NullReferenceException();
-            for (int i = 0; i < a.GetValorMano().Count(); i++)
-            {
-                if (a.GetValorMano()[i] < b.GetValorMano()[i])
-                {
+            for (int i = 0; i < a.GetValorMano().Count(); i++) {
+                if (a.GetValorMano()[i] < b.GetValorMano()[i]) {
                     return true;
                 }
-                if (a.GetValorMano()[i] > b.GetValorMano()[i])
-                {
+                if (a.GetValorMano()[i] > b.GetValorMano()[i]) {
                     return false;
                 }
             }
             return false;
         }
 
-        public static bool operator >(Mano a, Mano b)
-        {
+        public static bool operator >(Mano a, Mano b) {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count == 0)
                 throw new NullReferenceException();
-            for (int i = 0; i < a.GetValorMano().Count(); i++)
-            {
-                if (a.GetValorMano()[i] > b.GetValorMano()[i])
-                {
+            for (int i = 0; i < a.GetValorMano().Count(); i++) {
+                if (a.GetValorMano()[i] > b.GetValorMano()[i]) {
                     return true;
                 }
-                if (a.GetValorMano()[i] < b.GetValorMano()[i])
-                {
+                if (a.GetValorMano()[i] < b.GetValorMano()[i]) {
                     return false;
                 }
             }
             return false;
         }
 
-        public static bool operator <=(Mano a, Mano b)
-        {
+        public static bool operator <=(Mano a, Mano b) {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count == 0)
                 throw new NullReferenceException();
-            for (int i = 0; i < a.GetValorMano().Count(); i++)
-            {
-                if (a.GetValorMano()[i] < b.GetValorMano()[i])
-                {
+            for (int i = 0; i < a.GetValorMano().Count(); i++) {
+                if (a.GetValorMano()[i] < b.GetValorMano()[i]) {
                     return true;
                 }
-                if (a.GetValorMano()[i] > b.GetValorMano()[i])
-                {
+                if (a.GetValorMano()[i] > b.GetValorMano()[i]) {
                     return false;
                 }
 
@@ -278,18 +232,14 @@ namespace TexasHoldEmServer
             return true;
         }
 
-        public static bool operator >=(Mano a, Mano b)
-        {
+        public static bool operator >=(Mano a, Mano b) {
             if (a.GetValorMano().Count == 0 || b.GetValorMano().Count == 0)
                 throw new NullReferenceException();
-            for (int i = 0; i < a.GetValorMano().Count(); i++)
-            {
-                if (a.GetValorMano()[i] > b.GetValorMano()[i])
-                {
+            for (int i = 0; i < a.GetValorMano().Count(); i++) {
+                if (a.GetValorMano()[i] > b.GetValorMano()[i]) {
                     return true;
                 }
-                if (a.GetValorMano()[i] < b.GetValorMano()[i])
-                {
+                if (a.GetValorMano()[i] < b.GetValorMano()[i]) {
                     return false;
                 }
 
@@ -297,16 +247,13 @@ namespace TexasHoldEmServer
             return true;
         }
 
-        public static Mano operator +(Mano a, Mano b)
-        {
-            for (int i = 0; i < b.Total(); i++)
-            {
+        public static Mano operator +(Mano a, Mano b) {
+            for (int i = 0; i < b.Total(); i++) {
                 a.Agregar_Carta(b[i]);
             }
             return a;
         }
 
 
-
-    }//Cierre de la clase Mano
+    }
 }

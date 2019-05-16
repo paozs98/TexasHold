@@ -1,0 +1,4 @@
+La ip del servidor es: 192.168.252.1
+
+Prueba de usuario: 
+kristyn 117180070

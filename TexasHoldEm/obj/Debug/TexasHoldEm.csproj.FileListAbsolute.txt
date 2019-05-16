@@ -1,6 +1,0 @@
-C:\Users\paoma\Documents\GitHub\TexasHoldEm\TexasHoldEm\bin\Debug\TexasHoldEm.dll
-C:\Users\paoma\Documents\GitHub\TexasHoldEm\TexasHoldEm\bin\Debug\TexasHoldEm.pdb
-C:\Users\paoma\Documents\GitHub\TexasHoldEm\TexasHoldEm\obj\Debug\TexasHoldEm.csprojAssemblyReference.cache
-C:\Users\paoma\Documents\GitHub\TexasHoldEm\TexasHoldEm\obj\Debug\TexasHoldEm.csproj.CoreCompileInputs.cache
-C:\Users\paoma\Documents\GitHub\TexasHoldEm\TexasHoldEm\obj\Debug\TexasHoldEm.dll
-C:\Users\paoma\Documents\GitHub\TexasHoldEm\TexasHoldEm\obj\Debug\TexasHoldEm.pdb

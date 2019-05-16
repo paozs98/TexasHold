@@ -1,0 +1,54 @@
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojResolveAssemblyReference.cache
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\Login.baml
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\bin\Debug\ServerData.dll
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\bin\Debug\ServerData.pdb
+C:\Users\krist\source\repos\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojResolveAssemblyReference.cache
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\Login.baml
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+C:\Users\krist\Downloads\PROYECTO-SO (1)\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojResolveAssemblyReference.cache
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\Login.baml
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+C:\Users\krist\Downloads\PROYECTO-FIN\PROYECTO-SO\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
