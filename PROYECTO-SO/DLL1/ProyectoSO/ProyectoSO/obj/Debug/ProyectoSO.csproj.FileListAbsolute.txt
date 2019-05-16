@@ -1,6 +1,0 @@
-C:\Users\PC\Desktop\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.dll
-C:\Users\PC\Desktop\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.pdb
-C:\Users\PC\Desktop\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csprojAssemblyReference.cache
-C:\Users\PC\Desktop\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.CoreCompileInputs.cache
-C:\Users\PC\Desktop\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.dll
-C:\Users\PC\Desktop\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.pdb
