@@ -7,9 +7,10 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+//clase principal la que maneja los datos Packet de los que de los jugadores
 namespace TexasHoldemServer {
     class Server {
+        static ListaJugadores LJ;
 
         private TcpListener _server;
         private Boolean _isRunning;
