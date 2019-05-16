@@ -1,4 +1,0 @@
-C:\Users\USUARIO\Documents\GitHub\TexasHoldEm\LibreriaDeAutenticación\LibreriaDeAutenticación\obj\Debug\netstandard2.0\LibreriaDeAutenticación.csprojAssemblyReference.cache
-C:\Users\USUARIO\Documents\GitHub\TexasHoldEm\LibreriaDeAutenticación\LibreriaDeAutenticación\obj\Debug\netstandard2.0\LibreriaDeAutenticación.csproj.CoreCompileInputs.cache
-C:\Users\USUARIO\Documents\GitHub\TexasHoldEm\LibreriaDeAutenticación\LibreriaDeAutenticación\obj\Debug\netstandard2.0\LibreriaDeAutenticación.AssemblyInfoInputs.cache
-C:\Users\USUARIO\Documents\GitHub\TexasHoldEm\LibreriaDeAutenticación\LibreriaDeAutenticación\obj\Debug\netstandard2.0\LibreriaDeAutenticación.AssemblyInfo.cs
