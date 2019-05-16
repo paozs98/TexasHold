@@ -56,7 +56,7 @@ namespace TexasHoldemServer {
 
         public void Quitar(Carta carta) {
             for (int i = 0; i < deck.Count; i++) {
-                if (deck[i] == carta && deck[i].GetFamilia() == carta.GetFamilia()) {
+                if (deck[i] == carta && deck[i].GetPalo() == carta.GetPalo()) {
                     deck.RemoveAt(i);
                 }
             }

@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TexasHoldemServer {
     class Jugador {
+
         protected Mano myHand = new Mano();
         protected string nombre;
         protected int dineroInicial;
@@ -17,7 +21,7 @@ namespace TexasHoldemServer {
         public void SetNombre(string n) {
             nombre = n;
         }
-        public void setMostrarCartas(bool mo) {
+        public void SetMostrarCartas(bool mo) {
             mostrarCartas = mo;
         }
         public void SetDineroActual(int actual) {
@@ -64,9 +68,6 @@ namespace TexasHoldemServer {
         public void MostrarCartas() {
             mostrarCartas = true;
         }
-
-
-
 
         public Jugador() {
             try {

@@ -104,9 +104,9 @@ namespace TexasHoldemServer {
             var menor = new List<Carta>();
             var mayor = new List<Carta>();
             for (int i = 0; i < misCartas.Count(); i++) {
-                if (misCartas[i].GetFamilia() > pivot.GetFamilia())
+                if (misCartas[i].GetPalo() > pivot.GetPalo())
                     mayor.Add(misCartas[i]);
-                else if (misCartas[i].GetFamilia() <= pivot.GetFamilia())
+                else if (misCartas[i].GetPalo() <= pivot.GetPalo())
                     menor.Add(misCartas[i]);
             }
             var list = new List<Carta>();
@@ -154,7 +154,7 @@ namespace TexasHoldemServer {
 
         public bool IsEqual(Mano a) {
             for (int i = 0; i < a.Total(); i++) {
-                if (a[i] != miMano[i] || a[i].GetFamilia() != miMano[i].GetFamilia()) {
+                if (a[i] != miMano[i] || a[i].GetPalo() != miMano[i].GetPalo()) {
                     return false;
                 }
             }

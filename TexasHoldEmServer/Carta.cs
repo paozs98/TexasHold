@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TexasHoldemServer {
-    public enum RANGO {
+    public enum VALOR {
         DOS = 2,
         TRES,
         CUATRO,
@@ -20,38 +20,38 @@ namespace TexasHoldemServer {
         KA,
         AS
     }
-    public enum FAMILIA {
+    public enum PALO {
         DIAMANTE = 1,
         TREBOL,
         CORAZON,
         ESPADA
     }
 
-    class Carta {
+    internal class Carta {
         private int valor;
-        private int familia;
+        private int palo;
 
         //constructor por defecto inicia con una carta 2 de diamantes 
         public Carta() {
-            valor = (int)RANGO.DOS;
-            familia = (int)FAMILIA.DIAMANTE;
+            valor = (int)VALOR.DOS;
+            palo = (int)PALO.DIAMANTE;
         }
 
-        public Carta(RANGO rank, FAMILIA nai) {
+        public Carta(VALOR rank, PALO nai) {
             this.valor = (int)rank;
-            this.familia = (int)nai;
+            this.palo = (int)nai;
         }
 
         public Carta(int rango, int naipe) {
             if (rango < 1 || rango > 14 || naipe < 1 || naipe > 4)
                 throw new ArgumentOutOfRangeException();
-            this.familia = naipe;
+            this.palo = naipe;
             this.valor = rango;
         }
 
         public Carta(Carta c) {
             this.valor = c.valor;
-            this.familia = c.familia;
+            this.palo = c.palo;
         }
 
         public static string ValorToString(int valor) {
@@ -70,7 +70,7 @@ namespace TexasHoldemServer {
 
         }
 
-        public static string FamiliaToString(int naipe) {
+        public static string PaloToString(int naipe) {
             switch (naipe) {
                 case 1:
                     return "DIAMANTES";
@@ -87,32 +87,32 @@ namespace TexasHoldemServer {
             return this.valor;
         }
 
-        public int GetFamilia() {
-            return this.familia;
+        public int GetPalo() {
+            return this.palo;
         }
 
-        public void SetValor(RANGO rango) {
+        public void SetValor(VALOR rango) {
             this.valor = (int)rango;
         }
 
-        public void SetFamilia(FAMILIA fam) {
-            this.familia = (int)fam;
+        public void SetPalo(PALO fam) {
+            this.palo = (int)fam;
         }
 
-        public void SetCarta(RANGO rango, FAMILIA palo) {
+        public void SetCarta(VALOR rango, PALO palo) {
             this.valor = (int)rango;
-            this.familia = (int)palo;
+            this.palo = (int)palo;
         }
 
         public void SetCarta(int rango, int palo) {
             if (rango < 1 || rango > 14 || palo < 1 || palo > 4)
                 throw new ArgumentOutOfRangeException();
             this.valor = rango;
-            this.familia = palo;
+            this.palo = palo;
         }
 
         public override string ToString() {
-            return ValorToString(valor) + "\tde\t" + FamiliaToString(familia);
+            return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
 
         public static bool operator ==(Carta a, Carta b) {
