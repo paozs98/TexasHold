@@ -46,6 +46,7 @@
     <Compile Include="Baraja.cs" />
     <Compile Include="Carta.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Juego.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="ListaJugadores.cs" />
     <Compile Include="Mano.cs" />

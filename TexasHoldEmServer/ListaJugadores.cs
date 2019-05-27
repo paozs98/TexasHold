@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace TexasHoldemServer {
     class ListaJugadores {
 
+        List<Jugador> list;
 
 
-        List<Jugador> list = new List<Jugador>();
-        public ListaJugadores() {
+
+        public ListaJugadores(int n) {
+            List<Jugador> list = new List<Jugador>(n);
         }
 
         public void CopyTo(Jugador[] array, int arrayIndex) {
@@ -40,6 +42,8 @@ namespace TexasHoldemServer {
         public bool Contains(Jugador item) {
             return list.Contains(item);
         }
+
+       
 
         public int Count {
             get { return list.Count; }
@@ -77,7 +81,7 @@ namespace TexasHoldemServer {
             }
         }
 
-        public Jugador GetJugador(ref int index) {
+        public Jugador GetJugador(int index) {
             while (index > list.Count() - 1)
                 index -= list.Count();
             while (index < 0)
@@ -85,8 +89,10 @@ namespace TexasHoldemServer {
             return list[index];
         }
 
-
-
+        internal bool Contains(Packet p)
+        {
+            return this.Contains(new Jugador(p.nombre));
+        }
     }
 
 }
