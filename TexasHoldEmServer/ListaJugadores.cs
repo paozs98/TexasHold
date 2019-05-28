@@ -9,8 +9,6 @@ namespace TexasHoldemServer {
 
         List<Jugador> list;
 
-
-
         public ListaJugadores(int n) {
             List<Jugador> list = new List<Jugador>(n);
         }

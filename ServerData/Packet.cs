@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading.Tasks;
-//esta clase se encargará de validar los paquetes que manda el usuario al Sever 
-namespace TexasHoldemServer {
+
+namespace ServerData
+{
+    [Serializable]
     public class Packet
     {
 
@@ -128,5 +128,4 @@ namespace TexasHoldemServer {
         //Hay que hacer las comunicaciones para indicar si un jugador ganó, perdió o empató y con eso 
         //se le envía el monto de su apuesta actualizada.
     }
-
 }

@@ -11,6 +11,12 @@ namespace Proyecto2
         public enum Rango { AS = 1, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, JOTA, REINA, REY };
         public enum Palo { TREBOL, DIAMANTES, CORAZONES, ESPADAS };
 
+        // Atributos
+        private Rango c_rango;
+        private Palo c_palo;
+        bool c_CartaArriba;
+
+
         public Carta(int r, int p, bool est)
         {
             c_rango = ConvertirRango(r);
@@ -100,9 +106,6 @@ namespace Proyecto2
             }
         }
 
-        // Atributos
-        private Rango c_rango;
-        private Palo c_palo;
-        bool c_CartaArriba;
+        
     }
 }

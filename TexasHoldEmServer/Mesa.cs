@@ -10,7 +10,7 @@ namespace TexasHoldemServer {
 
         private ListaJugadores jugadores = new ListaJugadores();
         private Baraja baraja;
-        private Mano manoDeLaMesa = new Mano();
+        private ColeccionCartas manoDeLaMesa = new ColeccionCartas();
         private int contadorDeRound;
         private Pot potPrincipal;
         private Random rand;
@@ -18,7 +18,7 @@ namespace TexasHoldemServer {
         private int dealerPosition;
         private int posActual;
 
-        public Mesa(ListaJugadores jugadores, Baraja baraja, Mano manoDeLaMesa, int contadorDeRound, Pot potPrincipal, int contadorTurnos, int dealerPosition, int posActual) {
+        public Mesa(ListaJugadores jugadores, Baraja baraja, ColeccionCartas manoDeLaMesa, int contadorDeRound, Pot potPrincipal, int contadorTurnos, int dealerPosition, int posActual) {
             this.jugadores = jugadores;
             this.baraja = baraja;
             this.manoDeLaMesa = manoDeLaMesa;
@@ -57,7 +57,7 @@ namespace TexasHoldemServer {
             contadorDeRound = co;
         }
 
-        public void SetManoDeLaMesa(Mano ma) {
+        public void SetManoDeLaMesa(ColeccionCartas ma) {
             manoDeLaMesa = ma;
         }
 
@@ -81,7 +81,7 @@ namespace TexasHoldemServer {
             return contadorDeRound;
         }
 
-        public Mano GetMano() {
+        public ColeccionCartas GetMano() {
             return manoDeLaMesa;
         }
 

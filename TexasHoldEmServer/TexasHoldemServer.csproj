@@ -43,15 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Baraja.cs" />
     <Compile Include="Carta.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Juego.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="ListaJugadores.cs" />
-    <Compile Include="Mano.cs" />
+    <Compile Include="ColeccionCartas.cs" />
+    <Compile Include="Mazo.cs" />
     <Compile Include="Mesa.cs" />
-    <Compile Include="Packet.cs" />
     <Compile Include="Pot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

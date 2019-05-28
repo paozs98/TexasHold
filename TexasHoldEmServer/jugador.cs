@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace TexasHoldemServer {
     class Jugador {
 
-        protected Mano myHand = new Mano();
+        protected ColeccionCartas myHand = new ColeccionCartas();
         protected string nombre;
         protected int dineroInicial;
         protected int apuesta;
@@ -36,7 +36,7 @@ namespace TexasHoldemServer {
             dineroInicial = i;
         }
 
-        public void SetMano(Mano nue) {
+        public void SetMano(ColeccionCartas nue) {
             myHand = nue;
         }
         public int GetDineroInicial() {
@@ -54,10 +54,10 @@ namespace TexasHoldemServer {
         public string GetNombre() {
             return nombre;
         }
-        public Mano GetMano() {
+        public ColeccionCartas GetMano() {
             return myHand;
         }
-        public void AgregarMano(Mano mano) {
+        public void AgregarMano(ColeccionCartas mano) {
             myHand += mano;
         }
 

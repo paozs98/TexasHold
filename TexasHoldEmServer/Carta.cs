@@ -4,64 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TexasHoldemServer {
-    public enum VALOR {
-        DOS = 2,
-        TRES,
-        CUATRO,
-        CINCO,
-        SEIS,
-        SIETE,
-        OCHO,
-        NUEVE,
-        DIEZ,
-        JOTA,
-        QUEEN,
-        KA,
-        AS
-    }
-    public enum PALO {
-        DIAMANTE = 1,
-        TREBOL,
-        CORAZON,
-        ESPADA
-    }
-
-    internal class Carta {
+namespace TexasHoldemServer
+{
+    //Clase para darle el formato a las 52 cartas que tiene que esta en el juego
+    public class Carta
+    {
+        public enum VALOR { DOS = 2, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, JOTA, QUINA, KA, AS };
+        public enum PALO { DIAMANTE = 1, TREBOL, CORAZON, ESPADA };
+        //Atributos de las cartas 
         private int valor;
         private int palo;
+        bool c_CartaArriba;
 
-        //constructor por defecto inicia con una carta 2 de diamantes 
-        public Carta() {
-            valor = (int)VALOR.DOS;
-            palo = (int)PALO.DIAMANTE;
+        public Carta(int valor, int palo, bool estado)
+        {
+            this.valor = valor;
+            this.palo = palo;
+            this.c_CartaArriba = estado;
         }
 
-        public Carta(VALOR rank, PALO nai) {
-            this.valor = (int)rank;
-            this.palo = (int)nai;
-        }
-
-        public Carta(int rango, int naipe) {
-            if (rango < 1 || rango > 14 || naipe < 1 || naipe > 4)
-                throw new ArgumentOutOfRangeException();
-            this.palo = naipe;
-            this.valor = rango;
-        }
-
-        public Carta(Carta c) {
-            this.valor = c.valor;
-            this.palo = c.palo;
-        }
-
-        public static string ValorToString(int valor) {
-            switch (valor) {
+        public static string ValorToString(int valor)
+        {
+            switch (valor)
+            {
                 case 11:
-                    return "Jota";
+                    return "JOTA";
                 case 12:
-                    return "Quina";
+                    return "QUINA";
                 case 13:
-                    return "Ka";
+                    return "KA";
                 case 14:
                     return "AS";
                 default:
@@ -70,8 +41,10 @@ namespace TexasHoldemServer {
 
         }
 
-        public static string PaloToString(int naipe) {
-            switch (naipe) {
+        public static string PaloToString(int naipe)
+        {
+            switch (naipe)
+            {
                 case 1:
                     return "DIAMANTES";
                 case 2:
@@ -83,59 +56,35 @@ namespace TexasHoldemServer {
             }
         }
 
-        public int GetValor() {
+        public void Voltear()
+        {
+            this.c_CartaArriba = !(c_CartaArriba);
+        }
+
+        public int GetValor()
+        {
             return this.valor;
         }
 
-        public int GetPalo() {
+        public int GetPalo()
+        {
             return this.palo;
         }
 
-        public void SetValor(VALOR rango) {
+        public void SetValor(VALOR rango)
+        {
             this.valor = (int)rango;
         }
 
-        public void SetPalo(PALO fam) {
+        public void SetPalo(PALO fam)
+        {
             this.palo = (int)fam;
         }
 
-        public void SetCarta(VALOR rango, PALO palo) {
-            this.valor = (int)rango;
-            this.palo = (int)palo;
-        }
-
-        public void SetCarta(int rango, int palo) {
-            if (rango < 1 || rango > 14 || palo < 1 || palo > 4)
-                throw new ArgumentOutOfRangeException();
-            this.valor = rango;
-            this.palo = palo;
-        }
-
-        public override string ToString() {
+        public override string ToString()
+        {
             return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
-
-        public static bool operator ==(Carta a, Carta b) {
-            return (a.valor == b.valor) ? true : false;
-        }
-
-        public static bool operator !=(Carta a, Carta b) {
-            return (a.valor != b.valor) ? true : false;
-        }
-
-        public static bool operator <(Carta a, Carta b) {
-            return (a.valor < b.valor) ? true : false;
-        }
-        public static bool operator >(Carta a, Carta b) {
-            return (a.valor > b.valor) ? true : false;
-        }
-        public static bool operator <=(Carta a, Carta b) {
-            return (a.valor <= b.valor) ? true : false;
-        }
-        public static bool operator >=(Carta a, Carta b) {
-            return (a.valor >= b.valor) ? true : false;
-        }
-
 
     }
 }
