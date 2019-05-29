@@ -43,13 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="carta.cs" />
-    <Compile Include="casa.cs" />
     <Compile Include="coleccion.cs" />
     <Compile Include="coleccionJugador.cs" />
-    <Compile Include="juego.cs" />
+    <Compile Include="mesa.cs" />
     <Compile Include="jugador.cs" />
     <Compile Include="mazo.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
   </ItemGroup>

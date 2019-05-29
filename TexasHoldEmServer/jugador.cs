@@ -10,14 +10,33 @@ using System.Threading.Tasks;
 namespace TexasHoldemServer {
     class Jugador {
 
-        protected ColeccionCartas myHand = new ColeccionCartas();
+        protected ColeccionCartas mano;
         protected string nombre;
+        protected string id;
         protected int dineroInicial;
         protected int apuesta;
         protected int dineroActual;
         protected bool mostrarCartas;
 
+        public Jugador(string nom) {
+            nombre = nom;
+            mano = new ColeccionCartas(2);
+            dineroInicial = 1000;
+        }
 
+        public Jugador(string nom,string id )
+        {
+            nombre = nom;
+           this.id = id;
+            mano = new ColeccionCartas( 2 );
+            dineroInicial = 1000; // todos los jugadores inician con 1000 dolares en la partida
+        }
+        public void setId(string nuevo) {
+            this.id = nuevo;
+        }
+        public string getID() {
+            return id;
+        } 
         public void SetNombre(string n) {
             nombre = n;
         }
@@ -37,7 +56,7 @@ namespace TexasHoldemServer {
         }
 
         public void SetMano(ColeccionCartas nue) {
-            myHand = nue;
+            mano = nue;
         }
         public int GetDineroInicial() {
             return dineroInicial;
@@ -55,56 +74,12 @@ namespace TexasHoldemServer {
             return nombre;
         }
         public ColeccionCartas GetMano() {
-            return myHand;
+            return mano;
         }
-        public void AgregarMano(ColeccionCartas mano) {
-            myHand += mano;
-        }
-
-        public void AgregarMano(Carta carta) {
-            myHand.Agregar_Carta(carta);
-        }
-
+     
         public void MostrarCartas() {
             mostrarCartas = true;
         }
 
-        public Jugador() {
-            try {
-                string ip = "192.168.12.12"; //Direccion ip del server
-
-                IPAddress ipAd = IPAddress.Parse(ip);
-
-                TcpClient tcpclnt = new TcpClient();
-                Console.WriteLine("Connecting...");
-
-                tcpclnt.Connect(ip, 8010);
-
-                Console.WriteLine("Connected");
-                Console.Write("Enter the string to be transmitted : ");
-
-                String str = Console.ReadLine();
-                Stream stm = tcpclnt.GetStream();
-
-                ASCIIEncoding asen = new ASCIIEncoding();
-                byte[] ba = asen.GetBytes(str);
-                Console.WriteLine("Transmitting...");
-
-                stm.Write(ba, 0, ba.Length);
-
-                byte[] bb = new byte[100];
-                int k = stm.Read(bb, 0, 100);
-
-                for (int i = 0; i < k; i++)
-                    Console.Write(Convert.ToChar(bb[i]));
-
-                Console.Read();
-                tcpclnt.Close();
-            } catch (Exception e) {
-                Console.WriteLine("Error: " + e.StackTrace);
-                Console.Read();
-            }
-        }
-
-    }
+    }// cierre de la clase Jugador 
 }

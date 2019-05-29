@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto2
 {
-    class juego
+    class Juego
     {
         //Atributos
         private Mazo m_baraja;
@@ -34,7 +34,7 @@ namespace Proyecto2
         {
             //Acá se verifica que el jugador este registrado en la base
             //Una vez verificada la sesión se le pide el monto de la apuesta
-            //que viene por un socket, y se inicia el juego.
+            //que viene por un socket, y se inicia el Juego.
             bool existe = jugadores.VerificarJugador(id);
             return existe;
         }
@@ -44,7 +44,7 @@ namespace Proyecto2
         //Si es de la interfaz debe haber alguna clase o forma para agregar los nuevos
         //jugadores
 
-        public juego(coleccionJugador nombres)
+        public Juego(coleccionJugador nombres)
         {
             //Coleccion de jugadores con la lista que le llega...
             jugadores = new coleccionJugador(nombres.obtenerCantidad());
@@ -66,11 +66,11 @@ namespace Proyecto2
             //Se baraja el mazo
             m_baraja.barajar();
 
-            //Se prepara el mazo general el juego
+            //Se prepara el mazo general el Juego
         }
 
 
-        public juego(int num)
+        public Juego(int num)
         {
             //Coleccion de jugadores con el numero de elementos que le llega
             jugadores = new coleccionJugador(num);
@@ -87,7 +87,7 @@ namespace Proyecto2
             //Se baraja el mazo
             m_baraja.barajar();
 
-            //Se prepara el mazo general el juego
+            //Se prepara el mazo general el Juego
         }
 
 
@@ -156,7 +156,7 @@ namespace Proyecto2
             m_baraja.cartaAdicionalCasa(m_casa);
 
 
-            //Para este punto del juego la casa ya debería haberse quedado o 
+            //Para este punto del Juego la casa ya debería haberse quedado o 
             //pasado de puntos, así que se va a comparar.
 
             //Compara valores de casa y jugadores

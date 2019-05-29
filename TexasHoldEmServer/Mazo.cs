@@ -52,8 +52,17 @@ namespace TexasHoldemServer
             MAZO.ImprimeColeccion();
         }
 
+        //Hacer un metodo que de a la coleccion de los jugadores las 2 cartas Iniciales 
+        // a cada uno de los jugadores que estan en el array 
+        public void darCartaInicial(ColeccionJugador colJugador) {
+            Carta c;
 
-            
+            for (int i = 0; i < colJugador.getCantidad() ; i++) {
+                c = MAZO.obtenerCarta(MAZO.getCantidad() - 1);
+                colJugador.getPosJugadorEspecifico(i)
+            }
+
+        }
 
     } // Cierre de la clase Mazo 
 }

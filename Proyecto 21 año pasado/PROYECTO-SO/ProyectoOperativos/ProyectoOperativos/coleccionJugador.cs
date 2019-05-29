@@ -159,5 +159,7 @@ namespace Proyecto2
             }
             if (existe) { Cant = Cant - 1; }
         }
+
+
     }
 }
