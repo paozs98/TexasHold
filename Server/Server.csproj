@@ -52,7 +52,7 @@
     <Compile Include="Mesa.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="Pot.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
