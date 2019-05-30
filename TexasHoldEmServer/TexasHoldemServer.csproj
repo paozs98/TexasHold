@@ -44,17 +44,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Carta.cs" />
+    <Compile Include="ClientData.cs" />
     <Compile Include="ColeccionJugador.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="ColeccionCartas.cs" />
     <Compile Include="Mazo.cs" />
     <Compile Include="Mesa.cs" />
+    <Compile Include="Packet.cs" />
     <Compile Include="Pot.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,9 @@
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\bin\Debug\netstandard2.0\ServerData.deps.json
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\bin\Debug\netstandard2.0\ServerData.dll
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\bin\Debug\netstandard2.0\ServerData.pdb
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\obj\Debug\netstandard2.0\ServerData.csprojAssemblyReference.cache
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\obj\Debug\netstandard2.0\ServerData.csproj.CoreCompileInputs.cache
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\obj\Debug\netstandard2.0\ServerData.AssemblyInfoInputs.cache
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\obj\Debug\netstandard2.0\ServerData.AssemblyInfo.cs
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\obj\Debug\netstandard2.0\ServerData.dll
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\ServerData\obj\Debug\netstandard2.0\ServerData.pdb

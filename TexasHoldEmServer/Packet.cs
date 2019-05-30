@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Net.Sockets;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using ServerData;
 
-namespace ServerData
+
+namespace TexasHoldemServer
 {
-    [Serializable]
     public class Packet
     {
 
@@ -32,7 +31,7 @@ namespace ServerData
         public int apuesta;
         public int numeroCarta;
         public string estado; //Acceso aprobado o desaprobado
-        public string idJugador; //id de jugador de va
+        public string turno; //id de jugador de va
 
         //Atributos de la mesa 
         public int cartaM1;
@@ -76,7 +75,7 @@ namespace ServerData
             cartaM2 = p.cartaM2;
             cartaM3 = p.cartaM3;
             cartaM4 = p.cartaM4;
-            cartaM5 = p.cartaM5;    
+            cartaM5 = p.cartaM5;
         }
 
 
@@ -121,6 +120,7 @@ namespace ServerData
             enEspera,
             turnoMesa,//Cuando ya casi cierra la ronda y pone una carta Comun
             primerasCartas,
+            turno,
             comunicarTurno,//Servidor comunica de quien es el idJugador siguiente
             quedarse,//El jugador se queda
             mesaTermino,//La mesa termino de poner la carta 
@@ -128,6 +128,6 @@ namespace ServerData
             actualizarJugador,
             salir
         }
-        
+
     }
 }

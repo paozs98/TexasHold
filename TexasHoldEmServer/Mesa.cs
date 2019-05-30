@@ -67,9 +67,9 @@ namespace TexasHoldemServer {
 
         public Mesa(ColeccionJugador nombres) {
             jugadores = new ColeccionJugador(nombres.getCantidad());
-            for (int i = 0;< nombres.getCantidad(); i++) {
+            for (int i = 0;i < nombres.getCantidad(); i++) {
                 Jugador J = nombres.obtenerJugador(i);
-                jugadores.agregarJugador(j);
+               // jugadores.agregarJugador(j);
             }
             //Se crea el mazo 
             this.mazoMesa = new Mazo();

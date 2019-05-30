@@ -59,7 +59,7 @@ namespace TexasHoldemServer
 
             for (int i = 0; i < colJugador.getCantidad() ; i++) {
                 c = MAZO.obtenerCarta(MAZO.getCantidad() - 1);
-                colJugador.getPosJugadorEspecifico(i)
+               // colJugador.getPosJugadorEspecifico(i);
             }
 
         }
