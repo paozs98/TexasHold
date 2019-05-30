@@ -54,7 +54,9 @@ namespace TexasHoldemServer {
         public void SetDineroInicial(int i) {
             dineroInicial = i;
         }
-
+public void MostrarCartas() {
+            mostrarCartas = true;
+        }
         public void SetMano(ColeccionCartas nue) {
             mano = nue;
         }
@@ -77,9 +79,7 @@ namespace TexasHoldemServer {
             return mano;
         }
      
-        public void MostrarCartas() {
-            mostrarCartas = true;
-        }
+        
 
     }// cierre de la clase Jugador 
 }
