@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
+using System.Data;
 
 namespace texasHoldWPF
 {
@@ -19,6 +21,10 @@ namespace texasHoldWPF
     /// </summary>
     public partial class Loing : Window
     {
+
+
+        public static string user="No indicado";
+        public static string clave = "No indicado";
         public Loing()
         {
             InitializeComponent();
@@ -31,9 +37,24 @@ namespace texasHoldWPF
 
         private void Ingresar_Click(object sender, RoutedEventArgs e)
         {
-            Mesa m = new Mesa();
-            m.Show();
-            Close();
+            if (usuario.Text.Length!= 0) {
+                if (password.Text.Length != 0)
+                {
+                    user = usuario.Text;
+                    clave = password.Text;
+
+                    Mesa m = new Mesa();
+                    m.Show();
+                    Close();
+                }
+                else {
+
+
+
+                }
+            }
+            else{
+            }
         }
     }
 }

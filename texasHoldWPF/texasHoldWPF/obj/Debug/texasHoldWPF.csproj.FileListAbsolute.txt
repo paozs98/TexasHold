@@ -34,3 +34,7 @@ C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\
 C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.csproj.CoreCompileInputs.cache
 C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.exe
 C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.pdb
+C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\bin\Debug\Server.exe
+C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\bin\Debug\Server.pdb
+C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\bin\Debug\Server.exe.config
+C:\Users\djena\OneDrive\Documentos\GitHub\TexasHoldEm\texasHoldWPF\texasHoldWPF\obj\Debug\texasHoldWPF.csproj.CopyComplete
