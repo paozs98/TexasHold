@@ -5,19 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:texasHoldWPF"
         mc:Ignorable="d"
-        Title="Mesa de juego" Height="450" Width="800"
-        Topmost="False" WindowState="Normal"
-        Icon="./Recursos/games_cardgame_pocker_872.ico">
-    <Window.Resources>
-
-        
-    </Window.Resources>
+        Title="Mesa" Height="600" Width="900"
+         Icon="./Recursos/games_cardgame_pocker_872.ico">
     <Window.Background>
-            <ImageBrush ImageSource="./Recursos/mesa1.jpg"/>
-        </Window.Background>
-    <StackPanel>
-        
-        
-    </StackPanel>
-    
+        <ImageBrush ImageSource="Recursos/mesa1.jpg"></ImageBrush>
+    </Window.Background>
+
 </Window>

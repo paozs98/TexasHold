@@ -23,5 +23,17 @@ namespace texasHoldWPF
         {
             InitializeComponent();
         }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Ingresar_Click(object sender, RoutedEventArgs e)
+        {
+            Mesa m = new Mesa();
+            m.Show();
+            Close();
+        }
     }
 }

@@ -116,5 +116,68 @@
     <Resource Include="Recursos\background2.jpg" />
     <Resource Include="Recursos\background3.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\mesa1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\cartas\00.png" />
+    <Resource Include="Recursos\cartas\01.png" />
+    <Resource Include="Recursos\cartas\010.png" />
+    <Resource Include="Recursos\cartas\011.png" />
+    <Resource Include="Recursos\cartas\012.png" />
+    <Resource Include="Recursos\cartas\02.png" />
+    <Resource Include="Recursos\cartas\03.png" />
+    <Resource Include="Recursos\cartas\04.png" />
+    <Resource Include="Recursos\cartas\05.png" />
+    <Resource Include="Recursos\cartas\06.png" />
+    <Resource Include="Recursos\cartas\07.png" />
+    <Resource Include="Recursos\cartas\08.png" />
+    <Resource Include="Recursos\cartas\09.png" />
+    <Resource Include="Recursos\cartas\10.png" />
+    <Resource Include="Recursos\cartas\11.png" />
+    <Resource Include="Recursos\cartas\110.png" />
+    <Resource Include="Recursos\cartas\111.png" />
+    <Resource Include="Recursos\cartas\112.png" />
+    <Resource Include="Recursos\cartas\12.png" />
+    <Resource Include="Recursos\cartas\13.png" />
+    <Resource Include="Recursos\cartas\14.png" />
+    <Resource Include="Recursos\cartas\15.png" />
+    <Resource Include="Recursos\cartas\16.png" />
+    <Resource Include="Recursos\cartas\17.png" />
+    <Resource Include="Recursos\cartas\18.png" />
+    <Resource Include="Recursos\cartas\19.png" />
+    <Resource Include="Recursos\cartas\20.png" />
+    <Resource Include="Recursos\cartas\21.png" />
+    <Resource Include="Recursos\cartas\210.png" />
+    <Resource Include="Recursos\cartas\211.png" />
+    <Resource Include="Recursos\cartas\212.png" />
+    <Resource Include="Recursos\cartas\22.png" />
+    <Resource Include="Recursos\cartas\23.png" />
+    <Resource Include="Recursos\cartas\24.png" />
+    <Resource Include="Recursos\cartas\25.png" />
+    <Resource Include="Recursos\cartas\26.png" />
+    <Resource Include="Recursos\cartas\27.png" />
+    <Resource Include="Recursos\cartas\28.png" />
+    <Resource Include="Recursos\cartas\29.png" />
+    <Resource Include="Recursos\cartas\30.png" />
+    <Resource Include="Recursos\cartas\31.png" />
+    <Resource Include="Recursos\cartas\310.png" />
+    <Resource Include="Recursos\cartas\311.png" />
+    <Resource Include="Recursos\cartas\312.png" />
+    <Resource Include="Recursos\cartas\32.png" />
+    <Resource Include="Recursos\cartas\33.png" />
+    <Resource Include="Recursos\cartas\34.png" />
+    <Resource Include="Recursos\cartas\35.png" />
+    <Resource Include="Recursos\cartas\36.png" />
+    <Resource Include="Recursos\cartas\37.png" />
+    <Resource Include="Recursos\cartas\38.png" />
+    <Resource Include="Recursos\cartas\39.png" />
+    <Resource Include="Recursos\cartas\bf.png" />
+    <Resource Include="Recursos\cartas\empty.png" />
+    <Resource Include="Recursos\cartas\jb.png" />
+    <Resource Include="Recursos\cartas\jr.png" />
+    <Resource Include="Recursos\cartas\resource1.png" />
+    <Resource Include="Recursos\cartas\rf.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

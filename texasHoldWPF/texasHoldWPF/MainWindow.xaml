@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:texasHoldWPF"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="650"
+        Title="Texas Holdem " Height="650" Width="650"
        
         Topmost="False" WindowState="Normal"
         Icon="./Recursos/games_cardgame_pocker_872.ico">
@@ -20,16 +20,14 @@
         </Style>
     </Window.Resources>
     <Window.Background >
-        <ImageBrush ImageSource="./Recursos/Background2.jpg"/>
+        <ImageBrush ImageSource="./Recursos/mesa1.jpg"/>
     </Window.Background>
 
     <StackPanel Orientation="Vertical">
         <TextBlock Text="{StaticResource strTitulo}" FontSize="25" HorizontalAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center"  TextWrapping="NoWrap"
                    Text="Texas Hold" FontSize="30"/>
-        <Button x:Name="btnIngresar" Height="40" Width="90"
-                HorizontalAlignment="Center" Content="Ingresar"
-                Click="BtnIngresar_Click"/>
-
+      
+       
     </StackPanel>
 </Window>
