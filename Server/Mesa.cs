@@ -12,8 +12,8 @@ namespace Server
         private Mazo mazoMesa;
         private ColeccionJugador jugadores;
         private ColeccionCartas cartasComunes; // estas son las cartas que muestra cada vez que se cierra una ronda de apuesta 
-        // son las 7 cartas comunes de los jugadores
-        private Pot pot;
+        // son las 5 cartas comunes de los jugadores
+        private Pot pot; // el que va a mostrar y tener las reglas de las apuestas
 
         // metodos
         public Mazo getMazo()
@@ -56,44 +56,21 @@ namespace Server
             cartasComunes = c;
         }
 
+        //este metodo debe esta ligado al AD sino esta verificado entoces se tendra que crear un nuevo jugador
         public bool IniciarSesion(string id)
         {
             bool existe = jugadores.VerificarJugador(id);
             return existe;
         }
 
-        public Mesa(int cantJugadores)
+        public Mesa()
         {
-            jugadores = new ColeccionJugador(cantJugadores);
-
-            //Se crea el mazo 
+            this.cartasComunes = new ColeccionCartas(5);
             this.mazoMesa = new Mazo();
-            // se llena el mazo con las cartas 
-            this.mazoMesa.llenarMazo();
-            // se barajea el mazo 
-            this.mazoMesa.barajar();
-
+            this.jugadores = new ColeccionJugador(4);
 
         }
-
-        public Mesa(ColeccionJugador nombres)
-        {
-            jugadores = new ColeccionJugador(nombres.getCantidad());
-            for (int i = 0; i < nombres.getCantidad(); i++)
-            {
-                Jugador J = nombres.obtenerJugador(i);
-                // jugadores.agregarJugador(j);
-            }
-            //Se crea el mazo 
-            this.mazoMesa = new Mazo();
-            // se llena el mazo con las cartas 
-            this.mazoMesa.llenarMazo();
-            // se barajea el mazo 
-            this.mazoMesa.barajar();
-
-        }
-
-        public void letsPlay()
+        public void repartirCartasIniciales()
         {
 
         }

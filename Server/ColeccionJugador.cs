@@ -18,7 +18,7 @@ namespace Server
         public ColeccionJugador(int n)
         {
             tam = n;
-            VEC = new Jugador[n];
+            VEC = new Jugador[tam];
             cant = 0;
         }
 
@@ -48,12 +48,74 @@ namespace Server
             if (pos < cant) { VEC[cant++] = c; }
         }
 
+        public bool agregarJugador(Jugador jug)
+        {
+            if (cant < tam)
+            {
+                VEC[cant++] = jug;
+                return true;
+            }
+            return false;
+        }
+
         public void limpiar()
         {
-            for (int i = 0; i < tam; i++)
+            for (int i = 0; i <= tam; i++)
             {
                 VEC[i] = null;
             }
+        }
+
+        public Jugador getJugadorEspecifico(string idJugador)
+        {
+            Jugador j = null;
+            if (VerificarJugador(idJugador))
+            {
+
+                for (int i = 0; i < cant; i++)
+                {
+
+                    if (VEC[i].getId() == idJugador)
+                    {
+
+                        j = VEC[i];
+                    }
+
+                }
+
+            }
+            return j;
+        }
+
+        public int getPosJugadorEspecifico(string idJugador)
+        {
+            int x = -1;
+            if (VerificarJugador(idJugador))
+            {
+                for (int i = 0; i < cant; i++)
+                {
+
+                    if (VEC[i].getId() == idJugador)
+                    {
+                        x = i;
+                    }
+                }
+
+            }
+            return x;
+        }
+
+        public bool VerificarJugador(string dJugador)
+        {
+            bool existe = false;
+            for (int i = 0; i < cant; i++)
+            {
+                if (VEC[i].getId() == dJugador)
+                {
+                    existe = true;
+                }
+            }
+            return existe;
         }
 
         public void imprimirColeccion()
@@ -69,71 +131,10 @@ namespace Server
             cant--;
         }
 
-        //Método nuevo
-        public bool VerificarJugador(string nombre)
+        public void eliminarJugador(string idJugador)
         {
             bool existe = false;
-            for (int i = 0; i < cant; i++)
-            {
-                if (VEC[i].GetNombre() == nombre)
-                {
-                    existe = true;
-                }
-            }
-            return existe;
-        }
-
-        public bool agregarJugador(Jugador jug)
-        {
-            if (cant < tam)
-            {
-                VEC[cant++] = jug;
-                return true;
-            }
-            return false;
-        }
-
-        public Jugador getJugadorEspecifico(string nombreJugador)
-        {
-            Jugador j = null;
-            if (VerificarJugador(nombreJugador))
-            {
-                for (int i = 0; i < cant; i++)
-                {
-                    if (VEC[i].GetNombre() == nombreJugador)
-                    {
-                        j = VEC[i];
-                    }
-                }
-            }
-            return j;
-        }
-
-        public int getPosJugadorEspecifico(string nombre)
-        {
-            int j = -1;
-            if (VerificarJugador(nombre))
-            {
-                for (int i = 0; i < cant; i++)
-                {
-                    if (VEC[i].GetNombre() == nombre)
-                    {
-                        j = i;
-                    }
-                }
-            }
-            return j;
-        }
-
-        public int getCantidadJugadores()
-        {
-            return cant;
-        }
-
-        public void eliminaJugador(string nombre)
-        {
-            bool existe = false;
-            if (cant == 1 && VEC[0].GetNombre().Equals(nombre))
+            if (cant == 1 && VEC[0].getId().Equals(idJugador))
             {
                 VEC[0] = null;
                 existe = true;
@@ -142,7 +143,7 @@ namespace Server
             {
                 for (int i = 0; i < cant - 1; i++)
                 {
-                    if (VEC[i].GetNombre().Equals(nombre))
+                    if (VEC[i].getId().Equals(idJugador))
                     {
                         existe = true;
                     }

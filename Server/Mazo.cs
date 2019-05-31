@@ -17,6 +17,7 @@ namespace Server
         {
             MAZO = new ColeccionCartas(52);
             llenarMazo();
+            barajar();
         }
 
         public void llenarMazo()
@@ -25,12 +26,11 @@ namespace Server
             {
                 for (int c = ((int)Carta.VALOR.AS); c <= ((int)Carta.VALOR.KA); ++c)
                 {
-                    MAZO.agregarCarta(new Carta(c, pal, true));
+                    MAZO.agregarCarta(new Carta(c, pal));
                 }
             }
         }
 
-        //Probarlo si funciona
         public void barajar()
         {
             Random rnd = new Random();
@@ -52,16 +52,18 @@ namespace Server
             MAZO.ImprimeColeccion();
         }
 
-        //Hacer un metodo que de a la coleccion de los jugadores las 2 cartas Iniciales 
-        // a cada uno de los jugadores que estan en el array 
-        public void darCartaInicial(ColeccionJugador colJugador)
+        public Carta darUnaCarta()
         {
-            Carta c;
-
-            for (int i = 0; i < colJugador.getCantidad(); i++)
+            if (!MAZO.isVacio())
             {
-                c = MAZO.obtenerCarta(MAZO.getCantidad() - 1);
-                // colJugador.getPosJugadorEspecifico(i);
+                Carta cartaADar = MAZO.obtenerCarta(MAZO.getCantidad() - 1);
+                MAZO.eliminarUltimo();
+                return cartaADar;
+            }
+            else
+            {
+                Console.WriteLine("No hay cartas en el Mazo");
+                return null;
             }
 
         }

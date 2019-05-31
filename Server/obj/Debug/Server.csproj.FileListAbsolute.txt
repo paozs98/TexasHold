@@ -1,0 +1,7 @@
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\bin\Debug\Server.exe.config
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\bin\Debug\Server.exe
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\bin\Debug\Server.pdb
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\obj\Debug\Server.exe
+C:\Users\notch\OneDrive\Documentos\GitHub\TexasHoldEm\Server\obj\Debug\Server.pdb

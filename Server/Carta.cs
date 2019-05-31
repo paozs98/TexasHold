@@ -11,16 +11,16 @@ namespace Server
     {
         public enum VALOR { DOS = 2, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, JOTA, QUINA, KA, AS };
         public enum PALO { DIAMANTE = 1, TREBOL, CORAZON, ESPADA };
+
         //Atributos de las cartas 
         private int valor;
         private int palo;
-        bool c_CartaArriba;
 
-        public Carta(int valor, int palo, bool estado)
+
+        public Carta(int valor, int palo)
         {
             this.valor = valor;
             this.palo = palo;
-            this.c_CartaArriba = estado;
         }
 
         public static string ValorToString(int valor)
@@ -56,10 +56,6 @@ namespace Server
             }
         }
 
-        public void Voltear()
-        {
-            this.c_CartaArriba = !(c_CartaArriba);
-        }
 
         public int GetValor()
         {

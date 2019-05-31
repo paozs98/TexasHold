@@ -10,91 +10,67 @@ namespace Server
     {
 
         protected ColeccionCartas mano;
-        protected string nombre;
         protected string id;
+        protected string nombre;
         protected int dineroInicial;
         protected int apuesta;
-        protected int dineroActual;
-        protected bool mostrarCartas;
+
 
         public Jugador(string nom)
         {
+            id = "";
             nombre = nom;
             mano = new ColeccionCartas(2);
             dineroInicial = 1000;
+            apuesta = 0;
         }
-
         public Jugador(string nom, string id)
         {
-            nombre = nom;
             this.id = id;
+            nombre = nom;
             mano = new ColeccionCartas(2);
-            dineroInicial = 1000; // todos los jugadores inician con 1000 dolares en la partida
+            dineroInicial = 1000;
+            apuesta = 0;
         }
+
+        public ColeccionCartas getMano()
+        {
+            return mano;
+        }
+        public void setMano(ColeccionCartas nue)
+        {
+            mano = nue;
+        }
+
         public void setId(string nuevo)
         {
             this.id = nuevo;
         }
-        public string getID()
+        public string getId()
         {
             return id;
+        }
+
+        public string getNombre()
+        {
+            return nombre;
         }
         public void SetNombre(string n)
         {
             nombre = n;
         }
-        public void SetMostrarCartas(bool mo)
-        {
-            mostrarCartas = mo;
-        }
-        public void SetDineroActual(int actual)
-        {
-            dineroActual = actual;
-        }
 
-        public void SetApuesta(int ap)
-        {
-            apuesta = ap;
-        }
+        public void setDineroIncial(int dir) { dineroInicial = dir; }
+        public int getDineroIncial() { return dineroInicial; }
 
-        public void SetDineroInicial(int i)
-        {
-            dineroInicial = i;
-        }
-        public void MostrarCartas()
-        {
-            mostrarCartas = true;
-        }
-        public void SetMano(ColeccionCartas nue)
-        {
-            mano = nue;
-        }
-        public int GetDineroInicial()
-        {
-            return dineroInicial;
-        }
-        public bool IsMostrarCartas()
-        {
-            return mostrarCartas;
-        }
-        public int GetDineroActual()
-        {
-            return dineroActual;
-        }
         public int getApuesta()
         {
             return apuesta;
         }
-        public string GetNombre()
+        public void setApuesta(int apu)
         {
-            return nombre;
+            apuesta = apu;
         }
-        public ColeccionCartas GetMano()
-        {
-            return mano;
-        }
-
-
 
     }// cierre de la clase Jugador 
 }

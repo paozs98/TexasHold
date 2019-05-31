@@ -19,7 +19,7 @@ namespace Server
         public ColeccionCartas(int n)
         {
             tam = n;
-            VEC = new Carta[n];
+            VEC = new Carta[tam];
             cant = 0;
         }
 
@@ -38,7 +38,6 @@ namespace Server
             return tam;
         }
 
-        // por parametros entra 0 o 1 las unicas posiciones del vector 
         public Carta obtenerCarta(int pos)
         {
             if (pos < cant)
@@ -47,7 +46,13 @@ namespace Server
             }
             else { return null; }
         }
-
+        public void reemplazarCarta(int pos, Carta c)
+        {
+            if (pos < cant)
+            {
+                VEC[pos] = c;
+            }
+        }
         public bool agregarCarta(Carta car)
         {
             if (cant < tam)
@@ -73,12 +78,9 @@ namespace Server
             }
         }
 
-        public void reemplazarCarta(int pos, Carta c)
+        public void eliminarUltimo()
         {
-            if (pos < cant)
-            {
-                VEC[pos] = c;
-            }
+            cant--;
         }
 
 

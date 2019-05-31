@@ -64,7 +64,6 @@ namespace Server
             this.numeroCarta = p.numeroCarta;
             this.clave = p.clave;
             this.estado = p.estado;
-            this.idJugador = p.idJugador;
             this.carta1 = p.carta1;
             this.carta2 = p.carta2;
 
