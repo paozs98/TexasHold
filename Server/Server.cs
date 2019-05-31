@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Server
@@ -36,6 +38,13 @@ namespace Server
             cj.agregarJugador(new Jugador("usuario1", "usuario1"));
             
             mesa = new Mesa();// la mesa por defecto se crea para 4 jugadores 
+
+            IPEndPoint ip = new IPEndPoint(IPAddress.Parse(Packet.GetIPAddress()), 4242);
+            listenerSocket.Bind(ip);
+
+            //Crear el thread listener
+            Thread listenThread = new Thread(ListenThread);
+            listenThread.Start();
 
         }
 
