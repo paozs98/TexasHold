@@ -1,4 +1,5 @@
-﻿using ServerData;
+﻿
+using ClientePrueba;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace Cliente
 {
-    class Cliente
+    public class Cliente
     {
 
         public static Socket master;
@@ -25,12 +27,11 @@ namespace Cliente
         public static int carta2;
         public static string seguir;
         public static bool enEspera = false;
-
-        //Variables referencia a la Casa
-        public static int cartaCasa1;
-        public static int cartaCasa2;
-        public static int cartaCasa3;
-        public static int cartaCasa4;
+        public static int cartaM1;
+        public static int cartaM2;
+        public static int cartaM3;
+        public static int cartaM4;
+        public static int cartaM5;
 
         static void Main(string[] args)
         {
@@ -149,11 +150,14 @@ namespace Cliente
                     {
                         carta1 = p.carta1;
                         carta2 = p.carta2;
-                        cartaCasa1 = p.cartaCasa1;
-                        cartaCasa2 = p.cartaCasa2;
+                        cartaM1 = p.cartaM1;
+                        cartaM2 = p.cartaM2;
+                        cartaM3 = p.cartaM3;
+                        cartaM4 = p.cartaM4;
+                        cartaM5 = p.cartaM5;
                         Console.WriteLine("Usuario: " + nombreUsuario);
                         Console.WriteLine("C1: " + carta1 + ", C2: " + carta2);
-                        Console.WriteLine("Valor de casa: C1: " + cartaCasa1 + ", C2: " + cartaCasa2);
+                        
                     }
                     break;
                 case Packet.PacketType.Registration:
@@ -168,17 +172,6 @@ namespace Cliente
                     break;
                 case Packet.PacketType.Mensaje:
                     Console.WriteLine(p.nombre + " " + p.id + " " + p.apuesta);
-                    break;
-
-                case Packet.PacketType.pedirCarta:
-                    //Si el paquete es de tipo pedir carta, el cliente envía su id
-                    Console.WriteLine(p.id);
-                    break;
-                case Packet.PacketType.darCarta:
-                    if (p.nombre.Equals(nombreUsuario))
-                    {
-                        Console.WriteLine("C3: " + p.numeroCarta);
-                    }
                     break;
                 case Packet.PacketType.darAcceso:
                     Console.WriteLine("Estado de acceso: " + p.estado);
@@ -198,7 +191,7 @@ namespace Cliente
                         if (r.Equals("P"))
                         {
                             Console.WriteLine("Pedi una carta");
-                            p.packetType = Packet.PacketType.pedirCarta;
+                            
                             p.id = clave;//Se envia la clave del cliente
                             p.nombre = nombreUsuario;//Envia el nombre de usuario
                         }
@@ -212,35 +205,7 @@ namespace Cliente
                         Console.WriteLine("Le envie un paquete al server quiero o no");
                     }
                     break;
-                case Packet.PacketType.turnoCasa:
-                    cartaCasa3 = p.numeroCarta;
-                    Console.WriteLine("Carta de casa: " + cartaCasa3);
-                    break;
-                case Packet.PacketType.casaAcabo:
-                    iniciarJuego = false;
-                    abandonarJuego = true;
-                    if (p.nombre.Equals(nombreUsuario))
-                    {
-                        Console.WriteLine("El servidor dice que llegamos al final del juego!");
-                        Console.WriteLine("Resultado del juego: " + p.estado);
-                        Console.WriteLine("Desea seguir jugando? 1:Si 0:No");
-                        seguir = Console.ReadLine();
-                        if (seguir.Equals("1"))
-                        {
-                            p.packetType = Packet.PacketType.seguir;
-                            p.nombre = nombreUsuario;
-                            p.id = clave;
-                            master.Send(p.ToBytes());
-                        }
-                        else
-                        {
-                            p.packetType = Packet.PacketType.salir;
-                            p.nombre = nombreUsuario;
-                            p.id = clave;
-                            master.Send(p.ToBytes());
-                        }
-                    }
-                    break;
+                
                 case Packet.PacketType.enEspera:
                     if (p.clave.Equals(clave))
                     {

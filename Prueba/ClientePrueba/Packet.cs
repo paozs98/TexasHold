@@ -7,10 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServerData
+namespace ClientePrueba
 {
-
-    [Serializable]
     public class Packet
     {
 
@@ -32,10 +30,13 @@ namespace ServerData
         public string estado; //Acceso aprobado o desaprobado
         public string turno; //id de jugador de va
 
-        //Atributos de casa
-        public int casa;//0->Aun no va turno casa 1->Va casa
-        public int cartaCasa1;
-        public int cartaCasa2;
+        //Atributos de la mesa 
+        public int cartaM1;
+        public int cartaM2;
+        public int cartaM3;
+        public int cartaM4;
+        public int cartaM5;
+
 
         public Packet(PacketType type, string senderID)
         {
@@ -63,12 +64,14 @@ namespace ServerData
             this.numeroCarta = p.numeroCarta;
             this.clave = p.clave;
             this.estado = p.estado;
-            this.turno = p.turno;
             this.carta1 = p.carta1;
             this.carta2 = p.carta2;
-            this.casa = p.casa;
-            this.cartaCasa1 = p.cartaCasa1;
-            this.cartaCasa2 = p.cartaCasa2;
+
+            cartaM1 = p.cartaM1;
+            cartaM2 = p.cartaM2;
+            cartaM3 = p.cartaM3;
+            cartaM4 = p.cartaM4;
+            cartaM5 = p.cartaM5;
         }
 
 
@@ -103,6 +106,7 @@ namespace ServerData
             Mensaje,
 
             iniciarJuego,//Al presionar botón iniciar juego se envía este paquete
+
             //Estos son del juego
             nuevoCliente,
             autentificar,//Los clientes mandan el usuario y la contraseña
@@ -110,27 +114,16 @@ namespace ServerData
             denegarAcceso,//El cliente sí está registrado
             darAcceso,//El cliente no está registrado
             enEspera,
-
-            turnoCasa,
+            turnoMesa,//Cuando ya casi cierra la ronda y pone una carta Comun
             primerasCartas,
-            comunicarTurno,//Servidor comunica de quien es el turno siguiente
+            turno,
+            comunicarTurno,//Servidor comunica de quien es el idJugador siguiente
             quedarse,//El jugador se queda
-            pedirCarta,//El jugador pide carta (adherir las apuestas)
-            darCarta,//El servidor le da la carta al jugador y vuelve a comunicar turno
-            casaAcabo,
+            mesaTermino,//La mesa termino de poner la carta 
             seguir,//El jugador quiere seguir en el juego
             actualizarJugador,
             salir
         }
-        //pedir carta (hay que integrarle la apuesta),
-        //Necesito que antes de pedir carta se le envíe al cliente un paquete con el id del cliente que tiene el turno,
-        //este responde si quiere o si no quiere una carta. si quiere debe enviar también el monto de apuesta,
-        //sino quiere, se va a poner al cliente en estado quedado (no mas cartas) -> eso debería ir en jugador
-        //Hay que enviar las cartas de la casa también
 
-        //Hay que hacer las comunicaciones para indicar si un jugador ganó, perdió o empató y con eso 
-        //se le envía el monto de su apuesta actualizada.
     }
-
 }
-
