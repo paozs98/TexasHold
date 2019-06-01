@@ -21,12 +21,16 @@ namespace Cliente
         public static bool autentificar = false;
         public static string nombreUsuario;
         public static string clave;
+
         public static bool iniciarJuego = false;//Inicia el juego -- Es un boton
         public static bool abandonarJuego = false;
+
         public static int carta1;
         public static int carta2;
+
         public static string seguir;
         public static bool enEspera = false;
+
         public static int cartaM1;
         public static int cartaM2;
         public static int cartaM3;
@@ -36,11 +40,11 @@ namespace Cliente
         static void Main(string[] args)
         {
 
-            Console.Write("Enter your name: ");
+            Console.Write("Introduzca su nombre: ");
             name = Console.ReadLine();
 
         A: Console.Clear();
-            Console.WriteLine("Enter host IP Address: ");
+            Console.WriteLine("Dijite el numero de IP: ");
             string ip = Console.ReadLine();
 
             master = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -53,7 +57,7 @@ namespace Cliente
             }
             catch
             {
-                Console.WriteLine("Could not connect to host!");
+                Console.WriteLine("No se pudo conectar al servidor!");
                 Thread.Sleep(1000);
                 goto A;
             }
@@ -69,7 +73,7 @@ namespace Cliente
                 if (autentificar == false)
                 {
                     int opcion; //1->Autentificarse 2-> Registrarse
-                    Console.WriteLine("Desea autentificarse o registrarse? 1->Autentificarse 2->Registrarse: ");
+                    Console.WriteLine("Desea autentificarse o registrarse? \n 1->Autentificarse 2->Registrarse: ");
                     opcion = int.Parse(Console.ReadLine());
                     Packet p;
                     if (opcion == 1)
@@ -98,7 +102,7 @@ namespace Cliente
 
                 else if (autentificar && (!iniciarJuego))//Si está autentificado pero el juego no ha iniciado
                 {
-                    Console.WriteLine("Desea iniciar el juego?: S=1 / N=0");
+                    Console.WriteLine("Desea iniciar el juego?: \n S=1 / N=0");
                     respuestaIniciar = Console.ReadLine();
                     if (respuestaIniciar.Equals("1"))
                     {
@@ -160,46 +164,42 @@ namespace Cliente
                         
                     }
                     break;
+
                 case Packet.PacketType.Registration:
                     id = p.Gdata[0];
                     break;
 
-                case Packet.PacketType.Chat:
-                    ConsoleColor c = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(p.Gdata[0] + ": " + p.Gdata[1]);
-                    Console.ForegroundColor = c;
-                    break;
-                case Packet.PacketType.Mensaje:
-                    Console.WriteLine(p.nombre + " " + p.id + " " + p.apuesta);
-                    break;
                 case Packet.PacketType.darAcceso:
                     Console.WriteLine("Estado de acceso: " + p.estado);
                     //El cliente se ha autentificado
                     break;
+
                 case Packet.PacketType.denegarAcceso:
                     Console.WriteLine("Estado de acceso: " + p.estado);
                     Environment.Exit(0);
                     //Hace que el programa termine si se le negó el acceso
                     break;
+
                 case Packet.PacketType.comunicarTurno:
                     Console.WriteLine("Llegue a comunicar turno");
                     if (p.turno.Equals(nombreUsuario))
                     {//Si es el turno del jugador
-                        Console.WriteLine("Desea pedir carta o quedarse? (P/Q): ");
+                        Console.WriteLine("Que desea realizar \n 1 -Pasar \n 2 -Apostar mas? \n 3 Salir del juego \n (P/AM/SJ): ");
                         String r = Console.ReadLine();
                         if (r.Equals("P"))
                         {
-                            Console.WriteLine("Pedi una carta");
-                            
-                            p.id = clave;//Se envia la clave del cliente
-                            p.nombre = nombreUsuario;//Envia el nombre de usuario
+                            Console.WriteLine("A pasado el turno al siguiente jugador");
                         }
                         else
                         {
                             p.packetType = Packet.PacketType.quedarse;
                             p.id = clave;//Se envia la clave del cliente
                             p.nombre = nombreUsuario;//Envia el nombre de usuario
+                        }
+                        if (r.Equals("AM"))
+                        {
+
+
                         }
                         master.Send(p.ToBytes());
                         Console.WriteLine("Le envie un paquete al server quiero o no");
