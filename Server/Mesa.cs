@@ -56,12 +56,7 @@ namespace Server
             cartasComunes = c;
         }
 
-        //este metodo debe esta ligado al AD sino esta verificado entoces se tendra que crear un nuevo jugador
-        public bool IniciarSesion(string id)
-        {
-            bool existe = jugadores.VerificarJugador(id);
-            return existe;
-        }
+
 
         public Mesa()
         {
@@ -73,6 +68,11 @@ namespace Server
         public void repartirCartasIniciales()
         {
 
+            for (int i = 0; i < jugadores.getCantidad(); i++)
+            {
+                jugadores.GetJugadorEnLaPos(i).getMano().agregarCarta(mazoMesa.darUnaCarta());
+                jugadores.GetJugadorEnLaPos(i).getMano().agregarCarta(mazoMesa.darUnaCarta());
+            }
         }
     }
 }

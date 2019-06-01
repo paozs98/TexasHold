@@ -156,6 +156,19 @@ namespace Server
             if (existe) { cant = cant - 1; }
         }
 
+        public Jugador GetJugadorEnLaPos(int pos) {
+
+            if (pos > cant || pos<0)
+            {
+                return null;
+            }
+            else
+            {
+                return VEC[pos];
+
+            }
+        }
+
 
     }//cierre de la clase
 }

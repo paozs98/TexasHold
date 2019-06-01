@@ -16,8 +16,9 @@ namespace Cliente
     {
 
         public static Socket master;
+        public static string id; // de la clase no borrar
         public static string name;
-        public static string id;
+
         public static bool autentificar = false;
         public static string nombreUsuario;
         public static string clave;
@@ -36,85 +37,6 @@ namespace Cliente
         public static int cartaM3;
         public static int cartaM4;
         public static int cartaM5;
-
-        static void Main(string[] args)
-        {
-
-            Console.Write("Introduzca su nombre: ");
-            name = Console.ReadLine();
-
-        A: Console.Clear();
-            Console.WriteLine("Dijite el numero de IP: ");
-            string ip = Console.ReadLine();
-
-            master = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            IPEndPoint ips = new IPEndPoint(IPAddress.Parse(ip), 4242);
-
-            try
-            {
-                master.Connect(ips);
-            }
-            catch
-            {
-                Console.WriteLine("No se pudo conectar al servidor!");
-                Thread.Sleep(1000);
-                goto A;
-            }
-
-            Thread t = new Thread(DATA_IN);
-            t.Start();
-
-            for (; ; )
-            {
-                string respuesta = "";
-                string respuestaIniciar = "";
-
-                if (autentificar == false)
-                {
-                    int opcion; //1->Autentificarse 2-> Registrarse
-                    Console.WriteLine("Desea autentificarse o registrarse? \n 1->Autentificarse 2->Registrarse: ");
-                    opcion = int.Parse(Console.ReadLine());
-                    Packet p;
-                    if (opcion == 1)
-                    {
-                        Console.Write("Digite su nombre de usuario: ");
-                        nombreUsuario = Console.ReadLine();
-                        Console.Write("Digite su contraseña: ");
-                        clave = Console.ReadLine();
-                        p = new Packet(Packet.PacketType.autentificar, id);
-
-                    }//Se autentifica
-                    else
-                    {
-                        Console.Write("Digite su nuevo nombre de usuario: ");
-                        nombreUsuario = Console.ReadLine();
-                        Console.Write("Digite su nueva contraseña: ");
-                        clave = Console.ReadLine();
-                        p = new Packet(Packet.PacketType.registrar, id);
-                    }//Se agrega un nuevo usuario
-                    p.Gdata.Add(name);
-                    p.nombre = nombreUsuario;
-                    p.clave = clave;
-                    master.Send(p.ToBytes());
-                    autentificar = true;
-                }
-
-                else if (autentificar && (!iniciarJuego))//Si está autentificado pero el juego no ha iniciado
-                {
-                    Console.WriteLine("Desea iniciar el juego?: \n S=1 / N=0");
-                    respuestaIniciar = Console.ReadLine();
-                    if (respuestaIniciar.Equals("1"))
-                    {
-                        Packet p = new Packet(Packet.PacketType.iniciarJuego, id);
-                        master.Send(p.ToBytes());//Se envía la petición de iniciar el juego al servidor
-                        iniciarJuego = true;
-                    }
-                }
-
-            }
-        }
-
 
         static void DATA_IN()
         {
@@ -136,83 +58,65 @@ namespace Cliente
                 }
                 catch (SocketException ex)
                 {
-                    Console.WriteLine("The server has disconnected!");
+                    Console.WriteLine("El servidor se ha desconectado!");
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
             }
         }
 
+        static void Main(string[] args)
+        {
+            
+        A: Console.Clear();
+            Console.WriteLine("Dijite el numero de IP:\n");
+            string ip = Console.ReadLine();
+
+            Console.Write("Introduzca su nombre:\n");
+            name = Console.ReadLine();
+
+            master = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            IPEndPoint ips = new IPEndPoint(IPAddress.Parse(ip), 4242);
+
+            try
+            {
+                master.Connect(ips);
+            }
+            catch
+            {
+                Console.WriteLine("No se pudo conectar al servidor!");
+                Thread.Sleep(1000);
+                goto A;
+            }
+
+            Thread t = new Thread(DATA_IN);
+            t.Start();
+
+            for (; ; )
+            {
+
+            
+                
+
+            }
+        }
+
+
+        
+
         static void DataManager(Packet p)
         {
 
             switch (p.packetType)
             {
-                case Packet.PacketType.iniciarJuego:
-                    iniciarJuego = true;
-                    if (p.nombre.Equals(nombreUsuario))
-                    {
-                        carta1 = p.carta1;
-                        carta2 = p.carta2;
-                        cartaM1 = p.cartaM1;
-                        cartaM2 = p.cartaM2;
-                        cartaM3 = p.cartaM3;
-                        cartaM4 = p.cartaM4;
-                        cartaM5 = p.cartaM5;
-                        Console.WriteLine("Usuario: " + nombreUsuario);
-                        Console.WriteLine("C1: " + carta1 + ", C2: " + carta2);
-                        
-                    }
-                    break;
+
 
                 case Packet.PacketType.Registration:
                     id = p.Gdata[0];
                     break;
 
-                case Packet.PacketType.darAcceso:
-                    Console.WriteLine("Estado de acceso: " + p.estado);
-                    //El cliente se ha autentificado
-                    break;
 
-                case Packet.PacketType.denegarAcceso:
-                    Console.WriteLine("Estado de acceso: " + p.estado);
-                    Environment.Exit(0);
-                    //Hace que el programa termine si se le negó el acceso
-                    break;
-
-                case Packet.PacketType.comunicarTurno:
-                    Console.WriteLine("Llegue a comunicar turno");
-                    if (p.turno.Equals(nombreUsuario))
-                    {//Si es el turno del jugador
-                        Console.WriteLine("Que desea realizar \n 1 -Pasar \n 2 -Apostar mas? \n 3 Salir del juego \n (P/AM/SJ): ");
-                        String r = Console.ReadLine();
-                        if (r.Equals("P"))
-                        {
-                            Console.WriteLine("A pasado el turno al siguiente jugador");
-                        }
-                        else
-                        {
-                            p.packetType = Packet.PacketType.quedarse;
-                            p.id = clave;//Se envia la clave del cliente
-                            p.nombre = nombreUsuario;//Envia el nombre de usuario
-                        }
-                        if (r.Equals("AM"))
-                        {
-
-
-                        }
-                        master.Send(p.ToBytes());
-                        Console.WriteLine("Le envie un paquete al server quiero o no");
-                    }
-                    break;
-                
-                case Packet.PacketType.enEspera:
-                    if (p.clave.Equals(clave))
-                    {
-                        Console.WriteLine(p.estado);
-                        enEspera = true;
-                    }
-                    break;
             }
         }
     }

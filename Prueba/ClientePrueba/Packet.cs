@@ -17,18 +17,15 @@ namespace ClientePrueba
         public bool packetBool;
         public string senderID;
         public PacketType packetType;
+        public string id; // de la clase no borrar 
 
+        public string turno;
 
-        //Atributos de mensaje
-        public int carta1;
-        public int carta2;
-        public string nombre;
-        public string clave;
-        public string id;
-        public int apuesta;
-        public int numeroCarta;
-        public string estado; //Acceso aprobado o desaprobado
-        public string turno; //id de jugador de va
+        public int carta1J;//cartas de cada jugador
+        public int carta2J;//cartas de cada jugador
+        public string nombre;// nombre del jugador 
+        public string clave;// clave del jugador 
+        public int apuesta;// la apuesta que manda el jugador  
 
         //Atributos de la mesa 
         public int cartaM1;
@@ -58,14 +55,17 @@ namespace ClientePrueba
             this.packetBool = p.packetBool;
             this.senderID = p.senderID;
             this.packetType = p.packetType;
-            this.nombre = p.nombre;
-            this.id = p.id;
-            this.apuesta = p.apuesta;
-            this.numeroCarta = p.numeroCarta;
-            this.clave = p.clave;
-            this.estado = p.estado;
-            this.carta1 = p.carta1;
-            this.carta2 = p.carta2;
+
+            id = p.id;
+
+            turno = p.turno;
+
+            carta1J = p.carta1J;
+            carta2J = p.carta2J;
+            nombre = p.nombre;
+            clave = p.clave;
+            apuesta = p.apuesta;
+
 
             cartaM1 = p.cartaM1;
             cartaM2 = p.cartaM2;
@@ -102,27 +102,13 @@ namespace ClientePrueba
         public enum PacketType
         {
             Registration,
-            Chat,
-            Mensaje,
 
-            iniciarJuego,//Al presionar botón iniciar juego se envía este paquete
-
-            //Estos son del juego
-            nuevoCliente,
-            autentificar,//Los clientes mandan el usuario y la contraseña
-            registrar,
-            denegarAcceso,//El cliente sí está registrado
-            darAcceso,//El cliente no está registrado
-            enEspera,
-            turnoMesa,//Cuando ya casi cierra la ronda y pone una carta Comun
-            primerasCartas,
-            turno,
-            comunicarTurno,//Servidor comunica de quien es el idJugador siguiente
-            quedarse,//El jugador se queda
-            mesaTermino,//La mesa termino de poner la carta 
-            seguir,//El jugador quiere seguir en el juego
-            actualizarJugador,
-            salir
+            Registrarse,
+            Auntentificar,
+            IniciarJuego,
+            EntrarALaMesa,
+            SalirDelJuego,
+            Apostar
         }
 
     }
