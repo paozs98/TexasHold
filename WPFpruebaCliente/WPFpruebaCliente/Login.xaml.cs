@@ -57,5 +57,10 @@ namespace WPFpruebaCliente
             client.Close();
 
         }
+
+        private void Registrar_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
