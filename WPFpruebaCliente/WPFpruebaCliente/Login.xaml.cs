@@ -47,7 +47,7 @@ namespace WPFpruebaCliente
 
             Byte[] sendData = new byte[byteCount];
 
-            sendData = Encoding.ASCII.GetBytes(usuario.Text + ";");
+            sendData = Encoding.ASCII.GetBytes(usuario.Text);
 
             NetworkStream stream = client.GetStream();
 

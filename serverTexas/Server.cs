@@ -13,15 +13,15 @@ namespace serverTexas {
 
 
             IPAddress ip = Dns.GetHostEntry("localhost").AddressList[0];
-            TcpListener server = new TcpListener(ip, 8080);
+            int puerto = 8080;
+            TcpListener server = new TcpListener(ip, puerto);
             TcpClient client = default(TcpClient);
 
             try {
 
                 server.Start();
                 Console.WriteLine("Iniciando el server ('localhost') {0}", ip);
-                
-                Console.Read();
+               
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.ToString());
