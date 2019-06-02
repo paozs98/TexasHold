@@ -25,15 +25,12 @@ namespace WPFpruebaCliente
     public partial class Login : Window
     {
         
-        string serverIp = "Localhost";
+        string serverIp = "localhost";
         int port = 8080;
 
         public Login()
         {
             InitializeComponent();
-
-
-
 
         }
 
