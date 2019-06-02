@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace serverTexas {
+namespace severTXMT {
     public class ColeccionJugador {
-        
         //Atributos 
+
         public Jugador[] VEC { get; set; }
         public int tamano { get; set; }
         public int cantidad { get; set; }
