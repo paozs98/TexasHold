@@ -8,7 +8,8 @@
         Title="Loing" Height="450" Width="400"
         WindowStyle="SingleBorderWindow"
        WindowStartupLocation="CenterScreen"
-        Topmost="False" WindowState="Normal" 
+        Topmost="False" WindowState="Normal"
+       
         
         Icon="./Recursos/games_cardgame_pocker_872.ico"
         >

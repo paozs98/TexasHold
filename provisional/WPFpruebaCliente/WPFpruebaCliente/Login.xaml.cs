@@ -24,41 +24,37 @@ namespace WPFpruebaCliente
     /// </summary>
     public partial class Login : Window
     {
-        System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
-        NetworkStream serverStream;
-        string serverIp = "localhost";
         int port = 8080;
+        string ipaddress = "127.0.0.1";
+        Socket ClientSocket;
 
         public Login()
         {
             InitializeComponent();
+            inicializar();
+        }
+
+        public void inicializar() { // para conectar
+            ClientSocket = new Socket(
+                AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ipaddress), port);
+            ClientSocket.Connect(ep);
+        }
+
+
+        public void Ingresar_Click(object sender, RoutedEventArgs e) {
+            string mensajeUsuario = usuario.Text;
+            ClientSocket.Send(System.Text.Encoding.ASCII.GetBytes(mensajeUsuario), 0, mensajeUsuario.Length, SocketFlags.None);
+
+            byte[] MsgFromServer = new byte[1024];
+            int size = ClientSocket.Receive(MsgFromServer);
+
+
+
+
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            msg("Client Started");
-            clientSocket.Connect(serverIp, port);
-       //     label1.Text = "Client Socket Program - Server Connected ...";
-        }
-
-        private void Ingresar_Click(object sender, EventArgs e)
-        {
-            NetworkStream serverStream = clientSocket.GetStream();
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes("Message from Client$");
-            serverStream.Write(outStream, 0, outStream.Length);
-            serverStream.Flush();
-
-            byte[] inStream = new byte[10025];
-            serverStream.Read(inStream, 0, (int)clientSocket.ReceiveBufferSize);
-            string returndata = System.Text.Encoding.ASCII.GetString(inStream);
-            msg("Data from Server : " + returndata);
-        }
-
-        public void msg(string mesg)
-        {
-            usuario.Text = usuario.Text + Environment.NewLine + " >> " + mesg;
-        }
 
 
 
@@ -66,26 +62,7 @@ namespace WPFpruebaCliente
         {
             Close();
         }
-
-        //private void Ingresar_Click(object sender, RoutedEventArgs e)
-        //{
-        //    TcpClient client = new TcpClient(serverIp, port);
-
-        //    int byteCount =Encoding.ASCII.GetByteCount(usuario.Text + 1);
-
-        //    Byte[] sendData = new byte[byteCount];
-
-        //    sendData = Encoding.ASCII.GetBytes(usuario.Text);
-
-        //    NetworkStream stream = client.GetStream();
-
-        //    stream.Write(sendData, 0, sendData.Length);
-
-        //    stream.Close();
-        //    client.Close();
-
-        //}
-
+        
         private void Registrar_Click(object sender, RoutedEventArgs e)
         {
             
