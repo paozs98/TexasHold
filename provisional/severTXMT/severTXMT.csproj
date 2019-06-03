@@ -49,7 +49,6 @@
     <Compile Include="Carta.cs" />
     <Compile Include="ColeccionCarta.cs" />
     <Compile Include="ColeccionJugador.cs" />
-    <Compile Include="handleClient.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="Mazo.cs" />
     <Compile Include="Mesa.cs" />
