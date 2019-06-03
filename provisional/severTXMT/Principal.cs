@@ -12,27 +12,26 @@ namespace severTXMT {
         
         static void Main(string[] args) {
 
-            int puerto = 8080;
-            IPAddress direccionIP = IPAddress.Parse("127.0.0.1");
-            TcpListener serverSocket = new TcpListener(direccionIP,puerto);
+            TcpListener serverSocket = new TcpListener(8888);
             TcpClient clientSocket = default(TcpClient);
-
-
             int counter = 0;
 
             serverSocket.Start();
-            Console.WriteLine("Servidor iniciado en la direccion y puerto {0} {1}"
-                ,Convert.ToString(direccionIP),Convert.ToString(puerto));
+            Console.WriteLine(" >> " + "Server Started");
 
             counter = 0;
-
             while(true) {
                 counter += 1;
                 clientSocket = serverSocket.AcceptTcpClient();
-                Console.WriteLine(" >>> " + "Cliente No:" + Convert.ToString(counter) + "se ha conectado!");
+                Console.WriteLine(" >> " + "Client No:" + Convert.ToString(counter) + " started!");
                 handleClinet client = new handleClinet();
                 client.startClient(clientSocket, Convert.ToString(counter));
             }
+
+            clientSocket.Close();
+            serverSocket.Stop();
+            Console.WriteLine(" >> " + "exit");
+            Console.ReadLine();
 
 
         }//cierre del main

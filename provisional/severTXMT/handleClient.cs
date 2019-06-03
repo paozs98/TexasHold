@@ -11,47 +11,36 @@ namespace severTXMT {
 
         TcpClient clientSocket;
         string clNo;
-
         public void startClient(TcpClient inClientSocket, string clineNo) {
-
             this.clientSocket = inClientSocket;
             this.clNo = clineNo;
             Thread ctThread = new Thread(doChat);
             ctThread.Start();
-
         }
-
         private void doChat() {
-
-            int conteoDeSolicitud = 0;
-            byte[] bytesFrom = new byte[10028];
-
-            string datosDelCliente = null;
+            int requestCount = 0;
+            byte[] bytesFrom = new byte[10025];
+            string dataFromClient = null;
             Byte[] sendBytes = null;
-
-            string respuestaServidor = null;
+            string serverResponse = null;
             string rCount = null;
-
-            conteoDeSolicitud = 0;
+            requestCount = 0;
 
             while((true)) {
                 try {
-
-                    conteoDeSolicitud = conteoDeSolicitud + 1;
+                    requestCount = requestCount + 1;
                     NetworkStream networkStream = clientSocket.GetStream();
                     networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
-                    datosDelCliente = System.Text.Encoding.ASCII.GetString(bytesFrom);
-                    datosDelCliente = datosDelCliente.Substring(0, datosDelCliente.IndexOf("$"));
-                    Console.WriteLine(" >> " + "Del Cliente - " + clNo + datosDelCliente);
+                    dataFromClient = System.Text.Encoding.ASCII.GetString(bytesFrom);
+                    dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
+                    Console.WriteLine(" >> " + "From client-" + clNo + dataFromClient);
 
-                    rCount = Convert.ToString(conteoDeSolicitud);
-                    respuestaServidor = "Servidor para el cliente (" + clNo + ") " + rCount;
-
-                    sendBytes = Encoding.ASCII.GetBytes(respuestaServidor);
+                    rCount = Convert.ToString(requestCount);
+                    serverResponse = "Server to clinet(" + clNo + ") " + rCount;
+                    sendBytes = Encoding.ASCII.GetBytes(serverResponse);
                     networkStream.Write(sendBytes, 0, sendBytes.Length);
                     networkStream.Flush();
-                    Console.WriteLine(" >> " + respuestaServidor);
-
+                    Console.WriteLine(" >> " + serverResponse);
                 } catch(Exception ex) {
                     Console.WriteLine(" >> " + ex.ToString());
                 }
