@@ -72,7 +72,9 @@ namespace WPFpruebaCliente
 
         private void Registrar_Click(object sender, RoutedEventArgs e)
         {
-            
+            Registro r = new Registro();
+
+
         }
     }
 }
