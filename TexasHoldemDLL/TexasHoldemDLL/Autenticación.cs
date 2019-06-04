@@ -14,8 +14,8 @@ namespace TexasHoldemDLL
         public bool autentificar(string usu, string pass)
         {
 
-            string path = @"LDAP://WS16.local/Usuarios"; //Sino funciona intentar con...
-            string dominio = @"WS16";                    //CN=Usuarios,DC=WS16,DC=local o con CN=Users,DC=WS16,DC=local
+            string path = @"LDAP://WS16.local/TexasHoldEm/Usuarios"; //Sino funciona intentar con...
+            string dominio = @"WS16";                    //OU=Usuarios,OU=TexasHoldEm,DC=WS16,DC=local
             string usuario = usu;
             string password = pass;
             string domUsua = dominio + @"\" + usuario;
@@ -37,7 +37,7 @@ namespace TexasHoldemDLL
         public bool crearUsuario(string usu, string pass)
         {
 
-            string path = @"LDAP://WS16.local/Usuarios"; //Sino funciona intentar con... CN=Usuarios,DC=WS16,DC=local o con CN=Users,DC=WS16,DC=local
+            string path = @"LDAP://WS16.local/TexasHoldEm/Usuarios"; //Sino funciona intentar con... OU=Usuarios,OU=TexasHoldEm,DC=WS16,DC=local
 
             //string oGUID = string.Empty;  //Tambien se puede intentar liberando los comentasios de oGID y cambiando al metodo para que devuelva string
 
@@ -45,7 +45,7 @@ namespace TexasHoldemDLL
 
                 DirectoryEntry entrada  = new DirectoryEntry(path);
 
-                DirectoryEntry nuevoUsuario = entrada.Children.Add("CN=" + usu, "users");
+                DirectoryEntry nuevoUsuario = entrada.Children.Add("CN=" + usu, entrada.SchemaClassName);
                 nuevoUsuario.Properties["samAccountName"].Value = usu;
                 nuevoUsuario.CommitChanges();
                 //oGUID = nuevoUsuario.Guid.ToString();
