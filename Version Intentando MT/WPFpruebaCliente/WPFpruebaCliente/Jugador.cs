@@ -41,7 +41,7 @@ namespace WPFpruebaCliente {
             dineroInicial = 1000;
             apuesta = 0;
         }
-
+       
         public Jugador(string nom, string ids, string contra) {
             mano = new ColeccionCarta(2);
             id = ids;

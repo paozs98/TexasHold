@@ -11,10 +11,8 @@ namespace serverTexas {
     class Server {
         static void Main(string[] args) {
 
-
             TcpServer Server = new TcpServer();
             Server.IniciarServer();
-
 
         }
     }

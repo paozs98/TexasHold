@@ -16,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
+using Newtonsoft.Json;
 
 namespace WPFpruebaCliente
 {
@@ -27,7 +28,7 @@ namespace WPFpruebaCliente
         
         string serverIp = "localhost";
         int port = 8080;
-        TcpClient client;
+        TcpClient clientSocket;
 
         public Login()
         {
@@ -36,25 +37,35 @@ namespace WPFpruebaCliente
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            client.Close();
+            //clientSocket.Close();
             Close();    
         }
 
+        public string readDelServidor() {
+            return null;
+        }
+        
+
         private void Ingresar_Click(object sender, RoutedEventArgs e)
         {
-             client = new TcpClient(serverIp, port);
+            
+             clientSocket = new TcpClient(serverIp, port); // hace la conexion de una vez 
+            //esto se manda al Accept del server;
 
-            int byteCount =Encoding.ASCII.GetByteCount(usuario.Text + 1);
+            Jugador j = new Jugador() { nombre = usuario.Text, contrasena = password.Text}; // agarrando los datos de form
 
-            Byte[] sendData = new byte[byteCount];
+            string jugadorJSON = JsonConvert.SerializeObject(j);
 
-            sendData = Encoding.ASCII.GetBytes(usuario.Text);
+            //metodito papu 
+            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
 
-            NetworkStream stream = client.GetStream();
+            NetworkStream stream = clientSocket.GetStream();
 
-            stream.Write(sendData, 0, sendData.Length);
+            stream.Write(flujoBytes, 0, flujoBytes.Length);
+            //cierre de metodo papu como en una clase 
 
-            stream.Close();
+
+            //stream.Close();
             
 
         }

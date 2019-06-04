@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace serverTexas {
-    class handleClinet {
+    public class handleClinet {
 
         TcpClient clientSocket;
         string clNo;
@@ -17,26 +15,31 @@ namespace serverTexas {
            
         }
 
-
         public void iniciarHandleClient(TcpClient inClientSocket, string clineNo) {
             this.clientSocket = inClientSocket;
             this.clNo = clineNo;
-            this.clienteHilo = new Thread(doChat);
+            this.clienteHilo = new Thread(letsPlay);
             clienteHilo.Start();
         }
 
+        public void letsPlay() {
+            //la logica del juego
+            
+            while(true) {
 
-        public void doChat() {
+            }
 
-            int requestCount = 0;
+        }
 
-            byte[] receivedBuffer = new byte[100];
+        //leyendo lo que envia el cliente 
+        public string leyendoDatosDelCliente() {
+
+            byte[] receivedBuffer = new byte[4096];// info de lo que envia el cliente pero en byte 
             NetworkStream stream = clientSocket.GetStream();
             stream.Read(receivedBuffer, 0, receivedBuffer.Length);
 
             StringBuilder msg = new StringBuilder();
 
-         
                 try {
 
                     foreach(byte b in receivedBuffer) {
@@ -46,17 +49,28 @@ namespace serverTexas {
                             msg.Append(Convert.ToChar(b).ToString());
                         }
                     }
-                Console.Write(">>" + "Cliente No: " +
-                this.clNo +
-                " se ha conectado");
-                Console.WriteLine(msg.ToString());
 
                 } catch(Exception ex) {
                     Console.WriteLine(">>" + ex.ToString());
                 }
-            
+            return msg.ToString();
 
-            
+
         }
+
+        public void mandarMensaje(object mensaje) {
+
+            string jugadorJSON = JsonConvert.SerializeObject(mensaje);
+
+            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
+
+            NetworkStream stream = clientSocket.GetStream();
+
+            stream.Write(flujoBytes, 0, flujoBytes.Length);
+
+        }
+
+
+
     }
 }
