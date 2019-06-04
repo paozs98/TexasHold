@@ -27,21 +27,22 @@ namespace WPFpruebaCliente
         
         string serverIp = "localhost";
         int port = 8080;
+        TcpClient client;
 
         public Login()
         {
             InitializeComponent();
-
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            client.Close();
+            Close();    
         }
 
         private void Ingresar_Click(object sender, RoutedEventArgs e)
         {
-            TcpClient client = new TcpClient(serverIp, port);
+             client = new TcpClient(serverIp, port);
 
             int byteCount =Encoding.ASCII.GetByteCount(usuario.Text + 1);
 
@@ -54,7 +55,7 @@ namespace WPFpruebaCliente
             stream.Write(sendData, 0, sendData.Length);
 
             stream.Close();
-            client.Close();
+            
 
         }
 

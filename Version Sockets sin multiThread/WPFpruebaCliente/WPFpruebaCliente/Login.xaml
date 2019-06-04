@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:WPFpruebaCliente"
         mc:Ignorable="d"
         Title="Loing" Height="450" Width="400"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
        WindowStartupLocation="CenterScreen"
         Topmost="False" WindowState="Normal"
-        AllowsTransparency="True" 
+         
         
         Icon="./Recursos/games_cardgame_pocker_872.ico"
         >
