@@ -65,9 +65,9 @@ namespace serverTexas {
         }
 
         public static Carta convertirJSONaCarta(string j) {
-            Carta juga = new Carta();
-            juga = JsonConvert.DeserializeObject<Carta>(j);
-            return juga;
+            Carta cartiux = new Carta();
+            cartiux = JsonConvert.DeserializeObject<Carta>(j);
+            return cartiux;
         }
 
     }

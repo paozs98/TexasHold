@@ -8,10 +8,10 @@ using System.DirectoryServices.ActiveDirectory;
 
 namespace TexasHoldemDLL
 {
-    public class Autenticación
+    public static class Autenticación
     {
 
-        public bool autentificar(string usu, string pass)
+        public static bool autentificar(string usu, string pass)
         {
 
             string path = @"LDAP://WS16.local/TexasHoldEm/Usuarios"; //Sino funciona intentar con...
@@ -34,7 +34,7 @@ namespace TexasHoldemDLL
 
         }
 
-        public bool crearUsuario(string usu, string pass)
+        public static bool crearUsuario(string usu, string pass)
         {
 
             string path = @"LDAP://WS16.local/TexasHoldEm/Usuarios"; //Sino funciona intentar con... OU=Usuarios,OU=TexasHoldEm,DC=WS16,DC=local

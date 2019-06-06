@@ -23,7 +23,7 @@ namespace serverTexas {
         }
 
         public void letsPlay() {
-            //la logica del juego
+            
             
             while(true) {
 
@@ -58,7 +58,7 @@ namespace serverTexas {
 
         }
 
-        public void mandarMensaje(object mensaje) {
+        public void mandarDatosAlCliente(object mensaje) {
 
             string jugadorJSON = JsonConvert.SerializeObject(mensaje);
 

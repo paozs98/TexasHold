@@ -37,9 +37,9 @@ namespace serverTexas {
         }
 
         public static Mesa convertirJSONaMesa(string j) {
-            Mesa juga = new Mesa();
-            juga = JsonConvert.DeserializeObject<Mesa>(j);
-            return juga;
+            Mesa mesiux = new Mesa();
+            mesiux = JsonConvert.DeserializeObject<Mesa>(j);
+            return mesiux;
         }
 
     }

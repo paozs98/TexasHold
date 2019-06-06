@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace serverTexas {
+namespace serverTexas
+{
     //Esta clase tiene un coleccion de 52 cartas para el juego que son las que se van a repartir 
     public class Mazo {
         //Atributos 
@@ -62,9 +59,9 @@ namespace serverTexas {
         }
 
         public static Mazo convertirJSONaMazo(string j) {
-            Mazo juga = new Mazo();
-            juga = JsonConvert.DeserializeObject<Mazo>(j);
-            return juga;
+            Mazo maziux = new Mazo();
+            maziux = JsonConvert.DeserializeObject<Mazo>(j);
+            return maziux;
         }
 
 
