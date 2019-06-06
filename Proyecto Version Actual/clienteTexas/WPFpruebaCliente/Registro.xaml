@@ -26,7 +26,7 @@
             <TextBox Name="password" Background="LightSlateGray" Foreground="White" FontSize="20"/>
             <Button Name="Enviar" Click="Enviar_Click"  HorizontalAlignment="Center" Margin="15 15" FontSize="20" Background="LightSlateGray" Foreground="White">Enviar</Button>
             <Button Name ="Cancelar" Content="Cancelar" Click="Cancelar_Click" HorizontalAlignment="Center" Margin="5 5" FontSize="20" Background="LightSlateGray" Foreground="White"/>
-            <Button Name="CloseButton" Content="Salir" Click="CloseButton_Click" HorizontalAlignment="Center" Margin="10 10" FontSize="20" Background="LightSlateGray" Foreground="White"/>
+           
         </StackPanel>
     </Border>
 </Window>

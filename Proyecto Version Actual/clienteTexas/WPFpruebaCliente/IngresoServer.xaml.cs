@@ -29,9 +29,11 @@ namespace WPFpruebaCliente
             Close();
         }
 
-        private void Ingresar_Click(object sender, RoutedEventArgs e)
+        private void Enviar_Click(object sender, RoutedEventArgs e)
         {
-
+            Login l = new Login(IpAddress.Text);
+            l.Show();
+            Close();
         }
     }
 }

@@ -25,13 +25,14 @@ namespace WPFpruebaCliente
     /// </summary>
     public partial class Login : Window
     {
-        
-        string serverIp = "localhost";
+
+        string serverIp;
         int port = 8080;
         TcpClient clientSocket;
 
-        public Login()
+        public Login(string ipAddress)
         {
+            serverIp = ipAddress;
             InitializeComponent();
         }
 
@@ -66,13 +67,18 @@ namespace WPFpruebaCliente
 
 
             //stream.Close();
+
+            //respuesta.Text = // aquí pasar el texto de aceptación del servidor
+
             
 
         }
 
         private void Registrar_Click(object sender, RoutedEventArgs e)
         {
-            Registro r = new Registro();
+            Registro r = new Registro(serverIp, port);
+            r.Show();
+            Close();
 
 
         }
