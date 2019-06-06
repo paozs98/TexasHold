@@ -63,9 +63,9 @@ namespace serverTexas {
         }
 
         public static ColeccionCarta convertirJSONaColeccionCarta(string j) {
-            ColeccionCarta juga = new ColeccionCarta();
-            juga = JsonConvert.DeserializeObject<ColeccionCarta>(j);
-            return juga;
+            ColeccionCarta coleccionux = new ColeccionCarta();
+            coleccionux = JsonConvert.DeserializeObject<ColeccionCarta>(j);
+            return coleccionux;
         }
 
 

@@ -8,84 +8,101 @@ using System.Threading.Tasks;
 using System.Threading;
 using Newtonsoft.Json;
 
-namespace serverTexas {
-    class TcpServer {
-        
+namespace serverTexas
+{
+    class TcpServer
+    {
+
         //IPAddress ip = Dns.GetHostEntry(IPAddress.Any).AddressList[0]; // para que se conecte en cualquir dir
         int puerto = 8080;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
         TcpClient clientSocket;
-        
-        int contadorUsuarios=0;
+
+        int contadorUsuarios = 0;
 
         static List<handleClinet> _clients;
+        static List<Thread> _hilosClientes;
+
+
         bool usuarioPermitido;
+        Jugador jugador = null;
+        Mesa mesa = null;
 
 
-        public TcpServer() {
 
-             ServerSocket = new TcpListener(IPAddress.Any, puerto);
-             clientSocket = default(TcpClient);
+        public TcpServer()
+        {
+
+            ServerSocket = new TcpListener(IPAddress.Any, puerto);
+            clientSocket = default(TcpClient);
             _clients = new List<handleClinet>(); //inicializando la lista :p
             this.IniciarServer();
 
         }
-        
-        public void IniciarServer() {
 
-            try {
+        public void IniciarServer()
+        {
+
+            try
+            {
 
                 ServerSocket.Start();
                 Console.WriteLine("Iniciando el server en la direccion {0}", IPAddress.Any);
                 Console.WriteLine("En el puerto {0}", Convert.ToString(puerto));
 
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.ToString());
                 Console.Read();
             }
-            Jugador jugador = null;
 
-            for(int i = 0; i < 4; i++) {
-
-                
-                clientSocket = ServerSocket.AcceptTcpClient();
-
-                jugador=this.convertirJSONaJugador(this.readDelHandle());// esta retornador el jugador
-                
-                //auntenficacion DLL 
-                //ir la valacion la jugador que acaba de entrar a la sala de juego 
-                
-                //---
-
-                //Leer los datos del login UserName y Pass de los Jugadores (Clientes)
-                contadorUsuarios += 1;
-
-                //Aqui se debe crear al handler del cliente 
-                handleClinet client = new handleClinet();
-                client.iniciarHandleClient(clientSocket,Convert.ToString(contadorUsuarios));
-                _clients.Add(client);
-
-                client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
-               
+            for (int w = 0; w < 5; w++) {// for para obtener las 5 cartas comunes del juego 
+                //se muestra solo una por cada ronda 
+                Carta carta = mesa.mazoMesa.darUnaCarta();
+                mesa.cartasComunes.agregarCarta(carta);
             }
 
-            //clientSocket.Close();
-            //ServerSocket.Stop();
-            //Console.WriteLine(">>" + "exit");
-            //Console.ReadLine();
+            for (int i = 0; i < 4; i++)
+            {
 
+                clientSocket = ServerSocket.AcceptTcpClient();
+
+                jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
+                usuarioPermitido = TexasHoldemDLL.Autenticación.autentificar(jugador.nombre, jugador.contrasena);
+
+                if (usuarioPermitido) //si el usuario existe que entre a la sala para jugar
+                {
+                    contadorUsuarios += 1;
+                    //Aqui se debe crear al handler del cliente 
+                    Console.WriteLine("Ha entrado un usuario al server! "+jugador.nombre+"\n Jugador numero$" + Convert.ToString(contadorUsuarios));
+                    handleClinet client = new handleClinet();
+                    _clients.Add(client);
+                    client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
+
+                }
+                else // sino mandarle un mensaje de que no existe y que se cree un usuario
+                {
+                    this.sendData("Por favor registrese!");
+
+                }
+                              
+            }
+           
         }
 
-        public  Jugador convertirJSONaJugador(string j) {
+        public Jugador convertirJSONaJugador(string j)
+        {
 
             Jugador juga = new Jugador();
             juga = JsonConvert.DeserializeObject<Jugador>(j);
             return juga;
-            
+
         }
 
-        public void sendAlHandle(String mensaje) {// para mansajes al cliente al jugador que no esta en el dll
+        public void sendData(String mensaje)
+        {// para mansajes al cliente
 
             string jugadorJSON = JsonConvert.SerializeObject(mensaje);
 
@@ -97,7 +114,8 @@ namespace serverTexas {
 
         }
 
-        public string readDelHandle() {
+        public string readData()
+        {
 
             byte[] receivedBuffer = new byte[4096];// info de lo que envia el cliente pero en byte 
             NetworkStream stream = clientSocket.GetStream();
@@ -105,22 +123,51 @@ namespace serverTexas {
 
             StringBuilder msg = new StringBuilder();
 
-            try {
+            try
+            {
 
-                foreach(byte b in receivedBuffer) {
-                    if(b.Equals(00)) {
+                foreach (byte b in receivedBuffer)
+                {
+                    if (b.Equals(00))
+                    {
                         break;
-                    } else {
+                    }
+                    else
+                    {
                         msg.Append(Convert.ToChar(b).ToString());
                     }
                 }
 
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Console.WriteLine(">>" + ex.ToString());
             }
             return msg.ToString();
         }//cierre del metodo
-        
 
-    }
+        public void manejadorCliente(TcpClient inClient,string clientNO) {
+            TcpClient clienSocket;
+            string CLNO;
+            Thread clienteHilo;
+
+            clienSocket = inClient;
+            CLNO = clientNO;
+            clienteHilo = new Thread(letsPlayTexas);
+            clienteHilo.Start();
+            _hilosClientes.Add(clienteHilo);
+
+        }
+
+        public void letsPlayTexas() {
+
+            while (true) {
+
+            }
+        }
+
+
+
+
+    }//ciere de la clase 
 }

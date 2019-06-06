@@ -74,9 +74,9 @@ namespace serverTexas {
         }
 
         public static ColeccionJugador convertirJSONaColeccionJugador(string j) {
-            ColeccionJugador juga = new ColeccionJugador();
-            juga = JsonConvert.DeserializeObject<ColeccionJugador>(j);
-            return juga;
+            ColeccionJugador colecionux = new ColeccionJugador();
+            colecionux = JsonConvert.DeserializeObject<ColeccionJugador>(j);
+            return colecionux;
         }
 
 

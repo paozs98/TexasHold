@@ -23,9 +23,9 @@ namespace serverTexas {
         }
 
         public static Pot convertirJSONaPot(string j) {
-            Pot juga = new Pot();
-            juga = JsonConvert.DeserializeObject<Pot>(j);
-            return juga;
+            Pot potpot = new Pot();
+            potpot = JsonConvert.DeserializeObject<Pot>(j);
+            return potpot;
         }
 
     }
