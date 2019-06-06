@@ -20,6 +20,8 @@ namespace serverTexas {
         int contadorUsuarios=0;
 
         static List<handleClinet> _clients;
+        bool usuarioPermitido;
+
 
         public TcpServer() {
 
@@ -35,7 +37,7 @@ namespace serverTexas {
             try {
 
                 ServerSocket.Start();
-                Console.WriteLine("Iniciando el server ('localhost') {0}", IPAddress.Any);
+                Console.WriteLine("Iniciando el server en la direccion {0}", IPAddress.Any);
                 Console.WriteLine("En el puerto {0}", Convert.ToString(puerto));
 
             } catch(Exception ex) {
@@ -53,7 +55,7 @@ namespace serverTexas {
                 
                 //auntenficacion DLL 
                 //ir la valacion la jugador que acaba de entrar a la sala de juego 
-
+                
                 //---
 
                 //Leer los datos del login UserName y Pass de los Jugadores (Clientes)

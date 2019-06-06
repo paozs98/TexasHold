@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 namespace serverTexas {
     //Clase para darle el formato a las 52 cartas que tiene que esta en el juego
     public class Carta {
+
         public enum VALOR { DOS = 2, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, JOTA, QUINA, KA, AS };
         public enum PALO { DIAMANTE = 1, TREBOL, CORAZON, ESPADA };
 
