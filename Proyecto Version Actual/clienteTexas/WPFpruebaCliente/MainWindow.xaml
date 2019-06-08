@@ -16,26 +16,30 @@
     </Window.Background>
 
     <StackPanel>
-        <Image Name="cm2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="415,100,415,90" VerticalAlignment="Center"/>
-        <Image Name="cm1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="320,-175,510,90" VerticalAlignment="Center"/>
-        <Image Name="cm3" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="510,-173,320,90" VerticalAlignment="Center"/>
+        <Image Name="cm2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="415,70,415,90" VerticalAlignment="Center"/>
+        <Image Name="cm1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="320,-182,510,90" VerticalAlignment="Center"/>
+        <Image Name="cm3" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="510,-186,320,90" VerticalAlignment="Center"/>
 
 
 
-        <Image Name="j1c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="100,-127,728,78" VerticalAlignment="Center"/>
-        <Image Name="j1c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="183,-165,646,78" VerticalAlignment="Center"/>
+        <Image Name="j1c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="100,-44,728,30" VerticalAlignment="Center"/>
+        <Image Name="j1c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="183,-117,646,34" VerticalAlignment="Center"/>
+        <TextBlock Name="jugador1" Margin="100,-215,617,175" FontSize="16">Jugador</TextBlock>
+        
+        <Image Name="j2c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="260,75,565,-63" VerticalAlignment="Center"/>
+        <Image Name="j2c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="350,-10,477,85" VerticalAlignment="Center"/>
+        <TextBlock Name="jugador2" Margin="276,-220,475,179" FontSize="16">Jugador</TextBlock>
 
-        <Image Name="j2c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="261,10,565,-63" VerticalAlignment="Center"/>
-        <Image Name="j2c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="350,-24,477,79" VerticalAlignment="Center"/>
-      
-        <Image Name="j3c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="493,-171,332,83" VerticalAlignment="Center"/>
-        <Image Name="j3c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="581,-260,245,-3" VerticalAlignment="Center"/>
+        <Image Name="j3c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="493,-156,332,83" VerticalAlignment="Center"/>
+        <Image Name="j3c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="581,-242,245,-3" VerticalAlignment="Center"/>
+        <TextBlock Name="jugador3" Margin="540,-220,195,179" FontSize="16">Jugador</TextBlock>
 
 
         <Image Name="j4c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="632,-523,197,83" VerticalAlignment="Center"/>
         <Image Name="j4c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="716,-609,114,-3" VerticalAlignment="Center"/>
+        <TextBlock Name="jugador4" Margin="640,-396,95,353" FontSize="16">Jugador</TextBlock>
 
-
+        <TextBox Name="pool" FontSize="30" Margin="330,-340,330,280">Pool</TextBox>
 
 
         <Button x:Name="apostar" Content="Apostar" Height="30" Width="60" HorizontalAlignment="Left" />
