@@ -13,7 +13,7 @@ namespace serverTexas
     class TcpServer
     {
 
-        //IPAddress ip = Dns.GetHostEntry(IPAddress.Any).AddressList[0]; // para que se conecte en cualquir dir
+        IPAddress localAddr = IPAddress.Parse("127.0.0.1");// para que se conecte en cualquir dir
         int puerto = 8080;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
@@ -33,10 +33,11 @@ namespace serverTexas
 
         public TcpServer()
         {
-
-            ServerSocket = new TcpListener(IPAddress.Any, puerto);
+            ServerSocket = new TcpListener(localAddr, puerto);
             clientSocket = default(TcpClient);
             _clients = new List<handleClinet>(); //inicializando la lista :p
+            this.mesa = new Mesa(); //inicializar la mesa para que el cliente se la mande
+           
             this.IniciarServer();
 
         }
@@ -48,7 +49,7 @@ namespace serverTexas
             {
 
                 ServerSocket.Start();
-                Console.WriteLine("Iniciando el server en la direccion {0}", IPAddress.Any);
+                Console.WriteLine("Iniciando el server en la direccion {0}", Convert.ToString(localAddr));
                 Console.WriteLine("En el puerto {0}", Convert.ToString(puerto));
 
             }
@@ -62,16 +63,15 @@ namespace serverTexas
                 //se muestra solo una por cada ronda 
                 Carta carta = mesa.mazoMesa.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
+                Console.WriteLine("Aqui reparto las primeras cartas");
             }
 
             for (int i = 0; i < 4; i++)
             {
 
                 clientSocket = ServerSocket.AcceptTcpClient();
-
                 jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
                 usuarioPermitido = TexasHoldemDLL.Autenticación.autentificar(jugador.nombre, jugador.contrasena);
-
                 if (usuarioPermitido) //si el usuario existe que entre a la sala para jugar
                 {
                     contadorUsuarios += 1;
@@ -84,6 +84,7 @@ namespace serverTexas
                 }
                 else // sino mandarle un mensaje de que no existe y que se cree un usuario
                 {
+                    Console.WriteLine("Usuario no registrado");
                     this.sendData("Por favor registrese!");
 
                 }

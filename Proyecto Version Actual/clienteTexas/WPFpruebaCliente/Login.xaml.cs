@@ -50,8 +50,9 @@ namespace WPFpruebaCliente
 
         private void Ingresar_Click(object sender, RoutedEventArgs e)
         {
-            
-             clientSocket = new TcpClient(serverIp, port); // hace la conexion de una vez 
+
+
+            clientSocket = new TcpClient(serverIp, port); // hace la conexion de una vez 
             //esto se manda al Accept del server;
 
             Jugador j = new Jugador() { nombre = usuario.Text, contrasena = password.Text}; // agarrando los datos de form
@@ -64,6 +65,7 @@ namespace WPFpruebaCliente
             NetworkStream stream = clientSocket.GetStream();
 
             stream.Write(flujoBytes, 0, flujoBytes.Length);
+
             //cierre de metodo papu como en una clase 
 
 
@@ -71,7 +73,11 @@ namespace WPFpruebaCliente
 
             //respuesta.Text = // aquí pasar el texto de aceptación del servidor
 
-            
+
+             byte[] inStream = new byte[4099];
+            int bytesRead = stream.Read(inStream, 0, inStream.Length);
+            string returndata = Encoding.ASCII.GetString(inStream,0,bytesRead);
+            mensajeServer(returndata);
 
         }
 
@@ -81,7 +87,11 @@ namespace WPFpruebaCliente
             r.Show();
             Close();
 
+        }
+        private void mensajeServer(String mensaje) {
+            respuesta.Text = respuesta.Text + Environment.NewLine + ">>"+ mensaje;
 
         }
+      
     }
 }
