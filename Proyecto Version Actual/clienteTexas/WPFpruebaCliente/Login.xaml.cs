@@ -29,7 +29,7 @@ namespace WPFpruebaCliente
         string serverIp;
         int port = 8080;
         TcpClient clientSocket;
-        Mesa juego;
+        Mesa mesa;
 
         public Login(string ipAddress)
         {

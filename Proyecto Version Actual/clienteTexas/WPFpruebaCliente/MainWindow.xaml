@@ -20,6 +20,10 @@
         <Image Name="cm1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="320,-182,510,90" VerticalAlignment="Center"/>
         <Image Name="cm3" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="510,-186,320,90" VerticalAlignment="Center"/>
 
+        <Image Name="cm4" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="320,-182,510,90" VerticalAlignment="Center"/>
+        <Image Name="cm5" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="510,-186,320,90" VerticalAlignment="Center"/>
+
+
 
 
         <Image Name="j1c1" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="100,-44,728,30" VerticalAlignment="Center"/>
@@ -39,14 +43,17 @@
         <Image Name="j4c2" Stretch="Uniform" Source="./recursos/cartas/rf.png" Margin="716,-609,114,-3" VerticalAlignment="Center"/>
         <TextBlock Name="jugador4" Margin="640,-396,95,353" FontSize="16">Jugador</TextBlock>
 
-        <TextBox Name="pool" FontSize="30" Margin="330,-340,330,280">Pool</TextBox>
+        <TextBlock Name="pool" FontSize="30" Margin="330,-340,330,280">Pool</TextBlock>
 
 
         <Button x:Name="apostar" Content="Apostar" Height="30" Width="60" HorizontalAlignment="Left" />
         <Button x:Name="pasar" Content="pasar"  Height="30" Width="60" HorizontalAlignment="Right"/>
         <Button x:Name="retirarse" Content="retirarse"  Height="30" Width="60" HorizontalAlignment="Right"/>
 
-    </StackPanel>
+
+        <TextBlock Name="respuesta" FontSize="15" Background="DimGray" Margin="100, -200, 700 ,500"> </TextBlock>
+   
+ </StackPanel>
     
     
 </Window>

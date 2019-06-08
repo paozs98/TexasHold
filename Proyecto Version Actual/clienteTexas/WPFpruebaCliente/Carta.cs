@@ -45,11 +45,11 @@ namespace WPFpruebaCliente {
         public static string PaloToString(int naipe) {
             switch (naipe) {
                 case 1:
-                    return "DIAMANTES";
-                case 2:
-                    return "TREBOL";
-                case 3:
                     return "CORAZONES";
+                case 2:
+                    return "DIAMANTE";
+                case 3:
+                    return "TREBOL";
                 default:
                     return "ESPADAS";
             }
