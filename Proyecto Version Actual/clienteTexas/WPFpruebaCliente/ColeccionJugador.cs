@@ -69,7 +69,7 @@ namespace WPFpruebaCliente {
         }
 
 
-        public static string convertirColeccionJugadorAJson(ColeccionJugador j) {
+        /*public static string convertirColeccionJugadorAJson(ColeccionJugador j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -77,7 +77,7 @@ namespace WPFpruebaCliente {
             ColeccionJugador juga = new ColeccionJugador();
             juga = JsonConvert.DeserializeObject<ColeccionJugador>(j);
             return juga;
-        }
+        }*/
 
 
     }//cierre de la clase

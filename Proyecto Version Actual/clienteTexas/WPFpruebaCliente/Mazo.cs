@@ -57,7 +57,7 @@ namespace WPFpruebaCliente {
 
         }
 
-        public static string convertirMazoAJson(Mazo j) {
+        /*public static string convertirMazoAJson(Mazo j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -65,7 +65,7 @@ namespace WPFpruebaCliente {
             Mazo juga = new Mazo();
             juga = JsonConvert.DeserializeObject<Mazo>(j);
             return juga;
-        }
+        }*/
 
 
     } // Cierre de la clase Mazo 

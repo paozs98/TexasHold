@@ -18,7 +18,7 @@ namespace serverTexas {
             apuestaMaxima = 100;
         }
 
-        public static string convertirPotAJson(Pot j) {
+        /*public static string convertirPotAJson(Pot j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -26,7 +26,7 @@ namespace serverTexas {
             Pot potpot = new Pot();
             potpot = JsonConvert.DeserializeObject<Pot>(j);
             return potpot;
-        }
+        }*/
 
     }
 }

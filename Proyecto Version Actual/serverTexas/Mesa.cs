@@ -32,7 +32,7 @@ namespace serverTexas {
             }
         }
 
-        public static string convertirMesaAJson(Mesa j) {
+        /*public static string convertirMesaAJson(Mesa j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -40,7 +40,7 @@ namespace serverTexas {
             Mesa mesiux = new Mesa();
             mesiux = JsonConvert.DeserializeObject<Mesa>(j);
             return mesiux;
-        }
+        }*/
 
     }
 }

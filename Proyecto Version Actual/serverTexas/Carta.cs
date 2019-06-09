@@ -60,7 +60,7 @@ namespace serverTexas {
             return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
 
-        public static string convertirCartaAJson(Carta j) {
+        /*public static string convertirCartaAJson(Carta j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -68,7 +68,7 @@ namespace serverTexas {
             Carta cartiux = new Carta();
             cartiux = JsonConvert.DeserializeObject<Carta>(j);
             return cartiux;
-        }
+        }*/
 
     }
 }

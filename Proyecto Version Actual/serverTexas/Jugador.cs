@@ -51,7 +51,7 @@ namespace serverTexas {
             apuesta = 0;
         }
 
-        public static string convertirJugadorAJson(Jugador j) {
+        /*public static string convertirJugadorAJson(Jugador j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -59,7 +59,7 @@ namespace serverTexas {
             Jugador juga = new Jugador();
             juga = JsonConvert.DeserializeObject<Jugador>(j);
             return juga;
-        }
+        }*/
 
 
     }// cierre de la clase Jugador 

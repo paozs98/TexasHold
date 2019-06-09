@@ -59,7 +59,7 @@ namespace WPFpruebaCliente {
             return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
 
-        public static string convertirCartaAJson(Carta j) {
+        /*public static string convertirCartaAJson(Carta j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -67,7 +67,7 @@ namespace WPFpruebaCliente {
             Carta juga = new Carta();
             juga = JsonConvert.DeserializeObject<Carta>(j);
             return juga;
-        }
+        }*/
 
     }
 }

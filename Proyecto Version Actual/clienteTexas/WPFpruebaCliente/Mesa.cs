@@ -32,7 +32,7 @@ namespace WPFpruebaCliente {
             }
         }
 
-        public static string convertirMesaAJson(Mesa j) {
+        /*public static string convertirMesaAJson(Mesa j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -40,7 +40,7 @@ namespace WPFpruebaCliente {
             Mesa juga = new Mesa();
             juga = JsonConvert.DeserializeObject<Mesa>(j);
             return juga;
-        }
+        }*/
 
     }
 }

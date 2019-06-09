@@ -65,7 +65,7 @@ namespace serverTexas
 
         }
 
-        public static string convertirMazoAJson(Mazo j) {
+        /*public static string convertirMazoAJson(Mazo j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -73,7 +73,7 @@ namespace serverTexas
             Mazo maziux = new Mazo();
             maziux = JsonConvert.DeserializeObject<Mazo>(j);
             return maziux;
-        }
+        }*/
 
 
     } // Cierre de la clase Mazo 

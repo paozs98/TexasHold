@@ -58,7 +58,7 @@ namespace WPFpruebaCliente {
             cantidad--;
         }
 
-        public static string convertirColeccionCartaAJson(ColeccionCarta j) {
+        /*public static string convertirColeccionCartaAJson(ColeccionCarta j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -66,7 +66,7 @@ namespace WPFpruebaCliente {
             ColeccionCarta juga = new ColeccionCarta();
             juga = JsonConvert.DeserializeObject<ColeccionCarta>(j);
             return juga;
-        }
+        }*/
 
 
     }//cierre de la clase

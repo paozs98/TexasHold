@@ -18,7 +18,7 @@ namespace WPFpruebaCliente {
             apuestaMaxima = 100;
         }
 
-        public static string convertirPotAJson(Pot j) {
+        /*public static string convertirPotAJson(Pot j) {
             return JsonConvert.SerializeObject(j);
         }
 
@@ -26,7 +26,7 @@ namespace WPFpruebaCliente {
             Pot juga = new Pot();
             juga = JsonConvert.DeserializeObject<Pot>(j);
             return juga;
-        }
+        }*/
 
     }
 }

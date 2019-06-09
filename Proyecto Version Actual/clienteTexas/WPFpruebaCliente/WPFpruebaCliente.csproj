@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConvertidorJson.cs" />
     <Compile Include="IngresoServer.xaml.cs">
       <DependentUpon>IngresoServer.xaml</DependentUpon>
     </Compile>
