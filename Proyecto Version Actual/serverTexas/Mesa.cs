@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace serverTexas {
     public class Mesa {
-
+        
         public Mazo mazoMesa { get; set; }
         public ColeccionJugador jugadores { get; set; }
+        public ColeccionJugador jugadoresActivos { get; set; }
         public ColeccionCarta cartasComunes { get; set; }
         // estas son las cartas que muestra cada vez que se cierra una ronda de apuesta 
         // son las 5 cartas comunes de los jugadores
         public Pot pot { get; set; }
         // el que va a mostrar y tener las reglas de las apuestas
+        public int turno { get;}
+
 
 
         // metodos
@@ -22,10 +25,7 @@ namespace serverTexas {
             this.cartasComunes = new ColeccionCarta(5);
             this.mazoMesa = new Mazo();
             this.jugadores = new ColeccionJugador(4);
-            jugadores.agregarJugador(new Jugador("Paola","1"));
-            jugadores.agregarJugador(new Jugador("Maria","2"));
-            jugadores.agregarJugador(new Jugador("Juan","3"));
-            jugadores.agregarJugador(new Jugador("Pedro","3"));
+            this.turno = 1;
         }
         public void repartirCartasIniciales() {
 
@@ -34,6 +34,8 @@ namespace serverTexas {
                 jugadores.GetJugadorEnLaPos(i).mano.agregarCarta(mazoMesa.darUnaCarta());
             }
         }
+        
+        
 
         /*public static string convertirMesaAJson(Mesa j) {
             return JsonConvert.SerializeObject(j);
