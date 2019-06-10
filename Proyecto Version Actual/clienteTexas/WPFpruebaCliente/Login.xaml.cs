@@ -27,7 +27,7 @@ namespace WPFpruebaCliente
     {
 
         string serverIp;
-        int port = 8080;
+        int port = 8090;
         TcpClient clientSocket;
         Mesa mesa;
 
