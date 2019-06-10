@@ -35,6 +35,9 @@ namespace serverTexas
         {
             ServerSocket = new TcpListener(localAddr, puerto);
             clientSocket = default(TcpClient);
+            _hilosClientes = new List<Thread>(); ///iniciando la lista de los clientes 
+
+
             _clients = new List<handleClinet>(); //inicializando la lista :p
             this.mesa = new Mesa(); //inicializar la mesa para que el cliente se la mande
            
@@ -64,17 +67,19 @@ namespace serverTexas
                 //se muestra solo una por cada ronda 
                 Carta carta = mesa.mazoMesa.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
-                Console.WriteLine("Aqui reparto las primeras cartas");
             }
-
+            //provicional para la aceptacion de clientes
             for (int i = 0; i < 4; i++)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
-                jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
+                jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
+               // jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
                     contadorUsuarios += 1;
                     //Aqui se debe crear al handler del cliente 
-                    Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre + "\n Jugador numero$" + Convert.ToString(contadorUsuarios));
-                    handleClinet client = new handleClinet();
+                    Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre + "\n Jugador numero#" + Convert.ToString(contadorUsuarios));
+                this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
+               
+                handleClinet client = new handleClinet();
                     _clients.Add(client);
                     client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
             }
