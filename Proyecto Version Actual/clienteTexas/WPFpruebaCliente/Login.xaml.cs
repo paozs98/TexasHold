@@ -74,7 +74,7 @@ namespace WPFpruebaCliente
             //respuesta.Text = // aquí pasar el texto de aceptación del servidor
 
 
-             byte[] inStream = new byte[4099];
+             byte[] inStream = new byte[4096];
             int bytesRead = stream.Read(inStream, 0, inStream.Length);
             string returndata = Encoding.ASCII.GetString(inStream,0,bytesRead);
             mensajeServer(returndata);
