@@ -13,7 +13,7 @@ namespace serverTexas
         public Mazo() {
             MAZO = new ColeccionCarta(52);
             llenarMazo();
-        //    barajar();
+            barajar();
         }
 
         //public void llenarMazo() {

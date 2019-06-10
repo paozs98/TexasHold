@@ -62,9 +62,10 @@ namespace serverTexas
             for (int w = 0; w < 5; w++)
             {// for para obtener las 5 cartas comunes del juego 
                 //se muestra solo una por cada ronda 
+                
                 Carta carta = mesa.mazoMesa.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
-                Console.WriteLine("Aqui reparto las primeras cartas");
+                Console.WriteLine(carta.imprimir());
             }
 
             for (int i = 0; i < 4; i++)
@@ -175,7 +176,7 @@ namespace serverTexas
         public void letsPlayTexas() {
 
             while (true) {
-
+                Console.WriteLine("hola");
             }
         }
 

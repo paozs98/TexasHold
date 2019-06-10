@@ -22,7 +22,10 @@ namespace serverTexas {
             this.cartasComunes = new ColeccionCarta(5);
             this.mazoMesa = new Mazo();
             this.jugadores = new ColeccionJugador(4);
-
+            jugadores.agregarJugador(new Jugador("Paola","1"));
+            jugadores.agregarJugador(new Jugador("Maria","2"));
+            jugadores.agregarJugador(new Jugador("Juan","3"));
+            jugadores.agregarJugador(new Jugador("Pedro","3"));
         }
         public void repartirCartasIniciales() {
 
