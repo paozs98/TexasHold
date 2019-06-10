@@ -16,6 +16,7 @@ namespace serverTexas {
         public bool estado { get; set; }
 
 
+        
         public Jugador() {
             mano = new ColeccionCarta(2);
             id = "";
