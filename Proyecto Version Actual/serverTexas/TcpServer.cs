@@ -14,7 +14,7 @@ namespace serverTexas
     {
 
         IPAddress localAddr = IPAddress.Parse("127.0.0.1");// para que se conecte en cualquir dir
-        int puerto = 8080;//cambiar si da problemas con Oracle
+        int puerto = 8090;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
         TcpClient clientSocket;
@@ -74,16 +74,16 @@ namespace serverTexas
             for (int i = 0; i < 4; i++)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
-                jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-               // jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
+                //jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
+                jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
                     contadorUsuarios += 1;
                     //Aqui se debe crear al handler del cliente 
                     Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre + "\n Jugador numero#" + Convert.ToString(contadorUsuarios));
-                this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
+                //this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
                
-                handleClinet client = new handleClinet();
-                    _clients.Add(client);
-                    client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
+                //handleClinet client = new handleClinet();
+                //    _clients.Add(client);
+                //    client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
             }
             //for (int i = 0; i < 4; i++)
             //{
