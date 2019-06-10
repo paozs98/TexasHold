@@ -40,8 +40,6 @@ namespace serverTexas
 
             _clients = new List<handleClinet>(); //inicializando la lista :p
             this.mesa = new Mesa(); //inicializar la mesa para que el cliente se la mande
-           
-            this.IniciarServer();
 
         }
 
@@ -109,6 +107,7 @@ namespace serverTexas
             //    }
 
             //}
+
         }
             
 
@@ -179,10 +178,28 @@ namespace serverTexas
 
         }
 
-        public void letsPlayTexas() {
+        public void letsPlayTexas()
+        {
 
-            while (true) {
-                Console.WriteLine("hola");
+            while (true)
+            {
+                this.mesa.repartirCartasIniciales();
+                this.mesa.pot.apuestaMinima = 50;
+                this.mesa.pot.apuestaMaxima = 100;
+                this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 100;
+                this.mesa.jugadores.GetJugadorEnLaPos(2).dineroInicial -= 50;
+                foreach (Thread ch in _hilosClientes)
+                {
+                    ch.Start();
+                }
+
+                this.sendData(ConvertidorJson.convertirMesaAJson(this.mesa));
+
+                //Empiece con el jugador 1 
+                // Todas las opciones del jugador
+                
+
+
             }
         }
 
