@@ -59,7 +59,8 @@ namespace serverTexas
                 Console.Read();
             }
 
-            for (int w = 0; w < 5; w++) {// for para obtener las 5 cartas comunes del juego 
+            for (int w = 0; w < 5; w++)
+            {// for para obtener las 5 cartas comunes del juego 
                 //se muestra solo una por cada ronda 
                 Carta carta = mesa.mazoMesa.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
@@ -68,30 +69,41 @@ namespace serverTexas
 
             for (int i = 0; i < 4; i++)
             {
-
                 clientSocket = ServerSocket.AcceptTcpClient();
                 jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-                usuarioPermitido = TexasHoldemDLL.Autenticación.autentificar(jugador.nombre, jugador.contrasena);
-                if (usuarioPermitido) //si el usuario existe que entre a la sala para jugar
-                {
                     contadorUsuarios += 1;
                     //Aqui se debe crear al handler del cliente 
-                    Console.WriteLine("Ha entrado un usuario al server! "+jugador.nombre+"\n Jugador numero$" + Convert.ToString(contadorUsuarios));
+                    Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre + "\n Jugador numero$" + Convert.ToString(contadorUsuarios));
                     handleClinet client = new handleClinet();
                     _clients.Add(client);
                     client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
-
-                }
-                else // sino mandarle un mensaje de que no existe y que se cree un usuario
-                {
-                    Console.WriteLine("Usuario no registrado");
-                    this.sendData("Por favor registrese!");
-
-                }
-                              
             }
-           
+            //for (int i = 0; i < 4; i++)
+            //{
+
+            //    clientSocket = ServerSocket.AcceptTcpClient();
+            //    jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
+            //    usuarioPermitido = TexasHoldemDLL.Autenticación.autentificar(jugador.nombre, jugador.contrasena);
+            //    if (usuarioPermitido) //si el usuario existe que entre a la sala para jugar
+            //    {
+            //        contadorUsuarios += 1;
+            //        //Aqui se debe crear al handler del cliente 
+            //        Console.WriteLine("Ha entrado un usuario al server! "+jugador.nombre+"\n Jugador numero$" + Convert.ToString(contadorUsuarios));
+            //        handleClinet client = new handleClinet();
+            //        _clients.Add(client);
+            //        client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
+
+            //    }
+            //    else // sino mandarle un mensaje de que no existe y que se cree un usuario
+            //    {
+            //        Console.WriteLine("Usuario no registrado");
+            //        this.sendData("Por favor registrese!");
+
+            //    }
+
+            //}
         }
+            
 
         public Jugador convertirJSONaJugador(string j)
         {
