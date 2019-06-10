@@ -57,6 +57,7 @@ namespace serverTexas {
         }
 
         public string imprimir() {
+
             return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
 
