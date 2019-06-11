@@ -93,16 +93,21 @@ namespace WPFpruebaCliente
         }
 
         private void cargarCartasRonda1() {
-            string c1,c2,c3;
-            //c1 = mesa.mazoMesa.
+           
+            setImagenCm1(mesa.cartasComunes.obtenerCarta(1).getCodigo());
+            setImagenCm2(mesa.cartasComunes.obtenerCarta(2).getCodigo());
+            setImagenCm3(mesa.cartasComunes.obtenerCarta(3).getCodigo());
+
         }
 
         private void cargarCartasRonda2() {
+            setImagenCm4(mesa.cartasComunes.obtenerCarta(4).getCodigo());
 
 
         }
 
         private void cargarCartasRonda3() {
+            setImagenCm5(mesa.cartasComunes.obtenerCarta(5).getCodigo());
 
 
         }

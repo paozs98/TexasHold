@@ -67,6 +67,9 @@ namespace WPFpruebaCliente {
             return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
 
+        public string getCodigo() {
+            return (string)""+palo +valor;
+        }
         /*public static string convertirCartaAJson(Carta j) {
             return JsonConvert.SerializeObject(j);
         }
