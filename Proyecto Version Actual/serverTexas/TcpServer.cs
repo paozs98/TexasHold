@@ -19,10 +19,7 @@ namespace serverTexas
         TcpListener ServerSocket;
         TcpClient clientSocket;
         int contadorUsuarios = 0;
-
-        //este deberia borrarse
-        //static List<handleClinet> _clients;
-
+     
         static List<Thread> _hilosClientes;
         Mazo mazoGlobal = new Mazo();
         Mutex _mutex = new Mutex();
@@ -40,12 +37,8 @@ namespace serverTexas
         {
             ServerSocket = new TcpListener(localAddr, puerto);
             clientSocket = default(TcpClient);
-            _hilosClientes = new List<Thread>(); ///iniciando la lista de los clientes 
-            //_clients = new List<handleClinet>(); //inicializando la lista :p
-
-            this.mesa = new Mesa(); //inicializar la mesa para mandarse la al loc clientes
-            //tiene que barajarse ya lo hace por los metodos 
-
+            _hilosClientes = new List<Thread>(); ///iniciando la lista de los clientes            
+            this.mesa = new Mesa();             
         }
 
         public void IniciarServer()
@@ -61,17 +54,18 @@ namespace serverTexas
                 Console.WriteLine(ex.ToString());
                 Console.Read();
             }
-
+            Console.WriteLine("Cartas que deben aparecer a todos los jugadores");
             for (int w = 0; w < 5; w++)
             {
                 // for para obtener las 5 cartas comunes del juego 
                 //se muestra solo una por cada ronda 
                 Carta carta = mazoGlobal.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
-                Console.WriteLine("carta: " + carta.getCodigo() );
+                
+                Console.WriteLine("carta: " + carta.imprimir() );
             }
 
-            //provicional para la aceptacion de clientes
+            //provicional para la aceptacion de clientes // sin dll
             for (int i = 0; i < 4; i++)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
@@ -82,14 +76,12 @@ namespace serverTexas
                     + "\nJugador numero #   " +
                     Convert.ToString(contadorUsuarios));
 
-                this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre, Convert.ToString(contadorUsuarios), jugador.contrasena));
+                this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre, 
+                    Convert.ToString(contadorUsuarios), jugador.contrasena));
 
                 contadorUsuarios += 1;
                 this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
 
-                //handleClinet client = new handleClinet();
-                //    _clients.Add(client);
-                //    client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
             }
 
 
@@ -122,8 +114,6 @@ namespace serverTexas
             
 
         }
-
-
 
         public void sendData(String mensaje)
         {// para mansajes al cliente
@@ -176,7 +166,7 @@ namespace serverTexas
             clienSocket = inClient;
             CLNO = clientNO;
             clienteHilo = new Thread(letsPlayTexas);
-            clienteHilo.Name = clientNO;
+            clienteHilo.Name = clientNO; //identificador para cada hilo
             _hilosClientes.Add(clienteHilo);
             clienteHilo.Start();
         }
@@ -197,8 +187,8 @@ namespace serverTexas
                     begin = true;
                 }
                 while (begin == false) ;
-                String data = ConvertidorJson.convertirMesaAJson(this.mesa);
-                this.sendData(data);
+                String mesaJSON = ConvertidorJson.convertirMesaAJson(this.mesa);
+                this.sendData(mesaJSON);
             }
         }
 
@@ -221,7 +211,5 @@ namespace serverTexas
                 this.sendData("Por favor pruebe otros datos");
             }
         }
-
-
     }//ciere de la clase 
 }

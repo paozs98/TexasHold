@@ -45,15 +45,9 @@ namespace WPFpruebaCliente
             //clientSocket.Close();
             Close();    
         }
-
-        public string readDelServidor() {
-            return null;
-        }
-        
-
+      
         private void Ingresar_Click(object sender, RoutedEventArgs e)
         {
-
 
             clientSocket = new TcpClient(serverIp, port); // hace la conexion de una vez 
             //esto se manda al Accept del server;
@@ -62,75 +56,14 @@ namespace WPFpruebaCliente
 
             string jugadorJSON = JsonConvert.SerializeObject(j);
 
-            //metodito papu 
-            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
-
-            NetworkStream stream = clientSocket.GetStream();
-
-            stream.Write(flujoBytes, 0, flujoBytes.Length);
-
-            //cierre de metodo papu como en una clase 
-
-
-            //stream.Close();
-
-            //respuesta.Text = // aquí pasar el texto de aceptación del servidor
-
-
-            // byte[] inStream = new byte[4096];
-            //int bytesRead = stream.Read(inStream, 0, inStream.Length);
-            //string returndata = Encoding.ASCII.GetString(inStream,0,bytesRead);
-            //mensajeServer(returndata);
-
-            //while (!completo) {
-
-
-            //            }
-
-            //          if (completo) {
-
-            Mesa m = ConvertidorJson.convertirJSONaMesa(readData());
+            GestorMensajes.sendData(jugadorJSON, clientSocket);
+                      
+            Mesa m = ConvertidorJson.convertirJSONaMesa(GestorMensajes.readData(clientSocket));
 
                 MainWindow main = new MainWindow(j, clientSocket, m);
                 main.Show();
                 Close();
-    //        }
         }
-
-
-
-        public string readData()
-        {
-
-            byte[] receivedBuffer = new byte[4096];// info de lo que envia el cliente pero en byte 
-            NetworkStream stream = clientSocket.GetStream();
-            stream.Read(receivedBuffer, 0, receivedBuffer.Length);
-
-            StringBuilder msg = new StringBuilder();
-
-            try
-            {
-
-                foreach (byte b in receivedBuffer)
-                {
-                    if (b.Equals(00))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        msg.Append(Convert.ToChar(b).ToString());
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(">>" + ex.ToString());
-            }
-            return msg.ToString();
-        }//cierre del metodo
-
 
         private void Registrar_Click(object sender, RoutedEventArgs e)
         {
@@ -139,9 +72,9 @@ namespace WPFpruebaCliente
             Close();
 
         }
+
         private void mensajeServer(String mensaje) {
             respuesta.Text = respuesta.Text + Environment.NewLine + ">>"+ mensaje;
-
         }
       
     }

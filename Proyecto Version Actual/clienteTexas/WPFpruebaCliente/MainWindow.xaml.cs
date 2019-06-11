@@ -32,7 +32,6 @@ namespace WPFpruebaCliente
         Mesa mesa;
         Jugador jugador;
         TcpClient clientSocket;
-//        NetworkStream stream;
         int numRonda;
 
 
@@ -50,20 +49,6 @@ namespace WPFpruebaCliente
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void sendData() {
-                        
-            string jugadorJSON = JsonConvert.SerializeObject(jugador);
-
-            //metodito papu 
-            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
-
-            NetworkStream stream = clientSocket.GetStream();
-
-            stream.Write(flujoBytes, 0, flujoBytes.Length);
-
-
         }
 
 
