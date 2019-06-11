@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace serverTexas {
-    //Clase para darle el formato a las 52 cartas que tiene que esta en el juego
+    
     public class Carta {
 
         public enum VALOR { DOS = 2, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, JOTA, QUINA, KA, AS };
         public enum PALO { DIAMANTE = 1, TREBOL, CORAZON, ESPADA };
 
-
-        //Atributos de las cartas 
         public int valor { get; set; }
         public int palo { get; set; }
 
@@ -71,15 +69,5 @@ namespace serverTexas {
             return (string)"" + p + v;
         }
         
-        /*public static string convertirCartaAJson(Carta j) {
-            return JsonConvert.SerializeObject(j);
-        }
-
-        public static Carta convertirJSONaCarta(string j) {
-            Carta cartiux = new Carta();
-            cartiux = JsonConvert.DeserializeObject<Carta>(j);
-            return cartiux;
-        }*/
-
     }
 }

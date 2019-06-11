@@ -13,7 +13,7 @@ namespace serverTexas
     class TcpServer
     {
 
-        IPAddress localAddr = IPAddress.Parse("192.168.0.21");// para que se conecte en cualquir dir
+        IPAddress localAddr = IPAddress.Parse("10.251.35.119");// para que se conecte en cualquir dir
         int puerto = 8090;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
@@ -62,21 +62,21 @@ namespace serverTexas
                 //se muestra solo una por cada ronda 
                 Carta carta = mazoGlobal.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
-                
-                Console.WriteLine("carta: " + carta.imprimir() );
+
+                Console.WriteLine("carta: " + carta.imprimir());
             }
 
-            //provicional para la aceptacion de clientes // sin dll
+
             for (int i = 0; i < 4; ++i)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
                 jugador = ConvertidorJson.convertirJSONaJugador(this.readData(clientSocket));
-             
+
                 Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
                     + "\nJugador numero #   " +
                     Convert.ToString(contadorUsuarios));
 
-                this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre, 
+                this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre,
                     Convert.ToString(contadorUsuarios), jugador.contrasena));
 
                 contadorUsuarios += 1;
@@ -88,30 +88,36 @@ namespace serverTexas
             //{
             //    this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
             //}
-            //for (int i = 0; i < 4; i++)
+
+            // con la parte de Rob
+            //for (int i = 0; i < 4; i++){
+
+
+            //clientSocket = ServerSocket.AcceptTcpClient();
+            //jugador = ConvertidorJson.convertirJSONaJugador(this.readData(clientSocket));
+            //usuarioPermitido = TexasHoldemDLL.Autenticación.autentificar(jugador.nombre, jugador.contrasena);
+            //if (usuarioPermitido)
             //{
+            //    Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
+            //                        + "\nJugador numero #   " +
+            //                        Convert.ToString(contadorUsuarios));
 
-            //    clientSocket = ServerSocket.AcceptTcpClient();
-            //    jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-            //    usuarioPermitido = TexasHoldemDLL.Autenticación.autentificar(jugador.nombre, jugador.contrasena);
-            //    if (usuarioPermitido) //si el usuario existe que entre a la sala para jugar
-            //    {
-            //        contadorUsuarios += 1;
-            //        //Aqui se debe crear al handler del cliente 
-            //        Console.WriteLine("Ha entrado un usuario al server! "+jugador.nombre+"\n Jugador numero$" + Convert.ToString(contadorUsuarios));
-            //        handleClinet client = new handleClinet();
-            //        _clients.Add(client);
-            //        client.iniciarHandleClient(clientSocket, Convert.ToString(contadorUsuarios));
+            //    this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre,
+            //        Convert.ToString(contadorUsuarios), jugador.contrasena));
 
-            //    }
-            //    else // sino mandarle un mensaje de que no existe y que se cree un usuario
-            //    {
-            //        Console.WriteLine("Usuario no registrado");
-            //        this.sendData("Por favor registrese!");
+            //    contadorUsuarios += 1;
 
-            //    }
+            //    this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
 
             //}
+            //else {
+            //            Console.WriteLine("Usuario no registrado");
+            //            this.sendData("Por favor registrese!");
+            //jugador = ConvertidorJson.convertirJSONaJugador(this.readData(clientSocket));
+            //TexasHoldemDLL.Autenticación.crearUsuario(jugador.nombre,jugador.contrasena);
+            //}
+            //}
+
 
         }
 
@@ -120,6 +126,7 @@ namespace serverTexas
             while (mesa.jugadores.cantidad != 4) ;
             while (true)
             {
+                ///implementacion del mutex
                 _mutex.WaitOne();
                 if (begin == false)
                 {
@@ -133,13 +140,22 @@ namespace serverTexas
                     begin = true;
                 }
                 _mutex.ReleaseMutex();
+
+                // sale el primer jugador  que entro (hilo) solo este realiza las cosas
+
                 while (begin == false) ;
 
+                //Mandamos la mesa con todas las cosas a todos los jugadores 
                 String mesaJSON = ConvertidorJson.convertirMesaAJson(this.mesa);
                 this.sendData(mesaJSON,(TcpClient) socket);
+
+                //Primera jugada 
+                //primeraJugada();
+
+
             }
         }
-
+        //recibiendo datos como string tiene que ir serliazados 
         public void sendData(String mensaje, TcpClient socket)
         {
             // para mansajes al cliente
@@ -147,7 +163,7 @@ namespace serverTexas
             NetworkStream stream = socket.GetStream();
             stream.Write(flujoBytes, 0, flujoBytes.Length);
         }
-
+        //enviandoDatos como string se tiene que serializar antes 
         public string readData(TcpClient socket)
         {
             byte[] receivedBuffer = new byte[4096];// info de lo que envia el cliente pero en byte 
@@ -190,9 +206,15 @@ namespace serverTexas
             clienteHilo.Start(inClient);
         }
 
-        
+        //public void primeraJugada() {
+        //    for (int i = 0; i < 4; i++) {
+        //        mesa.pot + = mesa.jugadores.GetJugadorEnLaPos(i).apuesta;
+        //    }
+        //    this.sendData(ConvertidorJson.convertirPotAJson(mesa.pot),clientSocket);
+        //    //Aqui despues de que todos apostaron se debe mostrar las primera 3 cartas 
+        //}
 
-        //No sé si funca
+
         //public void registrarUsuario()
         //{
         //    clientSocket = ServerSocket.AcceptTcpClient();

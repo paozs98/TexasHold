@@ -16,14 +16,6 @@ namespace serverTexas
             barajar();
         }
 
-        //public void llenarMazo() {
-        //    for (int pal = ((int)Carta.PALO.DIAMANTE); pal <= ((int)Carta.PALO.ESPADA); ++pal) {
-        //        for (int c = ((int)Carta.VALOR.AS); c <= ((int)Carta.VALOR.KA); ++c) {
-        //            MAZO.agregarCarta(new Carta(c, pal));
-        //            Console.WriteLine("carta " + c +"palo "+pal);
-        //        }
-        //    }
-        //}
 
         public void llenarMazo() {
             for (int p = 1; p <= 4; p++) {

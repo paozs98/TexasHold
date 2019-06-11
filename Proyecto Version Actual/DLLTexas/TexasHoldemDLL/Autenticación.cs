@@ -14,7 +14,7 @@ namespace TexasHoldemDLL
         public static bool autentificar(string usu, string pass)
         {
 
-            string path = @"LDAP://WS16.local/TexasHoldEm/Usuarios"; //Sino funciona intentar con...
+            string path = @"LDAP://172.27.0.100/TexasHoldEm/Usuarios"; //Sino funciona intentar con...
             string dominio = @"WS16";                    //OU=Usuarios,OU=TexasHoldEm,DC=WS16,DC=local
             string usuario = usu;
             string password = pass;
@@ -37,7 +37,7 @@ namespace TexasHoldemDLL
         public static bool crearUsuario(string usu, string pass)
         {
 
-            string path = @"LDAP://WS16.local/TexasHoldEm/Usuarios"; //Sino funciona intentar con... OU=Usuarios,OU=TexasHoldEm,DC=WS16,DC=local
+            string path = @"LDAP://172.27.0.100/TexasHoldEm/Usuarios"; //Sino funciona intentar con... OU=Usuarios,OU=TexasHoldEm,DC=WS16,DC=local
 
             //string oGUID = string.Empty;  //Tambien se puede intentar liberando los comentasios de oGID y cambiando al metodo para que devuelva string
 

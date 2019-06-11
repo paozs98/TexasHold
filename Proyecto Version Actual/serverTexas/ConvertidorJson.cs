@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace serverTexas
-{
+{//clase que serializa y deserializa 
+    //es estatica para que no se tengo que contruir un obj
     public static class ConvertidorJson
     {
         //Carta
