@@ -41,8 +41,9 @@ namespace WPFpruebaCliente
             this.jugador = j;
             this.clientSocket = c;
             this.mesa = m;
+            this.numRonda = 0;
             InitializeComponent();
-            primeraRonda();
+           
         }
 
 
@@ -67,14 +68,21 @@ namespace WPFpruebaCliente
 
 
         private void primeraRonda() {
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(0).mano.obtenerCarta(0).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(0).mano.obtenerCarta(1).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(1).mano.obtenerCarta(0).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(1).mano.obtenerCarta(1).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(2).mano.obtenerCarta(0).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(2).mano.obtenerCarta(1).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(3).mano.obtenerCarta(0).getCodigo());
-            setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(3).mano.obtenerCarta(1).getCodigo());
+            if (!mesa.cartasComunes.isVacio()) {
+                setImagenCm1(mesa.cartasComunes.obtenerCarta(0).getCodigo());
+                setImagenCm2(mesa.cartasComunes.obtenerCarta(0).getCodigo());
+                setImagenCm3(mesa.cartasComunes.obtenerCarta(0).getCodigo());
+                
+            }
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(0).mano.obtenerCarta(0).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(0).mano.obtenerCarta(1).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(1).mano.obtenerCarta(0).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(1).mano.obtenerCarta(1).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(2).mano.obtenerCarta(0).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(2).mano.obtenerCarta(1).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(3).mano.obtenerCarta(0).getCodigo());
+            //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(3).mano.obtenerCarta(1).getCodigo());
+
 
         }
 
@@ -208,7 +216,7 @@ namespace WPFpruebaCliente
         private void Ronda_Click(object sender, RoutedEventArgs e)
         {
             numRonda++;
-        //    cargarRonda();
+            primeraRonda();
         }
 
 

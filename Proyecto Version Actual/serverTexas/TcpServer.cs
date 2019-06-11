@@ -68,6 +68,7 @@ namespace serverTexas
                 //se muestra solo una por cada ronda 
                 Carta carta = mazoGlobal.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
+                Console.WriteLine("carta: " + carta.getCodigo() );
             }
 
             //provicional para la aceptacion de clientes
@@ -126,11 +127,6 @@ namespace serverTexas
 
         public void sendData(String mensaje)
         {// para mansajes al cliente
-
-<<<<<<< HEAD
-         
-=======
->>>>>>> f58b05559af8f57e7a1465d85c3ef9537e130185
             byte[] flujoBytes = Encoding.Default.GetBytes(mensaje);
 
             NetworkStream stream = clientSocket.GetStream();
