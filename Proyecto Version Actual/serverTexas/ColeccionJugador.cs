@@ -93,7 +93,10 @@ namespace serverTexas {
             return juga;
         }*/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34c4e7191735395fe1f3739635bf433362890c83
         public int GetPosJugador(Jugador j)
         {
             for (int i = 1; i <= cantidad; i++)
@@ -104,14 +107,16 @@ namespace serverTexas {
 
                 }
 
-
             }
             return 0;
 
         }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 34c4e7191735395fe1f3739635bf433362890c83
     }//cierre de la clase
 
 }
