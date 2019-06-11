@@ -59,6 +59,7 @@ namespace WPFpruebaCliente {
             cantidad--;
         }
 
+    
         /*public static string convertirColeccionCartaAJson(ColeccionCarta j) {
             return JsonConvert.SerializeObject(j);
         }

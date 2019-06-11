@@ -33,6 +33,7 @@ namespace WPFpruebaCliente
         Jugador jugador;
         TcpClient clientSocket;
         NetworkStream stream;
+        int numRonda;
 
 
         public MainWindow(Jugador j, NetworkStream s)
@@ -43,6 +44,11 @@ namespace WPFpruebaCliente
             cargarCartasRonda1();
         }
 
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
 
         private void sendData() {
                         
@@ -67,13 +73,28 @@ namespace WPFpruebaCliente
 
         }
 
+        private void cargarRonda() {
+            switch (numRonda) {
+                case 1: {
+                        cargarCartasRonda1();
+                        break;
+                    }
+                case 2: {
+                        cargarCartasRonda2();
+                        break;
+                    }
+                case 3: {
+                        cargarCartasRonda3();
+                        break;
+                    }
+                default: break;
+            }
+
+        }
+
         private void cargarCartasRonda1() {
-            //recuperar las cartas del jugador 
-
-
-             // recuperar las cartas de la primera ronda
-            
-
+            string c1,c2,c3;
+            //c1 = mesa.mazoMesa.
         }
 
         private void cargarCartasRonda2() {
@@ -86,22 +107,61 @@ namespace WPFpruebaCliente
 
         }
         //corregir
-        private void setImagen(System.Windows.Rect nombre, string carta, int i) { //el nombre es la posición de la imagen,
-            //la carta es para cargar el con la dirección de la carta 
+        //para prueba
+        private void setImagenCm1(string carta) { //el nombre es la posición de la imagen,
             ImageBrush img = new ImageBrush();
-//            string im = mesa.cartasComunes.VEC[i].palo + mesa.cartasComunes.VEC[i].valor;
-  //          img.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\imagenes\\"++".png",UriKind.Relative))
-    //            nombre.Fill = img;
-
+            img.ImageSource= new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\cartas\\"+carta+".png", UriKind.Relative));
+            cm1.Fill = img;
+        }
+        private void setImagenCm2(string carta)
+        { //el nombre es la posición de la imagen,
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\cartas\\" + carta + ".png", UriKind.Relative));
+            cm2.Fill = img;
+        }
+        private void setImagenCm3(string carta)
+        { //el nombre es la posición de la imagen,
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\cartas\\" + carta + ".png", UriKind.Relative));
+            cm3.Fill = img;
+        }
+        private void setImagenCm4(string carta)
+        { //el nombre es la posición de la imagen,
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\cartas\\" + carta + ".png", UriKind.Relative));
+            cm4.Fill = img;
+        }
+        private void setImagenCm5(string carta)
+        { //el nombre es la posición de la imagen,
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\cartas\\" + carta + ".png", UriKind.Relative));
+            cm1.Fill = img;
         }
 
-        
 
-        private void mensajeServer(String mensaje)
+
+
+
+
+
+
+        private void setTextBlock( TextBlock block, string mensaje)
         {
-            respuesta.Text = respuesta.Text + Environment.NewLine + ">>" + mensaje;
-
+            block.Text = mensaje;
         }
+
+        private void Ronda_Click(object sender, RoutedEventArgs e)
+        {
+            numRonda++;
+            cargarRonda();
+        }
+
+
+        //private void mensajeServer(String mensaje)
+        //{
+        //    respuesta.Text = respuesta.Text + Environment.NewLine + ">>" + mensaje;
+
+        //}
 
 
 

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using System.Net.Sockets;
+using Newtonsoft.Json;
+
 namespace WPFpruebaCliente
 {
     /// <summary>
@@ -22,6 +25,8 @@ namespace WPFpruebaCliente
 
         string ipServer;
         int port;
+        TcpClient clientSocket;
+
         public Registro(string ip, int p)
         {
             this.ipServer = ip;
@@ -33,6 +38,32 @@ namespace WPFpruebaCliente
         {
 
 
+            clientSocket = new TcpClient(ipServer, port); // hace la conexion de una vez 
+            //esto se manda al Accept del server;
+
+            Jugador j = new Jugador() { nombre = usuario.Text, contrasena = password.Text }; // agarrando los datos de form
+
+            string jugadorJSON = JsonConvert.SerializeObject(j);
+
+            //metodito papu 
+            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
+
+            NetworkStream stream = clientSocket.GetStream();
+
+            stream.Write(flujoBytes, 0, flujoBytes.Length);
+
+            //cierre de metodo papu como en una clase 
+
+
+            //stream.Close();
+
+            //respuesta.Text = // aquí pasar el texto de aceptación del servidor
+
+
+            byte[] inStream = new byte[4099];
+            int bytesRead = stream.Read(inStream, 0, inStream.Length);
+            string returndata = Encoding.ASCII.GetString(inStream, 0, bytesRead);
+            mensajeServer(returndata);
 
 
         }
@@ -46,7 +77,21 @@ namespace WPFpruebaCliente
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
+
+        private void mensajeServer(String mensaje)
+        {
+            respuesta.Text = respuesta.Text + Environment.NewLine + ">>" + mensaje;
 
         }
+
+
+
+
+
+
+
+
     }
 }
