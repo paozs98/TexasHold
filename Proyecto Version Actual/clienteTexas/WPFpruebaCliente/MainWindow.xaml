@@ -24,6 +24,16 @@
         <Rectangle Name="cm5" Height="100" Width="50" Margin="330,-90,0,0"></Rectangle>
         <Button Name="ronda" Click="Ronda_Click" Width="40" Height="30" Content="Ronda"/>
 
+        <Rectangle Name="j1c1" Height="100" Width="50" Margin="-590,-100,0,10"></Rectangle>
+        <Rectangle Name="j1c2" Height="100" Width="50" Margin="-480,-100,0,10"></Rectangle>
+        <Rectangle Name="j2c1" Height="100" Width="50" Margin="-350,75,0,10"></Rectangle>
+        <Rectangle Name="j2c2" Height="100" Width="50" Margin="-250,-110,0,10"></Rectangle>
+        <Rectangle Name="j3c1" Height="100" Width="50" Margin="270,-100,0,10"></Rectangle>
+        <Rectangle Name="j3c2" Height="100" Width="50" Margin="380,-150,0,10"></Rectangle>
+        <Rectangle Name="j4c1" Height="100" Width="50" Margin="500,-550,0,10"></Rectangle>
+        <Rectangle Name="j4c2" Height="100" Width="50" Margin="600,-520,0,10"></Rectangle>
+
+
 
 
     </StackPanel>

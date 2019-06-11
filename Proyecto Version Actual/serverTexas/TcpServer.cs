@@ -130,9 +130,8 @@ namespace serverTexas
         public void sendData(String mensaje)
         {// para mansajes al cliente
 
-            string jugadorJSON = JsonConvert.SerializeObject(mensaje);
-
-            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
+         
+            byte[] flujoBytes = Encoding.Default.GetBytes(mensaje);
 
             NetworkStream stream = clientSocket.GetStream();
 

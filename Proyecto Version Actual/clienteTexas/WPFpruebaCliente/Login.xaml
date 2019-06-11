@@ -18,7 +18,7 @@
     </Window.Background>
     <Border Background="DimGray" CornerRadius="28" Margin="26" Opacity="0.9">
         <StackPanel Margin="25" >
-            <Label Content="Texas Holden" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <Label Content="Texas Holdem" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator></Separator>
             <Label Content="User" Foreground="White" FontSize="20"/>
             <TextBox Name="usuario" Background="LightSlateGray" Foreground="White" FontSize="20"/>
