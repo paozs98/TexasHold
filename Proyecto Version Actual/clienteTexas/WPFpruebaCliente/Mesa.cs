@@ -11,7 +11,7 @@ namespace WPFpruebaCliente {
 
         public Mazo mazoMesa { get; set; }
         public ColeccionJugador jugadores { get; set; }
-        public ColeccionJugador jugadoresActivos { get; set; }
+      //  public ColeccionJugador jugadoresActivos { get; set; }
         public ColeccionCarta cartasComunes { get; set; }
         // estas son las cartas que muestra cada vez que se cierra una ronda de apuesta 
         // son las 5 cartas comunes de los jugadores
@@ -27,7 +27,8 @@ namespace WPFpruebaCliente {
             this.cartasComunes = new ColeccionCarta(5);
             this.mazoMesa = new Mazo();
             this.jugadores = new ColeccionJugador(4);
-            turno = 0;
+            this.turno = 0;
+            this.desicion = -1;
 
         }
         public void repartirCartasIniciales()
@@ -78,7 +79,7 @@ namespace WPFpruebaCliente {
         {
             if (jugadores.GetJugadorEnLaPos(turno).dineroInicial < jugadores.GetJugadorEnLaPos(turno).apuesta) ;
             return false;
-            return true;
+           // return true;
         }
         public void fold() { }
         public void raise() { }
