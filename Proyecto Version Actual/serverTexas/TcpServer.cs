@@ -70,7 +70,7 @@ namespace serverTexas
             for (int i = 0; i < 4; ++i)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
-                jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
+                jugador = ConvertidorJson.convertirJSONaJugador(this.readData(clientSocket));
              
                 Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
                     + "\nJugador numero #   " +
@@ -115,7 +115,7 @@ namespace serverTexas
 
         }
 
-        public void letsPlayTexas()
+        public void letsPlayTexas(Object socket)
         {
             while (mesa.jugadores.cantidad != 4) ;
             while (true)
@@ -136,22 +136,22 @@ namespace serverTexas
                 while (begin == false) ;
 
                 String mesaJSON = ConvertidorJson.convertirMesaAJson(this.mesa);
-                this.sendData(mesaJSON);
+                this.sendData(mesaJSON,(TcpClient) socket);
             }
         }
 
-        public void sendData(String mensaje)
+        public void sendData(String mensaje, TcpClient socket)
         {
             // para mansajes al cliente
             byte[] flujoBytes = Encoding.Default.GetBytes(mensaje);
-            NetworkStream stream = clientSocket.GetStream();
+            NetworkStream stream = socket.GetStream();
             stream.Write(flujoBytes, 0, flujoBytes.Length);
         }
 
-        public string readData()
+        public string readData(TcpClient socket)
         {
             byte[] receivedBuffer = new byte[4096];// info de lo que envia el cliente pero en byte 
-            NetworkStream stream = clientSocket.GetStream();
+            NetworkStream stream = socket.GetStream();
             stream.Read(receivedBuffer, 0, receivedBuffer.Length);
             StringBuilder msg = new StringBuilder();
 
@@ -178,38 +178,38 @@ namespace serverTexas
 
         public void manejadorCliente(TcpClient inClient, string clientNO)
         {
-            TcpClient clienSocket;
+            //TcpClient clienSocket;
             string CLNO;
             Thread clienteHilo;
 
-            clienSocket = inClient;
+            //clienSocket = inClient;
             CLNO = clientNO;
-            clienteHilo = new Thread(letsPlayTexas);
+            clienteHilo = new Thread(new ParameterizedThreadStart(letsPlayTexas));
             clienteHilo.Name = clientNO; //identificador para cada hilo
             _hilosClientes.Add(clienteHilo);
-            clienteHilo.Start();
+            clienteHilo.Start(inClient);
         }
 
         
 
         //No sé si funca
-        public void registrarUsuario()
-        {
-            clientSocket = ServerSocket.AcceptTcpClient();
+        //public void registrarUsuario()
+        //{
+        //    clientSocket = ServerSocket.AcceptTcpClient();
 
-            jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
+        //    jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
 
-            if(usuarioPermitido = TexasHoldemDLL.Autenticación.crearUsuario(jugador.nombre, jugador.contrasena))
-            {
-                Console.WriteLine("Usuario nuevo registrado");
-                this.sendData("Se ha regitrado correctamente");
+        //    if(usuarioPermitido = TexasHoldemDLL.Autenticación.crearUsuario(jugador.nombre, jugador.contrasena))
+        //    {
+        //        Console.WriteLine("Usuario nuevo registrado");
+        //        this.sendData("Se ha regitrado correctamente");
 
-            }
-            else
-            {
-                Console.WriteLine("No se ha podido regitrar el usuario");
-                this.sendData("Por favor pruebe otros datos");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("No se ha podido regitrar el usuario");
+        //        this.sendData("Por favor pruebe otros datos");
+        //    }
+        //}
     }//ciere de la clase 
 }
