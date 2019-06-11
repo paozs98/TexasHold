@@ -80,6 +80,24 @@ namespace serverTexas {
         }*/
 
 
+        public int GetPosJugador(Jugador j)
+        {
+            for (int i = 1; i <= cantidad; i++)
+            {
+                if (VEC[i].nombre == j.nombre)
+                {
+                    return i;
+
+                }
+
+
+            }
+            return 0;
+
+        }
+
+
+
     }//cierre de la clase
 
 }
