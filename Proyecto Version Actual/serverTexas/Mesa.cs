@@ -22,8 +22,6 @@ namespace serverTexas {
 
         public int turno { get;}
 
-        public int turno { get; set; }
-
 
         // metodos
         public Mesa()

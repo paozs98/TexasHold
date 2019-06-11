@@ -9,52 +9,69 @@ namespace serverTexas {
     //Clase que se encarga de tener las cartas de lo jugadores 
     // o de la mesa en si ya que la mesa tiene que tener una coleccion de  52 cartas
     public class ColeccionCarta {
+
         //Atributos
         public Carta[] VEC { get; set; }
         public int tamano { get; set; }
         public int cantidad { get; set; }
 
         //Metodos 
-        public ColeccionCarta(int n) {
+        public ColeccionCarta(int n)
+        {
             tamano = n;
             VEC = new Carta[tamano];
             cantidad = 0;
         }
-        public ColeccionCarta() {
+        public ColeccionCarta()
+        {
             tamano = 10;
             VEC = new Carta[tamano];
             cantidad = 0;
         }
-        public bool isVacio() {
+        public bool isVacio()
+        {
             return (cantidad == 0);
         }
-        public Carta obtenerCarta(int pos) {
-            if (pos < cantidad) {
+        public Carta obtenerCarta(int pos)
+        {
+            if (pos < cantidad)
+            {
                 return VEC[pos];
-            } else { return null; }
+            }
+            else { return null; }
         }
-        public void reemplazarCarta(int pos, Carta c) {
-            if (pos < cantidad) {
+        public void reemplazarCarta(int pos, Carta c)
+        {
+            if (pos < cantidad)
+            {
                 VEC[pos] = c;
             }
         }
-        public bool agregarCarta(Carta car) {
-            if (cantidad < tamano) {
+        public bool agregarCarta(Carta car)
+        {
+            if (cantidad < tamano)
+            {
                 VEC[cantidad++] = car;
                 return true;
-            } else { return false; }
+            }
+            else { return false; }
         }
-        public void limpiar() {
-            for (int i = 0; i < tamano; i++) {
+        public void limpiar()
+        {
+            for (int i = 0; i < tamano; i++)
+            {
                 VEC[i] = null;
             }
         }
-        public void ImprimeColeccion() {
-            for (int i = 0; i < cantidad; i++) {
+        public void ImprimeColeccion()
+        {
+            for (int i = 0; i < cantidad; i++)
+            {
                 VEC[i].imprimir();
             }
         }
-        public void eliminarUltimo() {
+        public void eliminarUltimo()
+        {
             cantidad--;
         }
 
@@ -63,11 +80,10 @@ namespace serverTexas {
         }
 
         public static ColeccionCarta convertirJSONaColeccionCarta(string j) {
-            ColeccionCarta coleccionux = new ColeccionCarta();
-            coleccionux = JsonConvert.DeserializeObject<ColeccionCarta>(j);
-            return coleccionux;
+            ColeccionCarta juga = new ColeccionCarta();
+            juga = JsonConvert.DeserializeObject<ColeccionCarta>(j);
+            return juga;
         }*/
-
 
     }//cierre de la clase
 

@@ -12,7 +12,8 @@ namespace WPFpruebaCliente {
         public int apuestaMaxima { get; set; }
         public int sumatoriaDeApuesta { get; set; }
 
-        public Pot() {
+        public Pot()
+        {
             sumatoriaDeApuesta = 0;
             apuestaMinima = 50;
             apuestaMaxima = 100;
@@ -23,9 +24,9 @@ namespace WPFpruebaCliente {
         }
 
         public static Pot convertirJSONaPot(string j) {
-            Pot juga = new Pot();
-            juga = JsonConvert.DeserializeObject<Pot>(j);
-            return juga;
+            Pot potpot = new Pot();
+            potpot = JsonConvert.DeserializeObject<Pot>(j);
+            return potpot;
         }*/
 
     }

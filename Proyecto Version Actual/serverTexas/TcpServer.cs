@@ -13,21 +13,26 @@ namespace serverTexas
     class TcpServer
     {
 
-        IPAddress localAddr = IPAddress.Parse("10.251.34.157");// para que se conecte en cualquir dir
+        IPAddress localAddr = IPAddress.Parse("127.0.0.1");// para que se conecte en cualquir dir
         int puerto = 8090;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
         TcpClient clientSocket;
-
         int contadorUsuarios = 0;
 
-        static List<handleClinet> _clients;
-        static List<Thread> _hilosClientes;
-        int turnoGlobal = 0;
+        //este deberia borrarse
+        //static List<handleClinet> _clients;
 
+        static List<Thread> _hilosClientes;
+
+        Mutex _mutex = new Mutex();
+
+        int turnoGlobal = 0;
         bool usuarioPermitido;
-        Jugador jugador = null;
+
+        Jugador jugador = null;// para obtener los datos de los jugadores 
         Mesa mesa = null;
+        bool begin = true;
 
 
 
@@ -36,21 +41,20 @@ namespace serverTexas
             ServerSocket = new TcpListener(localAddr, puerto);
             clientSocket = default(TcpClient);
             _hilosClientes = new List<Thread>(); ///iniciando la lista de los clientes 
-            _clients = new List<handleClinet>(); //inicializando la lista :p
-            this.mesa = new Mesa(); //inicializar la mesa para que el cliente se la mande
+            //_clients = new List<handleClinet>(); //inicializando la lista :p
+
+            this.mesa = new Mesa(); //inicializar la mesa para mandarse la al loc clientes
+            //tiene que barajarse ya lo hace por los metodos 
 
         }
 
         public void IniciarServer()
         {
-
             try
             {
-
                 ServerSocket.Start();
                 Console.WriteLine("Iniciando el server en la direccion {0}", Convert.ToString(localAddr));
                 Console.WriteLine("En el puerto {0}", Convert.ToString(puerto));
-
             }
             catch (Exception ex)
             {
@@ -59,27 +63,30 @@ namespace serverTexas
             }
 
             for (int w = 0; w < 5; w++)
-            {// for para obtener las 5 cartas comunes del juego 
-             //se muestra solo una por cada ronda 
-
+            {
+                // for para obtener las 5 cartas comunes del juego 
+                //se muestra solo una por cada ronda 
                 Carta carta = mesa.mazoMesa.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
 
             }
+
             //provicional para la aceptacion de clientes
             for (int i = 0; i < 4; i++)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
-                //jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-                jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-                
+                jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
+                //jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
+
                 //Aqui se debe crear al handler del cliente 
-                Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre + "\n Jugador numero#" + Convert.ToString(contadorUsuarios));
+                Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
+                    + "\n Jugador numero#" +
+                    Convert.ToString(contadorUsuarios));
+
                 this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre, Convert.ToString(contadorUsuarios), jugador.contrasena));
 
-
                 contadorUsuarios += 1;
-                //this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
+                this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
 
                 //handleClinet client = new handleClinet();
                 //    _clients.Add(client);
@@ -119,14 +126,6 @@ namespace serverTexas
         }
 
 
-        public Jugador convertirJSONaJugador(string j)
-        {
-
-            Jugador juga = new Jugador();
-            juga = JsonConvert.DeserializeObject<Jugador>(j);
-            return juga;
-
-        }
 
         public void sendData(String mensaje)
         {// para mansajes al cliente
@@ -182,36 +181,34 @@ namespace serverTexas
             clienSocket = inClient;
             CLNO = clientNO;
             clienteHilo = new Thread(letsPlayTexas);
-            clienteHilo.Start();
+            clienteHilo.Name = clientNO;
             _hilosClientes.Add(clienteHilo);
-
+            clienteHilo.Start();
         }
 
         public void letsPlayTexas()
         {
-
-
             while (true)
             {
-                this.mesa.repartirCartasIniciales();
-                this.mesa.pot.apuestaMinima = 50;
-                this.mesa.pot.apuestaMaxima = 100;
-                this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 100;
-                this.mesa.jugadores.GetJugadorEnLaPos(2).dineroInicial -= 50;
-                foreach (Thread ch in _hilosClientes)
+                if (begin == false)
                 {
-                    ch.Start();
+                    _mutex.WaitOne();
+                    this.mesa.repartirCartasIniciales();
+                    this.mesa.pot.apuestaMinima = 50;
+                    this.mesa.pot.apuestaMaxima = 100;
+                    this.mesa.jugadores.GetJugadorEnLaPos(0).dineroInicial -= 100;
+                    this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 50;
+                    _mutex.ReleaseMutex();
+                    begin = true;
                 }
+                while (begin == true) ; ;
 
                 this.sendData(ConvertidorJson.convertirMesaAJson(this.mesa));
 
-                //Empiece con el jugador 1 
-                // Todas las opciones del jugador
-                
+
+
             }
         }
-
-
 
 
     }//ciere de la clase 

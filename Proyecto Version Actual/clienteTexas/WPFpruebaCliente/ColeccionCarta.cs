@@ -9,6 +9,7 @@ namespace WPFpruebaCliente {
     //Clase que se encarga de tener las cartas de lo jugadores 
     // o de la mesa en si ya que la mesa tiene que tener una coleccion de  52 cartas
     public class ColeccionCarta {
+
         //Atributos
         public Carta[] VEC { get; set; }
         public int tamano { get; set; }
