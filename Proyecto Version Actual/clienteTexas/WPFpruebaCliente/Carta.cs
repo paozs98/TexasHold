@@ -68,7 +68,9 @@ namespace WPFpruebaCliente {
         }
 
         public string getCodigo() {
-            return (string)""+palo +valor;
+            int p = palo - 1;
+       
+            return (string)""+p +valor;
         }
         /*public static string convertirCartaAJson(Carta j) {
             return JsonConvert.SerializeObject(j);
