@@ -32,14 +32,15 @@ namespace WPFpruebaCliente
         Mesa mesa;
         Jugador jugador;
         TcpClient clientSocket;
-        NetworkStream stream;
+//        NetworkStream stream;
         int numRonda;
 
 
-        public MainWindow(Jugador j, NetworkStream s)
+        public MainWindow(Jugador j, TcpClient c, Mesa m)
         {
             this.jugador = j;
-            this.stream = s;
+            this.clientSocket = c;
+            this.mesa = m;
             InitializeComponent();
             cargarCartasRonda1();
         }
@@ -65,13 +66,13 @@ namespace WPFpruebaCliente
         }
 
 
-        private string recibirDatos() {
-            byte[] inStream = new byte[4099];
-            int bytesRead = stream.Read(inStream, 0, inStream.Length);
-            return Encoding.ASCII.GetString(inStream, 0, bytesRead);
+        //private string recibirDatos() {
+        //    byte[] inStream = new byte[4099];
+        //    int bytesRead = stream.Read(inStream, 0, inStream.Length);
+        //    return Encoding.ASCII.GetString(inStream, 0, bytesRead);
    
 
-        }
+        //}
 
         private void cargarRonda() {
             switch (numRonda) {
@@ -142,12 +143,6 @@ namespace WPFpruebaCliente
             img.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\cartas\\" + carta + ".png", UriKind.Relative));
             cm1.Fill = img;
         }
-
-
-
-
-
-
 
 
         private void setTextBlock( TextBlock block, string mensaje)

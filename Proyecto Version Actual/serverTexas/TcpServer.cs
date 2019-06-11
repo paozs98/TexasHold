@@ -213,12 +213,8 @@ namespace serverTexas
         public void registrarUsuario()
         {
             clientSocket = ServerSocket.AcceptTcpClient();
-<<<<<<< HEAD
-         //   jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-=======
             jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-            //jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
->>>>>>> 34c4e7191735395fe1f3739635bf433362890c83
+        
             if(usuarioPermitido = TexasHoldemDLL.Autenticación.crearUsuario(jugador.nombre, jugador.contrasena))
             {
                 Console.WriteLine("Usuario nuevo registrado");
