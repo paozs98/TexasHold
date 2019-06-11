@@ -55,8 +55,8 @@ namespace WPFpruebaCliente
         private void primeraRonda() {
             if (!mesa.cartasComunes.isVacio()) {
                 setImagenCm1(mesa.cartasComunes.obtenerCarta(0).getCodigo());
-                setImagenCm2(mesa.cartasComunes.obtenerCarta(0).getCodigo());
-                setImagenCm3(mesa.cartasComunes.obtenerCarta(0).getCodigo());
+                setImagenCm2(mesa.cartasComunes.obtenerCarta(1).getCodigo());
+                setImagenCm3(mesa.cartasComunes.obtenerCarta(2).getCodigo());
                 
             }
             //setImagenJ1c1(mesa.jugadores.GetJugadorEnLaPos(0).mano.obtenerCarta(0).getCodigo());

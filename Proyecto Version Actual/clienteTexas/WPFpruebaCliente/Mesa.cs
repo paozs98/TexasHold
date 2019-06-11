@@ -23,10 +23,11 @@ namespace WPFpruebaCliente {
         // metodos
         public Mesa()
         {
+
             this.cartasComunes = new ColeccionCarta(5);
        //     this.mazoMesa = new Mazo();
             this.jugadores = new ColeccionJugador(4);
-    
+            this.pot = new Pot();
 
         }
         public void repartirCartasIniciales(Mazo mazo)
