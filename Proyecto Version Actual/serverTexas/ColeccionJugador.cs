@@ -82,17 +82,6 @@ namespace serverTexas {
             }
         }
 
-
-        /*public static string convertirColeccionJugadorAJson(ColeccionJugador j) {
-            return JsonConvert.SerializeObject(j);
-        }
-
-        public static ColeccionJugador convertirJSONaColeccionJugador(string j) {
-            ColeccionJugador juga = new ColeccionJugador();
-            juga = JsonConvert.DeserializeObject<ColeccionJugador>(j);
-            return juga;
-        }*/
-
         public int GetPosJugador(Jugador j)
         {
             for (int i = 1; i <= cantidad; i++)
@@ -107,6 +96,17 @@ namespace serverTexas {
             return 0;
 
         }
+
+        /*public static string convertirColeccionJugadorAJson(ColeccionJugador j) {
+            return JsonConvert.SerializeObject(j);
+        }
+        
+        public static ColeccionJugador convertirJSONaColeccionJugador(string j) {
+            ColeccionJugador juga = new ColeccionJugador();
+            juga = JsonConvert.DeserializeObject<ColeccionJugador>(j);
+            return juga;
+        }*/
+
 
     }//cierre de la clase
 
