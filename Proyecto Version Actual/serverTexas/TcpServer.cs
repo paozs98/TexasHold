@@ -13,7 +13,7 @@ namespace serverTexas
     class TcpServer
     {
 
-        IPAddress localAddr = IPAddress.Parse("127.0.0.1");// para que se conecte en cualquir dir
+        IPAddress localAddr = IPAddress.Parse("192.168.0.21");// para que se conecte en cualquir dir
         int puerto = 8090;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
@@ -24,7 +24,7 @@ namespace serverTexas
         //static List<handleClinet> _clients;
 
         static List<Thread> _hilosClientes;
-
+        Mazo mazoGlobal = new Mazo();
         Mutex _mutex = new Mutex();
 
         int turnoGlobal = 0;
@@ -66,9 +66,8 @@ namespace serverTexas
             {
                 // for para obtener las 5 cartas comunes del juego 
                 //se muestra solo una por cada ronda 
-                Carta carta = mesa.mazoMesa.darUnaCarta();
+                Carta carta = mazoGlobal.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
-
             }
 
             //provicional para la aceptacion de clientes
@@ -76,11 +75,10 @@ namespace serverTexas
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
                 jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-                //jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-
+             
                 //Aqui se debe crear al handler del cliente 
                 Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
-                    + "\n Jugador numero#" +
+                    + "\nJugador numero #   " +
                     Convert.ToString(contadorUsuarios));
 
                 this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre, Convert.ToString(contadorUsuarios), jugador.contrasena));
@@ -120,8 +118,7 @@ namespace serverTexas
 
             //}
 
-            //aqui se inician los todos los hilos 
-            this.letsPlayTexas();
+            
 
         }
 
@@ -130,7 +127,10 @@ namespace serverTexas
         public void sendData(String mensaje)
         {// para mansajes al cliente
 
+<<<<<<< HEAD
          
+=======
+>>>>>>> f58b05559af8f57e7a1465d85c3ef9537e130185
             byte[] flujoBytes = Encoding.Default.GetBytes(mensaje);
 
             NetworkStream stream = clientSocket.GetStream();
@@ -192,7 +192,7 @@ namespace serverTexas
                 if (begin == false)
                 {
                     _mutex.WaitOne();
-                    this.mesa.repartirCartasIniciales();
+                    this.mesa.repartirCartasIniciales(mazoGlobal);
                     this.mesa.pot.apuestaMinima = 50;
                     this.mesa.pot.apuestaMaxima = 100;
                     this.mesa.jugadores.GetJugadorEnLaPos(0).dineroInicial -= 100;
@@ -200,20 +200,19 @@ namespace serverTexas
                     _mutex.ReleaseMutex();
                     begin = true;
                 }
-                while (begin == true) ; ;
-                this.sendData(ConvertidorJson.convertirMesaAJson(this.mesa));
+                while (begin == false) ;
+                String data = ConvertidorJson.convertirMesaAJson(this.mesa);
+                this.sendData(data);
             }
         }
-
-
-
 
         //No sé si funca
         public void registrarUsuario()
         {
             clientSocket = ServerSocket.AcceptTcpClient();
+
             jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-        
+
             if(usuarioPermitido = TexasHoldemDLL.Autenticación.crearUsuario(jugador.nombre, jugador.contrasena))
             {
                 Console.WriteLine("Usuario nuevo registrado");
