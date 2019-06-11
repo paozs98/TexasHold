@@ -13,9 +13,12 @@ namespace WPFpruebaCliente {
         public string contrasena { get; set; }
         public int dineroInicial { get; set; }
         public int apuesta { get; set; }
+        public bool estado { get; set; }
 
 
-        public Jugador() {
+
+        public Jugador()
+        {
             mano = new ColeccionCarta(2);
             id = "";
             nombre = "";
@@ -25,7 +28,8 @@ namespace WPFpruebaCliente {
 
         }
 
-        public Jugador(string nom) {
+        public Jugador(string nom)
+        {
             mano = new ColeccionCarta(2);
             id = "";
             nombre = nom;
@@ -33,7 +37,8 @@ namespace WPFpruebaCliente {
             dineroInicial = 1000;
             apuesta = 0;
         }
-        public Jugador(string nom, string ids) {
+        public Jugador(string nom, string ids)
+        {
             mano = new ColeccionCarta(2);
             id = ids;
             nombre = nom;
@@ -41,8 +46,9 @@ namespace WPFpruebaCliente {
             dineroInicial = 1000;
             apuesta = 0;
         }
-       
-        public Jugador(string nom, string ids, string contra) {
+
+        public Jugador(string nom, string ids, string contra)
+        {
             mano = new ColeccionCarta(2);
             id = ids;
             nombre = nombre;

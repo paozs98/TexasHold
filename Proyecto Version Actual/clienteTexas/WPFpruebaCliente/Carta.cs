@@ -16,18 +16,22 @@ namespace WPFpruebaCliente {
         public int valor { get; set; }
         public int palo { get; set; }
 
-        public Carta() {
+        public Carta()
+        {
             valor = -1;
             palo = -1;
         }
 
-        public Carta(int valor, int palo) {
+        public Carta(int valor, int palo)
+        {
             this.valor = valor;
             this.palo = palo;
         }
 
-        public static string ValorToString(int valor) {
-            switch (valor) {
+        public static string ValorToString(int valor)
+        {
+            switch (valor)
+            {
                 case 11:
                     return "JOTA";
                 case 12:
@@ -42,8 +46,10 @@ namespace WPFpruebaCliente {
 
         }
 
-        public static string PaloToString(int naipe) {
-            switch (naipe) {
+        public static string PaloToString(int naipe)
+        {
+            switch (naipe)
+            {
                 case 1:
                     return "CORAZONES";
                 case 2:
@@ -55,7 +61,9 @@ namespace WPFpruebaCliente {
             }
         }
 
-        public string imprimir() {
+        public string imprimir()
+        {
+
             return ValorToString(valor) + "\tde\t" + PaloToString(palo);
         }
 
@@ -64,9 +72,9 @@ namespace WPFpruebaCliente {
         }
 
         public static Carta convertirJSONaCarta(string j) {
-            Carta juga = new Carta();
-            juga = JsonConvert.DeserializeObject<Carta>(j);
-            return juga;
+            Carta cartiux = new Carta();
+            cartiux = JsonConvert.DeserializeObject<Carta>(j);
+            return cartiux;
         }*/
 
     }

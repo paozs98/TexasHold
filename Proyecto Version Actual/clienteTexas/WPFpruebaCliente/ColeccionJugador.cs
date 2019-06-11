@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPFpruebaCliente {
     public class ColeccionJugador {
-        //Atributos 
+        
 
         public Jugador[] VEC { get; set; }
         public int tamano { get; set; }

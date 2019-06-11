@@ -13,8 +13,10 @@ namespace serverTexas {
         public string contrasena { get; set; }
         public int dineroInicial { get; set; }
         public int apuesta { get; set; }
+        public bool estado { get; set; }
 
 
+        
         public Jugador() {
             mano = new ColeccionCarta(2);
             id = "";
