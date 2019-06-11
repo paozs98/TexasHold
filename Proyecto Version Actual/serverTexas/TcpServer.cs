@@ -26,7 +26,7 @@ namespace serverTexas
         
         Jugador jugador = null;// para obtener los datos de los jugadores 
         Mesa mesa = null;
-        bool begin = true;
+        bool begin = false;
 
         int turnoGlobal = 0;
         bool usuarioPermitido;
@@ -67,7 +67,7 @@ namespace serverTexas
             }
 
             //provicional para la aceptacion de clientes // sin dll
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; ++i)
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
                 jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
@@ -81,11 +81,13 @@ namespace serverTexas
 
                 contadorUsuarios += 1;
 
-                
                 this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
-
             }
 
+            //if (mesa.jugadores.cantidad == 4)
+            //{
+            //    this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
+            //}
             //for (int i = 0; i < 4; i++)
             //{
 
@@ -110,7 +112,32 @@ namespace serverTexas
             //    }
 
             //}
-           
+
+        }
+
+        public void letsPlayTexas()
+        {
+            while (mesa.jugadores.cantidad != 4) ;
+            while (true)
+            {
+                _mutex.WaitOne();
+                if (begin == false)
+                {
+                    
+                    this.mesa.repartirCartasIniciales(mazoGlobal);
+                    this.mesa.pot.apuestaMinima = 50;
+                    this.mesa.pot.apuestaMaxima = 100;
+                    this.mesa.jugadores.GetJugadorEnLaPos(0).dineroInicial -= 100;
+                    this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 50;
+                    
+                    begin = true;
+                }
+                _mutex.ReleaseMutex();
+                while (begin == false) ;
+
+                String mesaJSON = ConvertidorJson.convertirMesaAJson(this.mesa);
+                this.sendData(mesaJSON);
+            }
         }
 
         public void sendData(String mensaje)
@@ -130,7 +157,6 @@ namespace serverTexas
 
             try
             {
-
                 foreach (byte b in receivedBuffer)
                 {
                     if (b.Equals(00))
@@ -142,7 +168,6 @@ namespace serverTexas
                         msg.Append(Convert.ToChar(b).ToString());
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -165,26 +190,7 @@ namespace serverTexas
             clienteHilo.Start();
         }
 
-        public void letsPlayTexas()
-        {
-            while (true)
-            {
-                if (begin == false)
-                {
-                    _mutex.WaitOne();
-                    this.mesa.repartirCartasIniciales(mazoGlobal);
-                    this.mesa.pot.apuestaMinima = 50;
-                    this.mesa.pot.apuestaMaxima = 100;
-                    this.mesa.jugadores.GetJugadorEnLaPos(0).dineroInicial -= 100;
-                    //this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 50;
-                    _mutex.ReleaseMutex();
-                    begin = true;
-                }
-                while (begin == false) ;
-                String mesaJSON = ConvertidorJson.convertirMesaAJson(this.mesa);
-                this.sendData(mesaJSON);
-            }
-        }
+        
 
         //No sé si funca
         public void registrarUsuario()

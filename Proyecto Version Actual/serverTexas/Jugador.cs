@@ -53,6 +53,11 @@ namespace serverTexas {
             apuesta = 0;
         }
 
+        public bool esIgual(Jugador j)
+        {
+            return (this.nombre == j.nombre);
+        }
+
     }// cierre de la clase Jugador 
 
 }
