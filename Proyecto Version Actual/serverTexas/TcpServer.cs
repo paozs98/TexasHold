@@ -24,7 +24,7 @@ namespace serverTexas
         //static List<handleClinet> _clients;
 
         static List<Thread> _hilosClientes;
-
+        Mazo mazoGlobal = new Mazo();
         Mutex _mutex = new Mutex();
 
         int turnoGlobal = 0;
@@ -66,9 +66,8 @@ namespace serverTexas
             {
                 // for para obtener las 5 cartas comunes del juego 
                 //se muestra solo una por cada ronda 
-                Carta carta = mesa.mazoMesa.darUnaCarta();
+                Carta carta = mazoGlobal.darUnaCarta();
                 mesa.cartasComunes.agregarCarta(carta);
-
             }
 
             //provicional para la aceptacion de clientes
@@ -76,8 +75,7 @@ namespace serverTexas
             {
                 clientSocket = ServerSocket.AcceptTcpClient();
                 jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-                //jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-
+             
                 //Aqui se debe crear al handler del cliente 
                 Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
                     + "\nJugador numero #   " +
@@ -129,9 +127,7 @@ namespace serverTexas
         public void sendData(String mensaje)
         {// para mansajes al cliente
 
-            string obj = JsonConvert.SerializeObject(mensaje);
-
-            byte[] flujoBytes = Encoding.Default.GetBytes(obj);
+            byte[] flujoBytes = Encoding.Default.GetBytes(mensaje);
 
             NetworkStream stream = clientSocket.GetStream();
 
@@ -192,7 +188,7 @@ namespace serverTexas
                 if (begin == false)
                 {
                     _mutex.WaitOne();
-                    this.mesa.repartirCartasIniciales();
+                    this.mesa.repartirCartasIniciales(mazoGlobal);
                     this.mesa.pot.apuestaMinima = 50;
                     this.mesa.pot.apuestaMaxima = 100;
                     this.mesa.jugadores.GetJugadorEnLaPos(0).dineroInicial -= 100;
@@ -200,8 +196,9 @@ namespace serverTexas
                     _mutex.ReleaseMutex();
                     begin = true;
                 }
-                while (begin == false) ; ;
-                this.sendData(ConvertidorJson.convertirMesaAJson(this.mesa));
+                while (begin == false) ;
+                String data = ConvertidorJson.convertirMesaAJson(this.mesa);
+                this.sendData(data);
             }
         }
 
