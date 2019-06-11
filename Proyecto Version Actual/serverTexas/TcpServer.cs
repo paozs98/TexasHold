@@ -202,11 +202,7 @@ namespace serverTexas
                     begin = true;
                 }
                 while (begin == true) ; ;
-
                 this.sendData(ConvertidorJson.convertirMesaAJson(this.mesa));
-
-
-
             }
         }
 
