@@ -13,7 +13,7 @@ namespace serverTexas
     class TcpServer
     {
 
-        IPAddress localAddr = IPAddress.Parse("127.0.0.1");// para que se conecte en cualquir dir
+        IPAddress localAddr = IPAddress.Parse("192.168.0.21");// para que se conecte en cualquir dir
         int puerto = 8090;//cambiar si da problemas con Oracle
 
         TcpListener ServerSocket;
@@ -80,7 +80,7 @@ namespace serverTexas
 
                 //Aqui se debe crear al handler del cliente 
                 Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
-                    + "\n Jugador numero#" +
+                    + "\nJugador numero #   " +
                     Convert.ToString(contadorUsuarios));
 
                 this.mesa.jugadores.agregarJugador(new Jugador(jugador.nombre, Convert.ToString(contadorUsuarios), jugador.contrasena));
@@ -120,8 +120,7 @@ namespace serverTexas
 
             //}
 
-            //aqui se inician los todos los hilos 
-            this.letsPlayTexas();
+            
 
         }
 
@@ -130,9 +129,9 @@ namespace serverTexas
         public void sendData(String mensaje)
         {// para mansajes al cliente
 
-            string jugadorJSON = JsonConvert.SerializeObject(mensaje);
+            string obj = JsonConvert.SerializeObject(mensaje);
 
-            byte[] flujoBytes = Encoding.Default.GetBytes(jugadorJSON);
+            byte[] flujoBytes = Encoding.Default.GetBytes(obj);
 
             NetworkStream stream = clientSocket.GetStream();
 
@@ -201,24 +200,18 @@ namespace serverTexas
                     _mutex.ReleaseMutex();
                     begin = true;
                 }
-                while (begin == true) ; ;
+                while (begin == false) ; ;
                 this.sendData(ConvertidorJson.convertirMesaAJson(this.mesa));
             }
         }
-
-
-
 
         //No sé si funca
         public void registrarUsuario()
         {
             clientSocket = ServerSocket.AcceptTcpClient();
-<<<<<<< HEAD
-         //   jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
-=======
+
             jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
-            //jugador = this.convertirJSONaJugador(this.readData());// esta retornador el jugador
->>>>>>> 34c4e7191735395fe1f3739635bf433362890c83
+
             if(usuarioPermitido = TexasHoldemDLL.Autenticación.crearUsuario(jugador.nombre, jugador.contrasena))
             {
                 Console.WriteLine("Usuario nuevo registrado");
