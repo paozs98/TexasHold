@@ -58,14 +58,19 @@ namespace serverTexas {
 
         public string imprimir() {
 
-            return ValorToString(valor) + "\tde\t" + PaloToString(palo);
+            return ValorToString(valor) + " de " + PaloToString(palo);
         }
-
+        
         public string getCodigo()
         {
-            return (string)"" + palo + valor;
+            int p = palo - 1;
+            int v;
+            if (valor == 14)
+                v = valor;
+            else { v = valor + 2; }
+            return (string)"" + p + v;
         }
-
+        
         /*public static string convertirCartaAJson(Carta j) {
             return JsonConvert.SerializeObject(j);
         }

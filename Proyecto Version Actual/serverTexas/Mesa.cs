@@ -21,6 +21,7 @@ namespace serverTexas {
         {
             this.cartasComunes = new ColeccionCarta(5);
             this.jugadores = new ColeccionJugador(4);
+            this.pot = new Pot();
         }
 
         public void repartirCartasIniciales(Mazo mazo)

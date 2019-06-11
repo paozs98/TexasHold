@@ -23,14 +23,13 @@ namespace serverTexas
         static List<Thread> _hilosClientes;
         Mazo mazoGlobal = new Mazo();
         Mutex _mutex = new Mutex();
-
-        int turnoGlobal = 0;
-        bool usuarioPermitido;
-
+        
         Jugador jugador = null;// para obtener los datos de los jugadores 
         Mesa mesa = null;
         bool begin = true;
 
+        int turnoGlobal = 0;
+        bool usuarioPermitido;
 
 
         public TcpServer()
@@ -54,7 +53,9 @@ namespace serverTexas
                 Console.WriteLine(ex.ToString());
                 Console.Read();
             }
+
             Console.WriteLine("Cartas que deben aparecer a todos los jugadores");
+
             for (int w = 0; w < 5; w++)
             {
                 // for para obtener las 5 cartas comunes del juego 
@@ -71,7 +72,6 @@ namespace serverTexas
                 clientSocket = ServerSocket.AcceptTcpClient();
                 jugador = ConvertidorJson.convertirJSONaJugador(this.readData());
              
-                //Aqui se debe crear al handler del cliente 
                 Console.WriteLine("Ha entrado un usuario al server! " + jugador.nombre
                     + "\nJugador numero #   " +
                     Convert.ToString(contadorUsuarios));
@@ -80,11 +80,11 @@ namespace serverTexas
                     Convert.ToString(contadorUsuarios), jugador.contrasena));
 
                 contadorUsuarios += 1;
+
+                
                 this.manejadorCliente(clientSocket, Convert.ToString(contadorUsuarios));
 
             }
-
-
 
             //for (int i = 0; i < 4; i++)
             //{
@@ -110,28 +110,22 @@ namespace serverTexas
             //    }
 
             //}
-
-            
-
+           
         }
 
         public void sendData(String mensaje)
-        {// para mansajes al cliente
+        {
+            // para mansajes al cliente
             byte[] flujoBytes = Encoding.Default.GetBytes(mensaje);
-
             NetworkStream stream = clientSocket.GetStream();
-
             stream.Write(flujoBytes, 0, flujoBytes.Length);
-
         }
 
         public string readData()
         {
-
             byte[] receivedBuffer = new byte[4096];// info de lo que envia el cliente pero en byte 
             NetworkStream stream = clientSocket.GetStream();
             stream.Read(receivedBuffer, 0, receivedBuffer.Length);
-
             StringBuilder msg = new StringBuilder();
 
             try
@@ -182,7 +176,7 @@ namespace serverTexas
                     this.mesa.pot.apuestaMinima = 50;
                     this.mesa.pot.apuestaMaxima = 100;
                     this.mesa.jugadores.GetJugadorEnLaPos(0).dineroInicial -= 100;
-                    this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 50;
+                    //this.mesa.jugadores.GetJugadorEnLaPos(1).dineroInicial -= 50;
                     _mutex.ReleaseMutex();
                     begin = true;
                 }
