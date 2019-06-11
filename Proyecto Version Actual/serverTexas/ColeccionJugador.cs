@@ -82,6 +82,7 @@ namespace serverTexas {
             }
         }
 
+
         public int GetPosJugador(Jugador j)
         {
             for (int i = 1; i <= cantidad; i++)
@@ -97,6 +98,7 @@ namespace serverTexas {
 
         }
 
+
         /*public static string convertirColeccionJugadorAJson(ColeccionJugador j) {
             return JsonConvert.SerializeObject(j);
         }
@@ -106,6 +108,7 @@ namespace serverTexas {
             juga = JsonConvert.DeserializeObject<ColeccionJugador>(j);
             return juga;
         }*/
+
 
 
     }//cierre de la clase
